@@ -1,4 +1,4 @@
-# 3D Network Device Topology
+# 3D Topology of Network Devices
 
 ## Instructions for downloading project:
 
