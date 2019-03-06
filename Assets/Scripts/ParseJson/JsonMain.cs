@@ -21,7 +21,7 @@ public class JsonMain : MonoBehaviour
         string json = File.ReadAllText(file);
         JsonParse loaded_data = JsonUtility.FromJson<JsonParse>(json);
 
-        //  - Optional: Print JSON File
+        //  - Optional: Print JSON Files
         //PrintTopology(loaded_data);
 
         // Main Objects
