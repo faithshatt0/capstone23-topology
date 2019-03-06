@@ -1,0 +1,31 @@
+{
+  "eth_clients": [
+    {
+      "clients": [
+        {
+          "idle": "9.10",
+          "target_mac": "00:40:ad:91:be:a0"
+        }
+      ],
+      "serial": "5054494e912ce93f"
+    }
+  ],
+
+  "mesh_links": [
+    {
+      "connected_to": [
+        {
+          "rssi": -660,
+          "serial": "aw2311813001257"
+        },
+        {
+          "rssi": -660,
+          "serial": "aw2311813005151"
+        }
+      ],
+
+      "isMaster": "True",
+      "serial": "5054494e912ce94f"
+    }
+  ]
+}
