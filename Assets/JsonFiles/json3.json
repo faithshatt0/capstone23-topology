@@ -1,0 +1,145 @@
+{
+  "eth_clients": [
+    { "clients": [], "serial": "5054494e912dab4f" },
+
+    { "clients": [], "serial": "aw2311813004220" },
+
+    { "clients": [], "serial": "aw2311813005000" },
+
+    { "clients": [], "serial": "aw2311813005257" }
+  ],
+
+  "mesh_links": [
+    {
+      "connected_to": [
+        { "rssi": -680, "serial": "aw2311813004220" },
+
+        { "rssi": -680, "serial": "aw2311813005000" },
+
+        { "rssi": -680, "serial": "aw2311813005257" }
+      ],
+
+      "isMaster": "True",
+
+      "serial": "5054494e912dab4f"
+    },
+
+    {
+      "connected_to": [
+        { "rssi": -646, "serial": "5054494e912dab4f" },
+
+        { "rssi": -646, "serial": "aw2311813005000" },
+
+        { "rssi": -646, "serial": "aw2311813005257" }
+      ],
+
+      "isMaster": "False",
+
+      "serial": "aw2311813004220"
+    },
+
+    {
+      "connected_to": [
+        { "rssi": -620, "serial": "5054494e912dab4f" },
+
+        { "rssi": -620, "serial": "aw2311813004220" },
+
+        { "rssi": -620, "serial": "aw2311813005257" }
+      ],
+
+      "isMaster": "False",
+
+      "serial": "aw2311813005000"
+    },
+
+    {
+      "connected_to": [
+        { "rssi": -706, "serial": "5054494e912dab4f" },
+
+        { "rssi": -706, "serial": "aw2311813004220" },
+
+        { "rssi": -706, "serial": "aw2311813005000" }
+      ],
+
+      "isMaster": "False",
+
+      "serial": "aw2311813005257"
+    }
+  ],
+
+  "sta_clients": [
+    { "clients": [], "serial": "5054494e912dab4f" },
+
+    {
+      "clients": [
+        {
+          "rssi": -676,
+
+          "rxpr": 6,
+
+          "target_mac": "94:9a:a9:e4:d6:14",
+
+          "txpr": 6
+        },
+
+        {
+          "rssi": -646,
+          "rxpr": 24,
+          "target_mac": "d0:03:4b:39:f4:58",
+          "txpr": 6
+        }
+      ],
+
+      "serial": "aw2311813004220"
+    },
+
+    {
+      "clients": [
+        {
+          "rssi": -685,
+
+          "rxpr": 24,
+
+          "target_mac": "84:d6:d0:ec:95:f8",
+
+          "txpr": 1
+        },
+
+        {
+          "rssi": -703,
+
+          "rxpr": 175,
+
+          "target_mac": "5c:09:47:c6:ce:08",
+
+          "txpr": 702
+        },
+
+        {
+          "rssi": -673,
+          "rxpr": 24,
+          "target_mac": "38:ca:da:21:92:ee",
+          "txpr": 6
+        }
+      ],
+
+      "serial": "aw2311813005000"
+    },
+
+    {
+      "clients": [
+        {
+          "rssi": -593,
+
+          "rxpr": 6,
+
+          "target_mac": "e0:ac:cb:61:5a:2c",
+
+          "txpr": 6
+        }
+      ],
+
+      "serial": "aw2311813005257"
+    }
+  ]
+}
