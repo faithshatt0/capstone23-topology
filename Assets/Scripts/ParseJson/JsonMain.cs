@@ -6,8 +6,14 @@ using UnityEngine;
 public class JsonMain : MonoBehaviour
     {
 
+    // Main Objects
+    //  - network_devices   = Devices connected to the Router/Extender
+    //  - serials           = Router references
+    List<Topology> network_devices = new List<Topology>();
+    List<string> serials = new List<string>();
+
     // Start is called before the first frame update
-    void Start()
+    public void Start()
         {
         // Algorithm:
         //  1. Use JsonUtility to store JSON values in objects -> arrays
@@ -23,12 +29,6 @@ public class JsonMain : MonoBehaviour
 
         //  - Optional: Print JSON Files
         //PrintTopology(loaded_data);
-
-        // Main Objects
-        //  - network_devices   = Devices connected to the Router/Extender
-        //  - serials           = Router references
-        List<Topology> network_devices = new List<Topology>();
-        List<string> serials = new List<string>();
 
         // 2. Store devices based on their respective Router/Extender
         StartParse(loaded_data, ref network_devices, ref serials);
@@ -54,6 +54,16 @@ public class JsonMain : MonoBehaviour
         {
         Functions temp = new Functions();
         temp.print_topology(loaded_data);
+        }
+
+    // Allows public access to the network_devices and serial Lists
+    public List<Topology> GetDevices()
+        {
+            return network_devices;
+        }
+    public List<string> GetSerials ()
+        {
+            return serials;
         }
 
     // Update is called once per frame
