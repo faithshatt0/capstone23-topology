@@ -6,8 +6,16 @@ using UnityEngine;
 public class JsonMain : MonoBehaviour
     {
 
+    // Main Objects
+    //  - network_devices   = Devices connected to the Router/Extender
+    //  - serials           = Router references
+    //  - num_devices       = clients[] in eth_clients & sta_clients
+    List<Topology> network_devices = new List<Topology>();
+    List<string> serials = new List<string>();
+    int num_devices = 0;
+
     // Start is called before the first frame update
-    void Start()
+    public void Start()
         {
         // Algorithm:
         //  1. Use JsonUtility to store JSON values in objects -> arrays
@@ -24,36 +32,53 @@ public class JsonMain : MonoBehaviour
         //  - Optional: Print JSON Files
         //PrintTopology(loaded_data);
 
-        // Main Objects
-        //  - network_devices   = Devices connected to the Router/Extender
-        //  - serials           = Router references
-        List<Topology> network_devices = new List<Topology>();
-        List<string> serials = new List<string>();
-
         // 2. Store devices based on their respective Router/Extender
-        StartParse(loaded_data, ref network_devices, ref serials);
+        StartParse(loaded_data);
 
         // 3. Test data
-        Debug.Log("Testing Class");
-        for (int i = 0; i < network_devices.Count; i++)
-            {
-            Debug.Log(network_devices[i].get_serial() + "\n Eth_client: " + network_devices[i].get_eth_client_idle() + "  " + network_devices[i].get_eth_client_target_mac()
-                + "\n isMaster: " + network_devices[i].get_isMaster() + "\n IS CONNECTED TO MESH_LINKS: " + network_devices[i].print_mesh_link_cto_rssi()
-                + " " +network_devices[i].print_mesh_link_cto_serial() + "\n Sta_clients: " + network_devices[i].print_sta_client_rssi() + " " + network_devices[i].print_sta_client_rxpr() + " " +
-                network_devices[i].print_sta_client_target_mac() + " " + network_devices[i].print_sta_client_txpr());
-            }
-        }
+        Debug.Log("# of Devices: " + num_devices);
+        //Debug.Log("Testing Class");
+        //for (int i = 0; i < network_devices.Count; i++)
+        //{
+        //Debug.Log(network_devices[i].get_serial() + "\n Eth_client: " + network_devices[i].get_eth_client_idle() + "  " + network_devices[i].get_eth_client_target_mac()
+        //    + "\n isMaster: " + network_devices[i].get_isMaster() + "\n IS CONNECTED TO MESH_LINKS: " + network_devices[i].print_mesh_link_cto_rssi()
+        //    + " " +network_devices[i].print_mesh_link_cto_serial() + "\n Sta_clients: " + network_devices[i].print_sta_client_rssi() + " " + network_devices[i].print_sta_client_rxpr() + " " +
+        //    network_devices[i].print_sta_client_target_mac() + " " + network_devices[i].print_sta_client_txpr());
+        //}
+    }
 
     // References Functions in 'Functions.cs'
-    void StartParse(JsonParse loaded_data, ref List<Topology> network_devices, ref List<string> serials)
+    void StartParse(JsonParse loaded_data)
         {
         Functions temp = new Functions();
-        temp.parse_json(loaded_data, ref network_devices, ref serials);
+        temp.ParseJson(loaded_data, ref network_devices, ref serials, ref num_devices);
         }
     void PrintTopology(JsonParse loaded_data)
         {
         Functions temp = new Functions();
-        temp.print_topology(loaded_data);
+        temp.PrintTopology(loaded_data);
+        }
+
+    // Allows public access to the network_devices and serial Lists
+    public List<Topology> GetDevices()
+        {
+        return network_devices;
+        }
+    public List<string> GetSerials ()
+        {
+        return serials;
+        }
+
+    // Indicates # of devices in the Topology
+    //  - Routers/Extenders
+    //  - # of Devices connected to the Routers/Extenders
+    int GetNumRouters()
+        {
+        return serials.Count;
+        }
+    int GetNumDevices()
+        {
+        return num_devices;
         }
 
     // Update is called once per frame
@@ -61,4 +86,4 @@ public class JsonMain : MonoBehaviour
         {
 
         }
-    }
+}

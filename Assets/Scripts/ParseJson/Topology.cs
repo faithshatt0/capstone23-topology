@@ -4,19 +4,26 @@
 public class Topology
     {
     //Data Values//
-    private string serial; //Routers serial number
-    private string eth_client_idle;
-    private string eth_client_target_mac;
-    private List<int> mesh_link_cto_rssi = new List<int>(); //what is the signal strength for the connection to extender or router
-    private List<string> mesh_link_cto_serial = new List<string>(); //what extenders is this router or extender connected to
-    private bool isMaster; //is this the master router
-    private List<int> sta_client_rssi = new List<int>(); //what is the signal strength for the device router or extender is connected to 
-    private List<int> sta_client_rxpr = new List<int>(); //rxpr for connection (what is rxpr)
-    private List<string> sta_client_target_mac = new List<string>(); //target_mac for connection (what is target_mac)
-    private List<int> sta_client_txpr = new List<int>(); // txpr for connection (what is txpr)
+    //  - Router/Extender devices are connected to
+    private string serial; // Router/Extender serial #
+    private bool isMaster; // Router?
+
+    //  - eth_client
+    private List<string> eth_client_idle;
+    private List<string> eth_client_target_mac;
+
+    //  - mesh_link
+    private List<int> mesh_link_cto_rssi = new List<int>();             // Signal strength for the connection to extender or router
+    private List<string> mesh_link_cto_serial = new List<string>();     // What Router/Extender is connected to other Routers/Extender
+
+    //  - sta_client
+    private List<int> sta_client_rssi = new List<int>();                // rssi - Signal strength for the device router or extender is connected to 
+    private List<int> sta_client_rxpr = new List<int>();                // rxpr - for connection (what is rxpr)
+    private List<string> sta_client_target_mac = new List<string>();    // tmac - target_mac for connection (what is target_mac)
+    private List<int> sta_client_txpr = new List<int>();                // txpr - for connection (what is txpr)
 
     // ------------------------------ Constructor ------------------------------
-    public Topology(string serial, string eth_client_idle, string eth_client_target_mac)
+    public Topology(string serial, List<string> eth_client_idle, List<string> eth_client_target_mac)
         {
         this.serial = serial;
         this.eth_client_idle = eth_client_idle;
@@ -60,11 +67,11 @@ public class Topology
         {
         return serial;
         }
-    public string get_eth_client_idle()
+    public List<string> get_eth_client_idle()
         {
         return eth_client_idle;
         }
-    public string get_eth_client_target_mac()
+    public List<string> get_eth_client_target_mac()
         {
         return eth_client_target_mac;
         }

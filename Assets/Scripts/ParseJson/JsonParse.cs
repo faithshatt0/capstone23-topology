@@ -1,4 +1,10 @@
-﻿[System.Serializable]
+﻿/*
+ * File used when calling 
+ *  JsonUtility.FromJson<>(json_file) in JsonMain.cs
+ *  to store the JSON values.
+ */
+
+[System.Serializable]
 public class JsonParse
     {
     public EthConnection[] eth_clients;    // eth_clients
