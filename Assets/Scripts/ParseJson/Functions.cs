@@ -17,7 +17,7 @@ public class Functions : MonoBehaviour
         }
 
     // Functions
-    public void parse_json(JsonParse loaded_data, ref List<Topology> network_devices, ref List<string> serials)
+    public void ParseJson(JsonParse loaded_data, ref List<Topology> network_devices, ref List<string> serials, ref int num_devices)
         {
         // Topology Objects
         EthConnection[] eth_clients = loaded_data.eth_clients; 
@@ -34,8 +34,8 @@ public class Functions : MonoBehaviour
             //      : target_mac
             //  - serial
             Eth[] clients;
-            string get_idle;
-            string get_target_mac;
+            List<string> get_idle;
+            List<string> get_target_mac;
             string get_router_serial;
             bool is_more_clients;
 
@@ -44,8 +44,8 @@ public class Functions : MonoBehaviour
             //  - get_target_mac    = empty for temp. storage (Empty indicates no clients)
             //  - serial            = "Router/Extender" serial #
             //  - clients           = eth_clients[i] -> clients connected to network
-            get_idle = "";
-            get_target_mac = "";
+            get_idle = new List<string>();
+            get_target_mac = new List<string>();
             get_router_serial = eth_clients[i].serial;
             clients = eth_clients[i].clients;
             is_more_clients = (i < clients.Length);
@@ -53,18 +53,21 @@ public class Functions : MonoBehaviour
             //  - clients[]
             //      - idle
             //      - target_mac
-            if (is_more_clients) //May have problems in the future bc if data in any but in order
+            for (int j = 0; j < clients.Length; j++) //May have problems in the future bc if data in any but in order
                 {
-                get_idle = clients[i].idle;
-                get_target_mac = clients[i].target_mac;
+                get_idle.Add(clients[i].idle);
+                get_target_mac.Add(clients[i].target_mac);
                 }
 
             // Store
             //  - connected_device      = Device connected to the current "Router/Extender"
             //  - get_router_serial     = "Router/Extender" serial #
+            //  - num_devices           = Count connected devices to the Router/Extender
             Topology connected_device = new Topology(get_router_serial, get_idle, get_target_mac);
             network_devices.Add(connected_device);
             serials.Add(get_router_serial);
+
+            num_devices += clients.Length;
             }
 
         //Mesh Links
@@ -119,14 +122,18 @@ public class Functions : MonoBehaviour
             {
             for (int i = 0; i < sta_clients.Length; i++)
                 {
+                // sta_client
+                //  - serial
+                Sta[] clients;
                 string serial;
                 int index;
+
+                clients = sta_clients[i].clients;
                 serial = sta_clients[i].serial;
                 index = serials.BinarySearch(serial);
 
-                for (int t = 0; t < sta_clients[i].clients.Length; t++)
+                for (int t = 0; t < clients.Length; t++)
                     {
-                    // sta_client
                     //  - clients
                     //      : rssi
                     //      : rxpr
@@ -141,7 +148,7 @@ public class Functions : MonoBehaviour
                     // Initialize
                     //  - Grab current client
                     //  - Store 
-                    curr_client = sta_clients[i].clients[t];
+                    curr_client = clients[t];
                     rssi = curr_client.rssi;
                     rxpr = curr_client.rxpr;
                     target_mac = curr_client.target_mac;
@@ -153,11 +160,15 @@ public class Functions : MonoBehaviour
                     network_devices[index].add_sta_client_target_mac(target_mac);
                     network_devices[index].add_sta_client_txpr(txpr);
                     }
+
+                    // Add Devices connected wirelessly
+                    num_devices += clients.Length;
                 }
             }
         }
 
-    public void print_topology(JsonParse loaded_data)
+    // Used to ensure Json Values are stored correctly into 'loaded_data' in JsonMain.cs
+    public void PrintTopology(JsonParse loaded_data)
         {
         Debug.Log("--- Printing out Topology values ---");
 
