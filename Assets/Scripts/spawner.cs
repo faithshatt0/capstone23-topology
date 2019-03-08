@@ -6,8 +6,9 @@ public class spawner : MonoBehaviour
 {
     public GameObject platform;
     public GameObject router;
-    public GameObject device1;
-    public GameObject device2;
+    public GameObject phone;
+    public GameObject laptop;
+    public GameObject assistant;
 
     // Start is called once at the beginning of the program
     void Start()
@@ -24,15 +25,19 @@ public class spawner : MonoBehaviour
         Transform objTrans = new GameObject().transform;
 
         // Render scene
-        objTrans.position = new Vector3(0, -3, 0);
+        objTrans.position = new Vector3(0, -0.5f, 0);
         Instantiate(platform, objTrans.position, objTrans.rotation);
 
-        objTrans.position = new Vector3(0, 0, 0);
+        objTrans.position = new Vector3(0, 1.5f, 0);
         Instantiate(router, objTrans.position, objTrans.rotation);
 
         List<int> nextCoordinate = new List<int> { 1, 1, 1, 1 };
         Vector3 objPos = new Vector3();
-        
+
+        // Render random device types initialization
+        System.Random rnd = new System.Random();
+        int rndNum = 0;
+
         for (int i = 0; i < network_devices.Count; i++)
         {
             objPos.x = 0;
@@ -62,7 +67,23 @@ public class spawner : MonoBehaviour
             }
             objTrans.position = objPos;
 
-            Instantiate(device2, objTrans.position, objTrans.rotation);
+            rndNum = rnd.Next(1, 4);
+
+            switch(rndNum) {
+                case 1:
+                    Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
+                    break;
+                case 2:
+                    objTrans.rotation = Quaternion.Euler(objTrans.rotation.x, objTrans.rotation.y + 180, objTrans.rotation.z);
+                    Instantiate(laptop, objTrans.position, objTrans.rotation);
+                    break;
+                case 3:
+                    Instantiate(assistant, assistant.transform.position + objPos, assistant.transform.rotation);
+                    break;
+                default:
+                    Debug.Log("error rendering object");
+                    break;
+            }
         }
     }
 }
