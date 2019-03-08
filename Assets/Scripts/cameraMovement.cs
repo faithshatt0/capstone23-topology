@@ -19,5 +19,11 @@ public class cameraMovement : MonoBehaviour
         Vector3 move = new Vector3(pos.x * dragSpeed, 0, pos.y * dragSpeed);
 
         transform.Translate(move, Space.World);
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            return;
+        }
+
     }
 }

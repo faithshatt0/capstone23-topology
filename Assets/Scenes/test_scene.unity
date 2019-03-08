@@ -147,8 +147,10 @@ MonoBehaviour:
   platform: {fileID: 7001284412197733232, guid: bb1b90b747a7029468593dc4fb7a44e2,
     type: 3}
   router: {fileID: 6174404446094317270, guid: 58746a39fdb480644a439b8d9b49c510, type: 3}
-  device1: {fileID: 4322310326726923408, guid: ef44e0cac72f4e141b86c857a20bb4b5, type: 3}
-  device2: {fileID: 2157000213656929232, guid: c59e433b6258a0446b7c548cf21fe23e, type: 3}
+  phone: {fileID: 7464038335503800715, guid: 242fc59c78f672145b69b5d6f211f130, type: 3}
+  laptop: {fileID: 9080408684677524988, guid: e699289c8f33f264c957132b7fd003dd, type: 3}
+  assistant: {fileID: 6305877045556163205, guid: 1a92858e8786f9e49ac382e8dd60189a,
+    type: 3}
 --- !u!81 &911763609
 AudioListener:
   m_ObjectHideFlags: 0
@@ -225,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3999cd5539c89244a815a328ed86795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragSpeed: 2
 --- !u!1 &1179654955
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179654955}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -10, y: 25, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
