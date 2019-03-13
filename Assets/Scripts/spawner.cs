@@ -95,11 +95,11 @@ public class spawner : MonoBehaviour
 
     void Update()
         {
-        // Debug.Log(_mouseState);
         if (Input.GetMouseButtonDown(0))
             {
             RaycastHit hitInfo;
             target = GetClickedObject(out hitInfo);
+            
             if (target != null)
                 {
                 _mouseState = true;
