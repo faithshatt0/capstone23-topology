@@ -91,19 +91,19 @@ public class spawner : MonoBehaviour
                 }
             }
         }
-    //https://forum.unity.com/threads/drag-drop-game-objects-without-rigidbody-with-the-mouse.64169/
+    
 
     void Update()
         {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) //left click
             {
             RaycastHit hitInfo;
-            target = GetClickedObject(out hitInfo);
+            target = GetClickedObject(out hitInfo); //gets info from what object is clicked
             
+            //if you are actually clicking on an object it will allow you to drag it to a new location
             if (target != null)
                 {
                 _mouseState = true;
-                //converting world position to screen position
                 screenSpace = Camera.main.WorldToScreenPoint(target.transform.position);
                 offset = target.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z));
                 }
@@ -125,7 +125,7 @@ public class spawner : MonoBehaviour
             }
         }
 
-
+    //Get information on gameobject by clicking on it
     GameObject GetClickedObject(out RaycastHit hit)
         {
         GameObject target = null;

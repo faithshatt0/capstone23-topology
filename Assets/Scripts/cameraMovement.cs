@@ -8,11 +8,11 @@ public class cameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
+        if (Input.GetMouseButtonDown(1)) //right click
+            {
             dragOrigin = Input.mousePosition;
             return;
-        }
+            }
         if (!Input.GetMouseButton(1)) return;
 
         Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
