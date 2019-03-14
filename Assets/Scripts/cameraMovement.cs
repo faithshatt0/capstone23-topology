@@ -3,24 +3,28 @@
 public class cameraMovement : MonoBehaviour
 {
     public float dragSpeed = 2;
-    private Vector3 dragOrigin;
+    private float angle;
+
+    float camZoom = -10f;
+    float camZoomSpeed = 2f;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1)) //right click
-            {
-            dragOrigin = Input.mousePosition;
+        if (Input.GetMouseButtonDown(1))
+        {
+            angle = 60 * (Input.mousePosition.x < Screen.width/2 ? 1 : -1) * Time.deltaTime;
             return;
-            }
+        }
         if (!Input.GetMouseButton(1)) return;
 
-        Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
-        Vector3 move = new Vector3(pos.x * dragSpeed, 0, pos.y * dragSpeed);
+        transform.RotateAround(Vector3.zero, Vector3.up, angle);
 
-        transform.Translate(move, Space.World);
-
-        
-
+        //if (Input.GetAxis("Mouse ScrollWheel") != 0)
+        //{
+        //    camZoom += Input.GetAxis("Mouse ScrollWheel") * camZoomSpeed;
+        //    return;
+        //}
+        //transform.position = new Vector3(transform.position.x, transform.position.y, camZoom);
     }
 }
