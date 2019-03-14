@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class spawner : MonoBehaviour
-{
+    {
+    private bool _mouseState;
     public GameObject platform;
     public GameObject router;
     public GameObject phone;
     public GameObject laptop;
     public GameObject assistant;
+    private GameObject target;
+    public Vector3 screenSpace;
+    public Vector3 offset;
 
     // Start is called once at the beginning of the program
     void Start()
-    {
+        {
         // Initialize JsonMain script and start parsing Json
         JsonMain jsonMain = new JsonMain();
         jsonMain.Start();
@@ -31,6 +35,7 @@ public class spawner : MonoBehaviour
         objTrans.position = new Vector3(0, 1.5f, 0);
         Instantiate(router, objTrans.position, objTrans.rotation);
 
+
         List<int> nextCoordinate = new List<int> { 1, 1, 1, 1 };
         Vector3 objPos = new Vector3();
 
@@ -39,7 +44,7 @@ public class spawner : MonoBehaviour
         int rndNum = 0;
 
         for (int i = 0; i < network_devices.Count; i++)
-        {
+            {
             objPos.x = 0;
             objPos.z = 0;
 
@@ -64,7 +69,7 @@ public class spawner : MonoBehaviour
                 default:
                     Debug.Log("Rendering device error - Line 54");
                     break;
-            }
+                }
             objTrans.position = objPos;
 
             rndNum = rnd.Next(1, 4);
@@ -83,7 +88,54 @@ public class spawner : MonoBehaviour
                 default:
                     Debug.Log("error rendering object");
                     break;
+                }
             }
         }
-    }
+    
+
+    void Update()
+        {
+        if (Input.GetMouseButtonDown(0)) //left click
+            {
+            RaycastHit hitInfo;
+            target = GetClickedObject(out hitInfo); //gets info from what object is clicked
+            
+            //if you are actually clicking on an object it will allow you to drag it to a new location
+            if (target != null)
+                {
+                _mouseState = true;
+                screenSpace = Camera.main.WorldToScreenPoint(target.transform.position);
+                offset = target.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z));
+                }
+            }
+        if (Input.GetMouseButtonUp(0))
+            {
+            _mouseState = false;
+            }
+        if (_mouseState)
+            {
+            //keep track of the mouse position
+            var curScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
+
+            //convert the screen mouse position to world point and adjust with offset
+            var curPosition = Camera.main.ScreenToWorldPoint(curScreenSpace) + offset;
+
+            //update the position of the object in the world
+            target.transform.position = curPosition;
+            }
+        }
+
+    //Get information on gameobject by clicking on it
+    GameObject GetClickedObject(out RaycastHit hit)
+        {
+        GameObject target = null;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray.origin, ray.direction * 10, out hit))
+            {
+            target = hit.collider.gameObject;
+            }
+
+        return target;
+        }
 }
+
