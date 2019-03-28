@@ -100,8 +100,9 @@ public class Functions : MonoBehaviour
             //  - connected_to
             //      : rssi
             //      : serial
+      
             network_devices[index].set_isMaster(isMaster);
-
+            
             for (int t = 0; t < mesh_links[i].connected_to.Length; t++)
                 {
                 int device_rssi;
@@ -116,7 +117,7 @@ public class Functions : MonoBehaviour
                 network_devices[index].add_mesh_link_cto_serial(device_serial);
                 }
             }
-
+       
         // Sta Clients
         if (sta_clients != null)
             {
@@ -165,6 +166,7 @@ public class Functions : MonoBehaviour
                     num_devices += clients.Length;
                 }
             }
+        
         }
 
     // Used to ensure Json Values are stored correctly into 'loaded_data' in JsonMain.cs
