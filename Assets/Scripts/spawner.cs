@@ -16,7 +16,7 @@ public class spawner : MonoBehaviour
 
     // Start is called once at the beginning of the program
     void Start()
-    {
+        {
         // Initialize JsonMain script and start parsing Json
         JsonMain jsonMain = new JsonMain();
         jsonMain.Start();
@@ -32,9 +32,6 @@ public class spawner : MonoBehaviour
         objTrans.position = new Vector3(0, -0.5f, 0);
         Instantiate(platform, objTrans.position, objTrans.rotation);
 
-        //have to fix locations so that they are dynamic
-
-
         List<int> nextCoordinate = new List<int> { 1, 1, 1, 1 };
         Vector3 objPos = new Vector3();
 
@@ -42,6 +39,8 @@ public class spawner : MonoBehaviour
         System.Random rnd = new System.Random();
         int rndNum = 0;
         int xx_router;
+
+        //For scaling on where the routers will start
         if (network_devices.Count != 1)
             {
             xx_router = (-9 * network_devices.Count);
@@ -50,34 +49,37 @@ public class spawner : MonoBehaviour
             {
             xx_router = 0; 
             }
-        
 
-    
-
+        //gets each router or extender 
         for (int i = 0; i < network_devices.Count; i++)
-        {
+            {
+
+            //Routers or extenders (not sure if extenders look different physically)
             objTrans.position = new Vector3(xx_router, 1.5f, 0);
             Instantiate(router, objTrans.position, objTrans.rotation);
 
+            //if there are no sta_clients it will skip and save time
             if (network_devices[i].get_sta_client_rssi().Count != 0)
-            {
+                {
+                //will help scale how many sta_clients are connected to show they start out connected to eachother.
                 if (network_devices[i].get_sta_client_rssi().Count > 1)
-                {
+                    {
                     objPos.x = xx_router - (network_devices[i].get_sta_client_rssi().Count * 3);
-                }
+                    }
                 else
-                {
+                    {
                     objPos.x = xx_router;
-                }
+                    }
                 objPos.z = 10;
 
+                //Randomly spawns object behind router
                 for (int ii = 0; ii < network_devices[i].get_sta_client_rssi().Count; ii++)
-                {
+                    {
                     Debug.Log(network_devices[i].get_sta_client_rssi().Count);
                     objTrans.position = objPos;
                     rndNum = rnd.Next(1, 4);
                     switch (rndNum)
-                    {
+                        {
                         case 1:
                             Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
                             break;
@@ -91,84 +93,17 @@ public class spawner : MonoBehaviour
                         default:
                             Debug.Log("error rendering object");
                             break;
-                    }
+                        }
                     objPos.x += 9;
+                    }
                 }
-            }
             xx_router += 28;
-        }
-
-    }
-
-
-    /*
-    for (int i = 0; i < network_devices.Count; i++)
-        {
-
-
-
-        objPos.x = xx;
-        objPos.z = xx;
-
-        var num = i < 3 ? i : i % 4;
-        switch(num) {
-            case 0:
-                objPos.x = i + (nextCoordinate[0] * 15);
-                nextCoordinate[0]++;
-                objPos.x = objPos.x + (xx * 2);
-                Debug.Log("Case 0: " + objPos.x + "  " + objPos.z + " " + nextCoordinate[0]);
-                break;
-            case 1:
-                objPos.x = i + (-nextCoordinate[1] * 15);
-                nextCoordinate[1]++;
-                objPos.x = objPos.x + -(xx * 2);
-                Debug.Log("Case 1: " + objPos.x + "  " + objPos.z + " " + nextCoordinate[0]);
-                break;
-            case 2:
-                objPos.z = i + (nextCoordinate[2] * 15);
-                nextCoordinate[2]++;
-                Debug.Log("Case 2: " + objPos.x + "  " + objPos.z + " " + nextCoordinate[0]);
-                break;
-            case 3:
-                objPos.z = i + (-nextCoordinate[3] * 15);
-                nextCoordinate[3]++;
-                Debug.Log("Case 3: " + objPos.x + "  " + objPos.z + " " + nextCoordinate[0]);
-                break;
-            default:
-                Debug.Log("Rendering device error - Line 54");
-                break;
-            }
-        objTrans.position = objPos;
-
-        Debug.Log("End: " + objPos.x + "  " + objPos.z);
-        rndNum = rnd.Next(1, 4);
-
-        switch(rndNum) {
-            case 1: 
-                Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
-                break;
-            case 2:
-                objTrans.rotation = Quaternion.Euler(objTrans.rotation.x, objTrans.rotation.y + 180, objTrans.rotation.z);
-                Instantiate(laptop, objTrans.position, objTrans.rotation);
-                break;
-            case 3:
-                Instantiate(assistant, assistant.transform.position + objPos, assistant.transform.rotation);
-                break;
-            default:
-                Debug.Log("error rendering object");
-                break;
             }
 
         }
-
-
-    //saveObjects save_loader = new saveObjects();
-    //save_loader.save();
-    }
-*/
 
     void Update()
-    {
+        {
         
         if (Input.GetMouseButtonDown(0)) //left click
             {
@@ -200,20 +135,20 @@ public class spawner : MonoBehaviour
             }
         }
 
-    //Get information on gameobject by clicking on it
-    GameObject GetClickedObject(out RaycastHit hit)
-        {
-        GameObject target = null;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray.origin, ray.direction * 10, out hit))
+        //Get information on gameobject by clicking on it
+        GameObject GetClickedObject(out RaycastHit hit)
             {
-            target = hit.collider.gameObject;
-            }
+            GameObject target = null;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray.origin, ray.direction * 10, out hit))
+                {
+                target = hit.collider.gameObject;
+                }
 
-        return target;
-        }
+            return target;
+           }
         
-    }
+       }
     
 
 
