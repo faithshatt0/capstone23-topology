@@ -13,6 +13,7 @@ public class spawner : MonoBehaviour
     private GameObject target;
     public Vector3 screenSpace;
     public Vector3 offset;
+    public Vector3 real_position;
 
     // Start is called once at the beginning of the program
     void Start()
@@ -109,10 +110,11 @@ public class spawner : MonoBehaviour
             {
             RaycastHit hitInfo;
             target = GetClickedObject(out hitInfo); //gets info from what object is clicked
-
+            
             //if you are actually clicking on an object it will allow you to drag it to a new location
             if (target != null)
                 {
+                real_position = target.transform.position;
                 _mouseState = true;
                 screenSpace = Camera.main.WorldToScreenPoint(target.transform.position);
                 offset = target.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z));
@@ -121,7 +123,13 @@ public class spawner : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
             {
             _mouseState = false;
+            if(target != null)
+                {
+                target.transform.position = real_position;
+                }
+           
             }
+
         if (_mouseState)
             {
             //keep track of the mouse position
