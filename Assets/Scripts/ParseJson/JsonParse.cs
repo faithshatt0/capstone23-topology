@@ -12,6 +12,7 @@ public class JsonParse
     public MeshLink[] mesh_links;       // mesh_links
     }
 
+// JSON Connections
 [System.Serializable]
 public class EthConnection : Connection<Eth> { }
 
@@ -25,7 +26,7 @@ public class Connection<T>
     public string serial;
     }
 
-// JSON Objects
+// JSON Objects w/in 'Connection'
 [System.Serializable]
 public class Eth
     {
@@ -36,20 +37,24 @@ public class Eth
     */
     public string idle;         // Made into string to store exact numbers = "9.10" vs. if double -> value = 9.1000000012
     public string target_mac;
+    public string hostname;
+    public string IP_Address;
     }
 
 [System.Serializable]
 public class MeshLink
     {
-    public Device[] connected_to;         // connected_to
+    public Device[] connected_to;
     public bool isMaster;
     public string serial;
+    public string hostname;
+    public string IP_Address;
     }
 
 [System.Serializable]
 public class Sta
     {
-    /*
+    /*`
      Example Values
         'rssi': -300,
         'rxpr': 130,
@@ -60,6 +65,8 @@ public class Sta
     public int rxpr;
     public string target_mac;
     public int txpr;
+    public string hostname;
+    public string IP_Address;
     }
 
 [System.Serializable]
