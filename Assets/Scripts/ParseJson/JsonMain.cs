@@ -25,33 +25,25 @@ public class JsonMain : MonoBehaviour
         /* Capstone */
 
         // 1. Read JSON file
-        string file = Application.dataPath + "/JsonFiles/json2.json";
+        string file = Application.dataPath + "/JsonFiles/json1.json";
         string json = File.ReadAllText(file);
         JsonParse loaded_data = JsonUtility.FromJson<JsonParse>(json);
 
         //  - Optional: Print JSON Files
-        //PrintTopology(loaded_data);
+        PrintTopology(loaded_data);
 
         // 2. Store devices based on their respective Router/Extender
-        StartParse(loaded_data);
+        //StartParse(loaded_data);
 
         // 3. Test data
-        Debug.Log("# of Devices: " + num_devices);
-        //Debug.Log("Testing Class");
-        //for (int i = 0; i < network_devices.Count; i++)
-        //{
-        //Debug.Log(network_devices[i].get_serial() + "\n Eth_client: " + network_devices[i].get_eth_client_idle() + "  " + network_devices[i].get_eth_client_target_mac()
-        //    + "\n isMaster: " + network_devices[i].get_isMaster() + "\n IS CONNECTED TO MESH_LINKS: " + network_devices[i].print_mesh_link_cto_rssi()
-        //    + " " +network_devices[i].print_mesh_link_cto_serial() + "\n Sta_clients: " + network_devices[i].print_sta_client_rssi() + " " + network_devices[i].print_sta_client_rxpr() + " " +
-        //    network_devices[i].print_sta_client_target_mac() + " " + network_devices[i].print_sta_client_txpr());
-        //}
+        //Debug.Log("# of Devices: " + num_devices);
     }
 
     // References Functions in 'Functions.cs'
     void StartParse(JsonParse loaded_data)
         {
         Functions temp = new Functions();
-        temp.ParseJson(loaded_data, ref network_devices, ref serials, ref num_devices);
+        temp.OrganizeByRouter(loaded_data, ref network_devices, ref serials, ref num_devices);
         }
     void PrintTopology(JsonParse loaded_data)
         {

@@ -44,6 +44,7 @@ public class Functions : MonoBehaviour
                 // Initalize
                 //  - serial            = "Router/Extender" serial #
                 //  - clients           = eth_clients[i] -> clients connected to network
+                store_temp = new List<EthClients>();
                 get_router_serial = eth_clients[i].serial;
                 clients = eth_clients[i].clients;
 
@@ -54,11 +55,11 @@ public class Functions : MonoBehaviour
                 //      - IP_Address
                 for (int j = 0; j < clients.Length; j++) //May have problems in the future bc if data in any but in order
                     {
-                    EthClients temp;
-                    temp.idle.Add(clients[j].idle);
-                    temp.target_mac.Add(clients[j].target_mac);
-                    temp.device_info.hostname.Add(clients[j].hostname);
-                    temp.device_info.ip_addr.Add(clients[j].IP_Address);
+                    EthClients temp = new EthClients();
+                    temp.idle = clients[j].idle;
+                    temp.target_mac = clients[j].target_mac;
+                    temp.device_info.hostname = clients[j].hostname;
+                    temp.device_info.ip_addr = clients[j].IP_Address;
                     
                     //  - Store current eth_client
                     store_temp.Add(temp);
@@ -75,7 +76,10 @@ public class Functions : MonoBehaviour
                 num_devices += clients.Length;
                 }
             }
-
+        for (int i = 0; i < network_devices.Count; ++i) {
+            Debug.Log(network_devices[i].get_eth_clients());
+        }
+        /*
         // Mesh Links
         //  - Check serials & organizes them
         if (mesh_links != null) 
@@ -114,57 +118,53 @@ public class Functions : MonoBehaviour
                 network_devices[index].set_isMaster(mesh_links[i].isMaster);
                 
                 // Store 
-                //  - Change to List<MeshLinks> NOT MeshLinks
                 network_devices[index].add_mesh_links(temp);
                 }
             }
        
         // Sta Clients
-        for (int i = 0; i < sta_clients.Length; i++)
+        if (sta_clients != null) 
             {
-            // sta_client
-            //  - serial
-            Sta[] clients;
-            string serial;
-            int index;
-
-            clients = sta_clients[i].clients;
-            serial = sta_clients[i].serial;
-            index = serials.BinarySearch(serial);
-
-            for (int t = 0; t < clients.Length; t++)
+            for (int i = 0; i < sta_clients.Length; i++)
                 {
-                //  - clients
-                //      : rssi
-                //      : rxpr
-                //      : target_mac
-                //      : txpr
-                Sta curr_client;
-                int rssi;
-                int rxpr;
-                string target_mac;
-                int txpr;
+                // sta_client
+                //  - serial
+                Sta[] clients;
+                string serial;
+                int index;
 
-                // Initialize
-                //  - Grab current client
-                //  - Store 
-                curr_client = clients[t];
-                rssi = curr_client.rssi;
-                rxpr = curr_client.rxpr;
-                target_mac = curr_client.target_mac;
-                txpr = curr_client.txpr;
+                clients = sta_clients[i].clients;
+                serial = sta_clients[i].serial;
+                index = serials.BinarySearch(serial);
 
-                // Store
-                network_devices[index].add_sta_client_rssi(rssi);
-                network_devices[index].add_sta_client_rxpr(rxpr);
-                network_devices[index].add_sta_client_target_mac(target_mac);
-                network_devices[index].add_sta_client_txpr(txpr);
+                for (int t = 0; t < clients.Length; t++)
+                    {
+                    //  - clients
+                    //      : rssi
+                    //      : rxpr
+                    //      : target_mac
+                    //      : txpr
+                    StaClients temp;
+                    Sta curr_client;
+
+                    // Initialize
+                    //  - Grab current client
+                    //  - Store 
+                    curr_client = clients[t];
+                    temp.rssi = curr_client.rssi;
+                    temp.rxpr = curr_client.rxpr;
+                    temp.target_mac = curr_client.target_mac;
+                    temp.txpr = curr_client.txpr;
+
+                    // Store
+                    network_devices[index].add_sta_clients(temp);
+                    }
+
+                    // Add Devices connected wirelessly
+                    num_devices += clients.Length;
                 }
-
-                // Add Devices connected wirelessly
-                num_devices += clients.Length;
             }
-        
+             */
         }
 
     // Used to ensure Json Values are stored correctly into 'loaded_data' in JsonMain.cs
