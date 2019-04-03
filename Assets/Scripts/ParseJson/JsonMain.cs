@@ -25,7 +25,7 @@ public class JsonMain : MonoBehaviour
         /* Capstone */
 
         // 1. Read JSON file
-        string file = Application.dataPath + "/JsonFiles/json1.json";
+        string file = Application.dataPath + "/JsonFiles/new_json.js";
         string json = File.ReadAllText(file);
         JsonParse loaded_data = JsonUtility.FromJson<JsonParse>(json);
 
