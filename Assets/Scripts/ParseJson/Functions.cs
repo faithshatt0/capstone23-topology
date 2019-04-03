@@ -17,154 +17,152 @@ public class Functions : MonoBehaviour
         }
 
     // Functions
-    public void ParseJson(JsonParse loaded_data, ref List<Topology> network_devices, ref List<string> serials, ref int num_devices)
+    public void OrganizeByRouter(JsonParse loaded_data, ref List<Topology> network_devices, ref List<string> serials, ref int num_devices)
         {
         // Topology Objects
-        EthConnection[] eth_clients = loaded_data.eth_clients; 
+        EthConnection[] eth_clients = loaded_data.eth_clients;
         StaConnection[] sta_clients = loaded_data.sta_clients;
         MeshLink[] mesh_links = loaded_data.mesh_links;
 
         // Eth Clients
         //  - Init. all serials (Router/Extenders)
-        for (int i = 0; i < eth_clients.Length; i++)
+        if (eth_clients != null) 
             {
-            // eth_clients
-            //  - client
-            //      : idle
-            //      : target_mac
-            //  - serial
-            Eth[] clients;
-            List<string> get_idle;
-            List<string> get_target_mac;
-            string get_router_serial;
-            bool is_more_clients;
-
-            // Initalize
-            //  - get_idle          = empty for temp. storage (Empty indicates no clients)
-            //  - get_target_mac    = empty for temp. storage (Empty indicates no clients)
-            //  - serial            = "Router/Extender" serial #
-            //  - clients           = eth_clients[i] -> clients connected to network
-            get_idle = new List<string>();
-            get_target_mac = new List<string>();
-            get_router_serial = eth_clients[i].serial;
-            clients = eth_clients[i].clients;
-            is_more_clients = (i < clients.Length);
-
-            //  - clients[]
-            //      - idle
-            //      - target_mac
-            for (int j = 0; j < clients.Length; j++) //May have problems in the future bc if data in any but in order
+            for (int i = 0; i < eth_clients.Length; i++)
                 {
-                get_idle.Add(clients[i].idle);
-                get_target_mac.Add(clients[i].target_mac);
-                }
+                // eth_clients
+                //  - client ('temp')
+                //      : idle
+                //      : target_mac
+                //      : hostname
+                //      : IP_Address
+                //  - serial
+                Eth[] clients;
+                List<EthClients> store_temp;
+                string get_router_serial;
 
-            // Store
-            //  - connected_device      = Device connected to the current "Router/Extender"
-            //  - get_router_serial     = "Router/Extender" serial #
-            //  - num_devices           = Count connected devices to the Router/Extender
-            Topology connected_device = new Topology(get_router_serial, get_idle, get_target_mac);
-            network_devices.Add(connected_device);
-            serials.Add(get_router_serial);
+                // Initalize
+                //  - serial            = "Router/Extender" serial #
+                //  - clients           = eth_clients[i] -> clients connected to network
+                get_router_serial = eth_clients[i].serial;
+                clients = eth_clients[i].clients;
 
-            num_devices += clients.Length;
-            }
-
-        //Mesh Links
-        //  - Check serials & organizes them
-        for (int i = 0; i < mesh_links.Length; i++)
-            {
-            // eth_clients
-            //  - connected_to
-            //      : rssi
-            //      : serial    (Device)
-            //  - isMaster
-            //  - serial        (Router/Extender)
-            string serial;
-            bool isMaster;
-            int index;
-            Device[] connected_to;
-
-            // Initialize
-            //  - serial
-            //  - index         = Location of Serial # in 'serials'
-            //  - isMaster
-            //  - connected_to  = Devices connected to Router/Extender
-            serial = mesh_links[i].serial;
-            index = serials.BinarySearch(serial);
-            isMaster = mesh_links[i].isMaster;
-            connected_to = mesh_links[i].connected_to;
-
-            // Store Mesh Link values
-            //  - isMaster
-            //  - connected_to
-            //      : rssi
-            //      : serial
-      
-            network_devices[index].set_isMaster(isMaster);
-            
-            for (int t = 0; t < mesh_links[i].connected_to.Length; t++)
-                {
-                int device_rssi;
-                string device_serial;
-                device_rssi = mesh_links[i].connected_to[t].rssi;
-                device_serial = mesh_links[i].connected_to[t].serial;
+                //  - clients[]
+                //      - idle
+                //      - target_mac
+                //      - hostname
+                //      - IP_Address
+                for (int j = 0; j < clients.Length; j++) //May have problems in the future bc if data in any but in order
+                    {
+                    EthClients temp;
+                    temp.idle.Add(clients[j].idle);
+                    temp.target_mac.Add(clients[j].target_mac);
+                    temp.device_info.hostname.Add(clients[j].hostname);
+                    temp.device_info.ip_addr.Add(clients[j].IP_Address);
+                    
+                    //  - Store current eth_client
+                    store_temp.Add(temp);
+                    }
 
                 // Store
-                //  - rssi
+                //  - connected_device      = Device connected to the current "Router/Extender"
+                //  - get_router_serial     = "Router/Extender" serial #
+                //  - num_devices           = Count connected devices to the Router/Extender
+                Topology connected_device = new Topology(store_temp);
+                network_devices.Add(connected_device);
+                serials.Add(get_router_serial);
+
+                num_devices += clients.Length;
+                }
+            }
+
+        // Mesh Links
+        //  - Check serials & organizes them
+        if (mesh_links != null) 
+            {
+            for (int i = 0; i < mesh_links.Length; i++)
+                {
+                // mesh_links
+                //  - connected_to
+                //      : rssi
+                //      : serial    (Other Router/Extenders)
+                //  - isMaster
+                //  - serial        (Main Router/Extender)
+                //  - hostname
+                //  - IP_Address
+                MeshLinks temp;
+                int index;              // Used for "Binary Search"
+                string main_serial;
+
+                // Initialize
+                //  - connected_to  = Devices connected to Router/Extender
+                //  - hostname
+                //  - IP_Address
                 //  - serial
-                network_devices[index].add_mesh_link_cto_rssi(device_rssi);
-                network_devices[index].add_mesh_link_cto_serial(device_serial);
+                //  - index         = Location of Serial # in 'serials'
+                temp.connected_to.AddRange(mesh_links[i].connected_to);
+                temp.device_info.hostname = mesh_links[i].hostname;
+                temp.device_info.ip_addr = mesh_links[i].IP_Address;
+                main_serial = mesh_links[i].serial;
+                index = serials.BinarySearch(main_serial);
+
+                // Store Mesh Link values
+                //  - isMaster
+                //  - connected_to
+                //      : rssi
+                //      : serial
+                network_devices[index].set_isMaster(mesh_links[i].isMaster);
+                
+                // Store 
+                //  - Change to List<MeshLinks> NOT MeshLinks
+                network_devices[index].add_mesh_links(temp);
                 }
             }
        
         // Sta Clients
-        if (sta_clients != null)
+        for (int i = 0; i < sta_clients.Length; i++)
             {
-            for (int i = 0; i < sta_clients.Length; i++)
+            // sta_client
+            //  - serial
+            Sta[] clients;
+            string serial;
+            int index;
+
+            clients = sta_clients[i].clients;
+            serial = sta_clients[i].serial;
+            index = serials.BinarySearch(serial);
+
+            for (int t = 0; t < clients.Length; t++)
                 {
-                // sta_client
-                //  - serial
-                Sta[] clients;
-                string serial;
-                int index;
+                //  - clients
+                //      : rssi
+                //      : rxpr
+                //      : target_mac
+                //      : txpr
+                Sta curr_client;
+                int rssi;
+                int rxpr;
+                string target_mac;
+                int txpr;
 
-                clients = sta_clients[i].clients;
-                serial = sta_clients[i].serial;
-                index = serials.BinarySearch(serial);
+                // Initialize
+                //  - Grab current client
+                //  - Store 
+                curr_client = clients[t];
+                rssi = curr_client.rssi;
+                rxpr = curr_client.rxpr;
+                target_mac = curr_client.target_mac;
+                txpr = curr_client.txpr;
 
-                for (int t = 0; t < clients.Length; t++)
-                    {
-                    //  - clients
-                    //      : rssi
-                    //      : rxpr
-                    //      : target_mac
-                    //      : txpr
-                    Sta curr_client;
-                    int rssi;
-                    int rxpr;
-                    string target_mac;
-                    int txpr;
-
-                    // Initialize
-                    //  - Grab current client
-                    //  - Store 
-                    curr_client = clients[t];
-                    rssi = curr_client.rssi;
-                    rxpr = curr_client.rxpr;
-                    target_mac = curr_client.target_mac;
-                    txpr = curr_client.txpr;
-
-                    // Store
-                    network_devices[index].add_sta_client_rssi(rssi);
-                    network_devices[index].add_sta_client_rxpr(rxpr);
-                    network_devices[index].add_sta_client_target_mac(target_mac);
-                    network_devices[index].add_sta_client_txpr(txpr);
-                    }
-
-                    // Add Devices connected wirelessly
-                    num_devices += clients.Length;
+                // Store
+                network_devices[index].add_sta_client_rssi(rssi);
+                network_devices[index].add_sta_client_rxpr(rxpr);
+                network_devices[index].add_sta_client_target_mac(target_mac);
+                network_devices[index].add_sta_client_txpr(txpr);
                 }
+
+                // Add Devices connected wirelessly
+                num_devices += clients.Length;
             }
         
         }
