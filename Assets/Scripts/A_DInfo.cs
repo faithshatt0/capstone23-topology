@@ -29,14 +29,15 @@ public class A_DInfo : MonoBehaviour
                     target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, -5);
                     _isOpen = true;
                     }
-                
-                }   
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-            {
-            _isOpen = false;
-            target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, -10000);
+                else if (target.gameObject.transform.Find("Informational Panel") != null && _isOpen == true)
+                    {
+                    _isOpen = false;
+                    target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, -10000);
+                }
+
             }
+        }
+    
 
 
 
