@@ -7,7 +7,7 @@ public class A_DInfo : MonoBehaviour
     private GameObject target;
     private bool _isOpen;
     public Canvas myChildObject;
-   
+    
     // Start is called before the first frame update
     void Start()
         {
@@ -18,7 +18,7 @@ public class A_DInfo : MonoBehaviour
     void Update()
         {
         
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(2))
             {
             RaycastHit hitInfo;
             target = GetClickedObject(out hitInfo); //gets info from what object is clicked
