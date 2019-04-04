@@ -8,9 +8,9 @@ public class DInfo : MonoBehaviour
     void Start()
     {
         foreach (var component in GetComponents<Canvas>())
-        {
-            component.transform.position = new Vector3(component.transform.position.x, component.transform.position.y, component.transform.position.z - 10000f);
-        }
+            {
+            component.transform.position = new Vector3(component.transform.position.x, component.transform.position.y, - 10000f);
+            }
     }
 
     // Update is called once per frame

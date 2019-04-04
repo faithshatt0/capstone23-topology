@@ -5,13 +5,13 @@ using UnityEngine;
 public class A_DInfo : MonoBehaviour
     {
     private GameObject target;
-   
+    private bool _isOpen;
     public Canvas myChildObject;
    
     // Start is called before the first frame update
     void Start()
         {
-        
+        _isOpen = false;
         }
 
     // Update is called once per frame
@@ -24,23 +24,20 @@ public class A_DInfo : MonoBehaviour
             target = GetClickedObject(out hitInfo); //gets info from what object is clicked
             if (target != null)
                 {
-
-                myChildObject.transform.position = new Vector3(myChildObject.transform.position.x, myChildObject.transform.position.y, myChildObject.transform.position.z + 10000f);
-                }
-            //moveCan.transform.position = new Vector3(moveCan.transform.position.x, moveCan.transform.position.y, moveCan.transform.position.z + 10000f);
+                if(target.gameObject.transform.Find("Informational Panel") != null && _isOpen == false)
+                    {
+                    target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, -5);
+                    _isOpen = true;
+                    }
+                
+                }   
         }
-        //if(target != null)
+        if (Input.GetKeyDown(KeyCode.Escape))
+            {
+            _isOpen = false;
+            target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, -10000);
+            }
 
-            // Debug.Log(target);
-            //target.gameObject.transform.Find("Informational Panel")
-            //target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, target.gameObject.transform.Find("Informational Panel").position.z - 10000f);
-
-
-
-
-            //target.GetComponentInChildren<Canvas>().transform.position = new Vector3(target.GetComponent<Canvas>().transform.position.x, target.GetComponent<Canvas>().transform.position.y, target.GetComponent<Canvas>().transform.position.z + 10000f); ;
-            //target.GetComponent<Canvas>().transform.position = new Vector3(target.GetComponent<Canvas>().transform.position.x, target.GetComponent<Canvas>().transform.position.y, target.GetComponent<Canvas>().transform.position.z + 10000f);
-            //}
 
 
     }
