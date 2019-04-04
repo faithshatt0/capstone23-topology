@@ -50,15 +50,17 @@ public class spawner : MonoBehaviour
             {
             xx_router = 0; 
             }
-
+        
         //gets each router or extender 
         for (int i = 0; i < network_devices.Count; i++)
             {
 
             //Routers or extenders (not sure if extenders look different physically)
             objTrans.position = new Vector3(xx_router, 1.5f, 0);
-            Instantiate(router, objTrans.position, objTrans.rotation);
-
+            
+            //For some reason it spawns it backwards sometimes
+            Instantiate(router, objTrans.position, new Quaternion(0,0,0,0));
+            
             //if there are no sta_clients it will skip and save time
             if (network_devices[i].get_sta_client_rssi().Count != 0)
                 {
@@ -76,7 +78,6 @@ public class spawner : MonoBehaviour
                 //Randomly spawns object behind router
                 for (int ii = 0; ii < network_devices[i].get_sta_client_rssi().Count; ii++)
                     {
-                    Debug.Log(network_devices[i].get_sta_client_rssi().Count);
                     objTrans.position = objPos;
                     rndNum = rnd.Next(1, 4);
                     switch (rndNum)
