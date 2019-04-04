@@ -71,7 +71,7 @@ public class Functions : MonoBehaviour
                 //  - num_devices           = Count connected devices to the Router/Extender
                 Topology connected_device = new Topology(store_temp);
                 network_devices.Add(connected_device);
-                network_devices[i].serial = get_router_serial;
+                network_devices[i].set_serial(get_router_serial);
                 serials.Add(get_router_serial);
 
                 num_devices += clients.Length;
@@ -164,21 +164,31 @@ public class Functions : MonoBehaviour
                     num_devices += clients.Length;
                  }
              }
+        }
+
+    public void StoreRouterLocations(LocationsJsonParse location_data, ref List<Topology> network_devices, List<string> serials)
+    {
+        double default_y = 1.5;
+        foreach (var data in location_data.serials)
+        {
+            int index = serials.BinarySearch(data.serial);
+            network_devices[index].set_location(data.x, default_y, data.z);
+        }
     }
 
     public void PrintEthClients(List<EthClients> eth_clients)
-    {
-        if (eth_clients.Capacity < 1)
         {
+        if (eth_clients.Capacity < 1)
+            {
             Debug.Log("Empty List: eth_clients");
             return;
-        }
+            }
 
-        Debug.Log("--- Printing Eth Clients ---");
+            Debug.Log("--- Printing Eth Clients ---");
 
         int counter = 1;
         foreach (var client in eth_clients)
-        {
+            {
             Debug.Log(
                 $"Client {counter}\n" +
                 $"      idle: {client.idle}\n" +
@@ -188,8 +198,8 @@ public class Functions : MonoBehaviour
             );
 
             ++counter;
+            }
         }
-    }
 
     public void PrintMeshLinks(List<MeshLinks> mesh_links)
     {
@@ -255,7 +265,7 @@ public class Functions : MonoBehaviour
         {
             Debug.Log(
                 $"Router/Extender {counter}\n" + 
-                $"Serial: {dev.serial}"
+                $"Serial: {dev.get_serial()}"
                 );
             PrintEthClients(dev.get_eth_clients());
             PrintMeshLinks(dev.get_mesh_links());

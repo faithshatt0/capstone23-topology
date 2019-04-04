@@ -33,32 +33,72 @@ public class JsonMain : MonoBehaviour
         //PrintJsonParsing(loaded_data);
 
         // 2. Store devices based on their respective Router/Extender
-        StartParse(loaded_data);
+        OrganizeByRouter(loaded_data);
 
+        // 3. Read Router/Extenders locations JSON file
         file = Application.dataPath + "/JsonFiles/locations.json";
         json = File.ReadAllText(file);
         LocationsJsonParse location_data = JsonUtility.FromJson<LocationsJsonParse>(json);
 
-        // 3. Test data
+        //PrintLocationsJsonParse(location_data);
+
+        // 4. Store device locations by serial #
+        StoreRouterLocations(location_data);
+
+        //PrintStoredLocations();
+
+        // 5. Test
         Debug.Log("# of Devices: " + GetNumDevices());
         Debug.Log("# of Routers: " + GetNumRouters());
     }
 
     // References Functions in 'Functions.cs'
-    void StartParse(JsonParse loaded_data)
+    void OrganizeByRouter(JsonParse loaded_data)
         {
         Functions temp = new Functions();
         temp.OrganizeByRouter(loaded_data, ref network_devices, ref serials, ref num_devices);
         }
+
+    void StoreRouterLocations(LocationsJsonParse location_data)
+        {
+        Functions temp = new Functions();
+        temp.StoreRouterLocations(location_data, ref network_devices, serials);
+        }
+
+    // Print functions for Debugging Purposes
     void PrintJsonParsing(JsonParse loaded_data)
         {
         Functions temp = new Functions();
         temp.PrintJsonParsing(loaded_data);
         }
+
     void PrintTopology()
         {
         Functions temp = new Functions();
         temp.PrintTopology(network_devices);
+        }
+
+    void PrintLocationsJsonParse(LocationsJsonParse location_data)
+        {
+        for (int i = 0; i < location_data.serials.Length; ++i)
+            {
+            Debug.Log(
+                $"Count: {i + 1}\n" +
+                $"Serial: {location_data.serials[i].serial}\n" +
+                $"Location: ({location_data.serials[i].x}, {location_data.serials[i].y}, {location_data.serials[i].z})\n"
+            );
+            }
+        }
+
+    void PrintStoredLocations()
+        {
+        foreach (var dev in network_devices)
+            {
+            Debug.Log(
+                $"Serial: {dev.get_serial()} | " +
+                $"Locations: ({dev.get_location().Item1}, {dev.get_location().Item2}, {dev.get_location().Item3})"
+            );
+            }
         }
 
     // Allows public access to the network_devices and serial Lists

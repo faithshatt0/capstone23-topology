@@ -80,8 +80,14 @@ public class Device
 [System.Serializable]
 public class LocationsJsonParse
 {
+    public Serial[] serials;
+}
+
+[System.Serializable]
+public class Serial
+{
     public string serial;
-    public int x;
-    public int y;
-    public int z;
+    public double x;
+    public double y;
+    public double z;
 }

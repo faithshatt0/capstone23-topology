@@ -35,9 +35,9 @@ public class Topology
     {
     //Data Values//
     //  - Router/Extender devices are connected to
-    public bool isMaster;                           // Router?
-    public string serial;                           // Router/Extender serial #
-    public Tuple<int, int, int> location = new Tuple<int, int, int>(0, 0, 0);
+    private bool isMaster;                           // Router?
+    private string serial;                           // Router/Extender serial #
+    private Tuple<double, double, double> location = new Tuple<double, double, double>(0, 0, 0);
 
     //  - eth_clients
     private List<EthClients> eth_clients = new List<EthClients>();
@@ -51,13 +51,23 @@ public class Topology
     // ------------------------------ Constructor -------------------------
     public Topology(List<EthClients> temp)
         {
-        this.eth_clients = temp;
+        eth_clients = temp;
         }
 
     // ------------------------------ Setter ------------------------------
     public void set_isMaster(bool isMaster)
         {
         this.isMaster = isMaster;
+        }
+
+    public void set_serial(string serial)
+        {
+        this.serial = serial;
+        }
+
+    public void set_location(double x, double y, double z)
+        {
+        location = Tuple.Create(x, y, z);
         }
 
     // ------------------------------ Add ---------------------------------
@@ -87,5 +97,15 @@ public class Topology
     public List<StaClients> get_sta_clients()
         {
         return sta_clients;
+        }
+
+    public string get_serial()
+        {
+        return serial;
+        }
+
+    public Tuple<double, double, double> get_location()
+        {
+        return location;
         }
 }
