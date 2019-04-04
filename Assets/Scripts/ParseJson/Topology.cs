@@ -1,33 +1,55 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DeviceInfo
+    {
+    public string hostname = "";
+    public string ip_addr = "";
+    }
+
+public class EthClients
+    {
+    public DeviceInfo device_info = new DeviceInfo();
+    public string idle = "";
+    public string target_mac = "";
+    }
+
+public class MeshLinks
+    {
+    public DeviceInfo device_info = new DeviceInfo();
+    public List<Device> connected_to = new List<Device>();
+    }
+
+public class StaClients
+    {
+    public DeviceInfo device_info = new DeviceInfo();
+    public int rssi = 0;              // rssi - Signal strength for the device router or extender is connected to 
+    public int rxpr = 0;              // rxpr - for connection 
+    public string target_mac = "";    // tmac - target_mac for connection
+    public int txpr = 0;              // txpr - for connection
+    }
 
 //Object class//
 public class Topology
     {
     //Data Values//
     //  - Router/Extender devices are connected to
-    private string serial; // Router/Extender serial #
-    private bool isMaster; // Router?
+    public bool isMaster;                           // Router?
+    public string serial;                           // Router/Extender serial #
+    //  - eth_clients
+    private List<EthClients> eth_clients = new List<EthClients>();
 
-    //  - eth_client
-    private List<string> eth_client_idle;
-    private List<string> eth_client_target_mac;
+    //  - mesh_links
+    private List<MeshLinks> mesh_links = new List<MeshLinks>();
 
-    //  - mesh_link
-    private List<int> mesh_link_cto_rssi = new List<int>();             // Signal strength for the connection to extender or router
-    private List<string> mesh_link_cto_serial = new List<string>();     // What Router/Extender is connected to other Routers/Extender
+    //  - sta_clients
+    private List<StaClients> sta_clients = new List<StaClients>();
 
-    //  - sta_client
-    private List<int> sta_client_rssi = new List<int>();                // rssi - Signal strength for the device router or extender is connected to 
-    private List<int> sta_client_rxpr = new List<int>();                // rxpr - for connection (what is rxpr)
-    private List<string> sta_client_target_mac = new List<string>();    // tmac - target_mac for connection (what is target_mac)
-    private List<int> sta_client_txpr = new List<int>();                // txpr - for connection (what is txpr)
-
-    // ------------------------------ Constructor ------------------------------
-    public Topology(string serial, List<string> eth_client_idle, List<string> eth_client_target_mac)
+    // ------------------------------ Constructor -------------------------
+    public Topology(List<EthClients> temp)
         {
-        this.serial = serial;
-        this.eth_client_idle = eth_client_idle;
-        this.eth_client_target_mac = eth_client_target_mac;
+        this.eth_clients = temp;
         }
 
     // ------------------------------ Setter ------------------------------
@@ -36,110 +58,32 @@ public class Topology
         this.isMaster = isMaster;
         }
 
-    // ------------------------------ Add ------------------------------
-    public void add_mesh_link_cto_rssi(int rssi)
+    // ------------------------------ Add ---------------------------------
+    //  - Mesh Link
+    public void add_mesh_links(MeshLinks temp) 
         {
-        mesh_link_cto_rssi.Add(rssi);
+        mesh_links.Add(temp);
         }
-    public void add_mesh_link_cto_serial(string serial)
+    
+    //  - Sta Client
+    public void add_sta_clients(StaClients temp)
         {
-        mesh_link_cto_serial.Add(serial);
-        }
-    public void add_sta_client_rssi(int rssi)
-        {
-        sta_client_rssi.Add(rssi);
+        sta_clients.Add(temp);
         }   
-    public void add_sta_client_rxpr(int rxpr)
-        {
-        sta_client_rxpr.Add(rxpr);
-        }
-    public void add_sta_client_target_mac(string target_mac)
-        {
-        sta_client_target_mac.Add(target_mac);
-        }
-    public void add_sta_client_txpr(int txpr)
-        {
-        sta_client_txpr.Add(txpr);
-        }
 
     // ------------------------------ Getters ------------------------------
-    public string get_serial()
+    public List<EthClients> get_eth_clients() 
         {
-        return serial;
+        return eth_clients;
         }
-    public List<string> get_eth_client_idle()
+    
+    public List<MeshLinks> get_mesh_links()
         {
-        return eth_client_idle;
-        }
-    public List<string> get_eth_client_target_mac()
-        {
-        return eth_client_target_mac;
-        }
-    public bool get_isMaster()
-        {
-        return isMaster;
-        }
-    public List<int> get_mesh_link_cto_rssi()
-        {
-        return mesh_link_cto_rssi;
-        }
-    public List<int> get_sta_client_rssi()
-        {
-        return sta_client_rssi;
-        }
-    public List<string> get_mesh_link_cto_serial()
-        {
-        return mesh_link_cto_serial;
-        }
-    public List<int> get_sta_client_rxpr()
-        {
-        return sta_client_rxpr;
-        }
-    public List<string> get_sta_client_target_mac()
-        {
-        return sta_client_target_mac;
-        }
-    public List<int> get_sta_client_txpr()
-        {
-        return sta_client_txpr;
+        return mesh_links;
         }
 
-    // -------------------- Print ------------------------------
-    public string print_mesh_link_cto_rssi()
+    public List<StaClients> get_sta_clients()
         {
-        string t = "";
-        for (int i = 0; i < mesh_link_cto_rssi.Count; i++) { t += mesh_link_cto_rssi[i].ToString() + " "; }
-        return t;
+        return sta_clients;
         }
-    public string print_mesh_link_cto_serial()
-        {
-        string t = "";
-        for (int i = 0; i < mesh_link_cto_serial.Count; i++) { t += mesh_link_cto_serial[i] + " "; }
-        return t;
-        }
-
-    public string print_sta_client_rssi()
-        {
-        string t = "";
-        for (int i = 0; i < sta_client_rssi.Count; i++) { t += sta_client_rssi[i].ToString() + " "; }
-        return t;
-        }
-    public string print_sta_client_rxpr()
-        {
-        string t = "";
-        for (int i = 0; i < sta_client_rxpr.Count; i++) { t += sta_client_rxpr[i].ToString() + " "; }
-        return t;
-        }
-    public string print_sta_client_target_mac()
-        {
-        string t = "";
-        for (int i = 0; i < sta_client_target_mac.Count; i++) { t += sta_client_target_mac[i] + " "; }
-        return t;
-        }
-    public string print_sta_client_txpr()
-        {
-        string t = "";
-        for (int i = 0; i < sta_client_txpr.Count; i++) { t += sta_client_txpr[i].ToString() + " "; }
-        return t;
-        }
-    }
+}

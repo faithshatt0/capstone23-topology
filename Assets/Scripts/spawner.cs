@@ -29,6 +29,11 @@ public class spawner : MonoBehaviour
         // Template transform variable for GameObject positioning and rotation
         Transform objTrans = new GameObject().transform;
 
+        //y iS ALWAys gonna be 1.5f
+        // xx_router will be from json file now
+        // zz_router will also be from json file
+
+
         // Render scene
         objTrans.position = new Vector3(0, -0.5f, 0);
         Instantiate(platform, objTrans.position, objTrans.rotation);
@@ -60,12 +65,12 @@ public class spawner : MonoBehaviour
             Instantiate(router, objTrans.position, objTrans.rotation);
 
             //if there are no sta_clients it will skip and save time
-            if (network_devices[i].get_sta_client_rssi().Count != 0)
+            if (network_devices[i].get_sta_clients().Count != 0)
                 {
                 //will help scale how many sta_clients are connected to show they start out connected to eachother.
-                if (network_devices[i].get_sta_client_rssi().Count > 1)
+                if (network_devices[i].get_sta_clients().Count > 1)
                     {
-                    objPos.x = xx_router - (network_devices[i].get_sta_client_rssi().Count * 3);
+                    objPos.x = xx_router - (network_devices[i].get_sta_clients().Count * 3);
                     }
                 else
                     {
@@ -74,9 +79,9 @@ public class spawner : MonoBehaviour
                 objPos.z = 10;
 
                 //Randomly spawns object behind router
-                for (int ii = 0; ii < network_devices[i].get_sta_client_rssi().Count; ii++)
+                //Debug.Log(network_devices[i].serial + " | " + network_devices[i].get_sta_clients().Count);
+                for (int ii = 0; ii < network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count; ii++)
                     {
-                    Debug.Log(network_devices[i].get_sta_client_rssi().Count);
                     objTrans.position = objPos;
                     rndNum = rnd.Next(1, 4);
                     switch (rndNum)
