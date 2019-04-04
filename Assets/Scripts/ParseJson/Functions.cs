@@ -16,35 +16,7 @@ public class Functions : MonoBehaviour
         
         }
 
-    private void PrintEthClients(List<EthClients> eth_clients)
-        {
-        int counter = 0;
-        Debug.Log("Printing Eth Clients");
-        foreach (var client in eth_clients)
-        {
-            Debug.Log(
-                $"{counter} client\n" + 
-                $"{client.idle}\n" +
-                $"{client.target_mac}\n" +
-                $"{client.device_info.hostname}\n" +
-                $"{client.device_info.ip_addr}\n" +
-                $"{client.device_info.location}\n\n"
-            );
-        }
-    }
-
     // Functions
-    public void PrintTopology(List<Topology> network_devices)
-        {
-        foreach (var dev in network_devices)
-            {
-            Debug.Log($"Serial: {dev.serial}");
-            PrintEthClients(dev.get_eth_clients());
-            }
-        }
-
-    }
-
     public void OrganizeByRouter(JsonParse loaded_data, ref List<Topology> network_devices, ref List<string> serials, ref int num_devices)
         {
         // Topology Objects
@@ -81,7 +53,6 @@ public class Functions : MonoBehaviour
                 //      - target_mac
                 //      - hostname
                 //      - IP_Address
-                Debug.Log(clients.Length);
                 for (int j = 0; j < clients.Length; j++) //May have problems in the future bc if data in any but in order
                     {
                     EthClients temp = new EthClients();
@@ -100,13 +71,13 @@ public class Functions : MonoBehaviour
                 //  - num_devices           = Count connected devices to the Router/Extender
                 Topology connected_device = new Topology(store_temp);
                 network_devices.Add(connected_device);
+                network_devices[i].serial = get_router_serial;
                 serials.Add(get_router_serial);
 
                 num_devices += clients.Length;
                 }
             }
 
-        /*
         // Mesh Links
         //  - Check serials & organizes them
         if (mesh_links != null) 
@@ -131,6 +102,7 @@ public class Functions : MonoBehaviour
                 //  - IP_Address
                 //  - serial
                 //  - index         = Location of Serial # in 'serials'
+                temp = new MeshLinks();
                 temp.connected_to.AddRange(mesh_links[i].connected_to);
                 temp.device_info.hostname = mesh_links[i].hostname;
                 temp.device_info.ip_addr = mesh_links[i].IP_Address;
@@ -148,51 +120,122 @@ public class Functions : MonoBehaviour
                 network_devices[index].add_mesh_links(temp);
                 }
             }
-       
-        // Sta Clients
-        if (sta_clients != null) 
-            {
-            for (int i = 0; i < sta_clients.Length; i++)
-                {
-                // sta_client
-                //  - serial
-                Sta[] clients;
-                string serial;
-                int index;
 
-                clients = sta_clients[i].clients;
-                serial = sta_clients[i].serial;
-                index = serials.BinarySearch(serial);
+        PrintTopology(network_devices);
 
-                for (int t = 0; t < clients.Length; t++)
-                    {
-                    //  - clients
-                    //      : rssi
-                    //      : rxpr
-                    //      : target_mac
-                    //      : txpr
-                    StaClients temp;
-                    Sta curr_client;
+        /*
+         // Sta Clients
+         if (sta_clients != null) 
+             {
+             for (int i = 0; i < sta_clients.Length; i++)
+                 {
+                 // sta_client
+                 //  - serial
+                 Sta[] clients;
+                 string serial;
+                 int index;
 
-                    // Initialize
-                    //  - Grab current client
-                    //  - Store 
-                    curr_client = clients[t];
-                    temp.rssi = curr_client.rssi;
-                    temp.rxpr = curr_client.rxpr;
-                    temp.target_mac = curr_client.target_mac;
-                    temp.txpr = curr_client.txpr;
+                 clients = sta_clients[i].clients;
+                 serial = sta_clients[i].serial;
+                 index = serials.BinarySearch(serial);
 
-                    // Store
-                    network_devices[index].add_sta_clients(temp);
-                    }
+                 for (int t = 0; t < clients.Length; t++)
+                     {
+                     //  - clients
+                     //      : rssi
+                     //      : rxpr
+                     //      : target_mac
+                     //      : txpr
+                     StaClients temp;
+                     Sta curr_client;
 
-                    // Add Devices connected wirelessly
-                    num_devices += clients.Length;
-                }
-            }
-             */
+                     // Initialize
+                     //  - Grab current client
+                     //  - Store 
+                     curr_client = clients[t];
+                     temp.rssi = curr_client.rssi;
+                     temp.rxpr = curr_client.rxpr;
+                     temp.target_mac = curr_client.target_mac;
+                     temp.txpr = curr_client.txpr;
+
+                     // Store
+                     network_devices[index].add_sta_clients(temp);
+                     }
+
+                     // Add Devices connected wirelessly
+                     num_devices += clients.Length;
+                 }
+             }
+              */
+    }
+
+    public void PrintEthClients(List<EthClients> eth_clients)
+    {
+        if (eth_clients.Capacity < 1)
+        {
+            Debug.Log("Empty List: eth_clients");
+            return;
         }
+
+        Debug.Log("--- Printing Eth Clients ---");
+
+        int counter = 0;
+        foreach (var client in eth_clients)
+        {
+            Debug.Log(
+                $"Client {counter + 1}\n" +
+                $"      idle: {client.idle}\n" +
+                $"target_mac: {client.target_mac}\n" +
+                $"  hostname: {client.device_info.hostname}\n" +
+                $"IP_Address: {client.device_info.ip_addr}\n" +
+                $"   location: {client.device_info.location}\n\n"
+            );
+
+            ++counter;
+        }
+    }
+
+    public void PrintMeshLinks(List<MeshLinks> mesh_links)
+    {
+        if (mesh_links.Capacity < 1)
+        {
+            Debug.Log("Empty List: mesh_links");
+            return;
+        }
+
+        Debug.Log("--- Printing Mesh Links ---");
+
+        int counter = 0;
+        foreach (var link in mesh_links)
+        {
+            Debug.Log(
+                $"Client {counter + 1}\n" +
+                $"  hostname: {link.device_info.hostname}\n" +
+                $"IP_Address: {link.device_info.ip_addr}\n\n"
+            );
+
+            foreach (var connection in link.connected_to)
+            {
+                Debug.Log(
+                    $"      rssi: {connection.rssi}\n" +
+                    $"    serial: {connection.serial}\n"
+                );
+            }
+
+            ++counter;
+        }
+    }
+
+    //  - Print Devices connected to each Router/Extender
+    public void PrintTopology(List<Topology> network_devices)
+    {
+        foreach (var dev in network_devices)
+        {
+            Debug.Log($"Serial: {dev.serial}");
+            PrintEthClients(dev.get_eth_clients());
+            PrintMeshLinks(dev.get_mesh_links());
+        }
+    }
 
     // Used to ensure Json Values are stored correctly into 'loaded_data' in JsonMain.cs
     public void PrintJsonParsing(JsonParse loaded_data)

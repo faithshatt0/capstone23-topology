@@ -48,7 +48,7 @@ public class JsonMain : MonoBehaviour
     void PrintTopology(JsonParse loaded_data)
         {
         Functions temp = new Functions();
-        temp.PrintTopology(loaded_data);
+        temp.PrintJsonParsing(loaded_data);
         }
 
     // Allows public access to the network_devices and serial Lists

@@ -18,7 +18,7 @@ public class EthClients
 
 public class MeshLinks
     {
-    public DeviceInfo device_info;
+    public DeviceInfo device_info = new DeviceInfo();
     public List<Device> connected_to = new List<Device>();
     }
 
