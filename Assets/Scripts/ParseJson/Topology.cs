@@ -6,7 +6,6 @@ public class DeviceInfo
     {
     public string hostname = "";
     public string ip_addr = "";
-    public Tuple<int, int, int> location = new Tuple<int, int, int>(0, 0, 0);
     }
 
 public class EthClients

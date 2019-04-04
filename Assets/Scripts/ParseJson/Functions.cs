@@ -184,8 +184,7 @@ public class Functions : MonoBehaviour
                 $"      idle: {client.idle}\n" +
                 $"target_mac: {client.target_mac}\n" +
                 $"  hostname: {client.device_info.hostname}\n" +
-                $"IP_Address: {client.device_info.ip_addr}\n" +
-                $"   location: {client.device_info.location}\n\n"
+                $"IP_Address: {client.device_info.ip_addr}\n"
             );
 
             ++counter;
