@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,10 @@ public class spawner : MonoBehaviour
     public Vector3 screenSpace;
     public Vector3 offset;
 
+    // Saving/Writing x, y, z to an object's coordinates in locations.json
+    LocationsJsonParse location_data;
+    List<string> serials = new List<string>();
+
     // Start is called once at the beginning of the program
     void Start()
         {
@@ -23,7 +28,8 @@ public class spawner : MonoBehaviour
 
         // Retrieve network_devices and serials from JsonMain
         List<Topology> network_devices = jsonMain.GetDevices();
-        List<string> serials = jsonMain.GetSerials();
+        serials = jsonMain.GetSerials();
+        location_data = jsonMain.GetLocationData();
 
         // Template transform variable for GameObject positioning and rotation
         Transform objTrans = new GameObject().transform;
@@ -140,20 +146,30 @@ public class spawner : MonoBehaviour
             }
         }
 
-        //Get information on gameobject by clicking on it
-        GameObject GetClickedObject(out RaycastHit hit)
+    //Get information on gameobject by clicking on it
+    GameObject GetClickedObject(out RaycastHit hit)
+        {
+        GameObject target = null;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray.origin, ray.direction * 10, out hit))
             {
-            GameObject target = null;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray.origin, ray.direction * 10, out hit))
-                {
-                target = hit.collider.gameObject;
-                }
+            target = hit.collider.gameObject;
+            }
 
-            return target;
-           }
-        
+        return target;
        }
+
+    void SaveLocation(string file_path, string serial, double x, double y, double z)
+        {
+        int index = serials.BinarySearch(serial);
+        location_data.serials[index].x = x;
+        location_data.serials[index].y = y;
+        location_data.serials[index].z = z;
+
+        string json = JsonUtility.ToJson(location_data);
+        File.WriteAllText(file_path, json);
+        }
+}
     
 
 
