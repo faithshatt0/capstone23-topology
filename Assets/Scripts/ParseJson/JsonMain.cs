@@ -45,7 +45,7 @@ public class JsonMain : MonoBehaviour
         Functions temp = new Functions();
         temp.OrganizeByRouter(loaded_data, ref network_devices, ref serials, ref num_devices);
         }
-    void PrintTopology(JsonParse loaded_data)
+    void PrintJsonParsing(JsonParse loaded_data)
         {
         Functions temp = new Functions();
         temp.PrintJsonParsing(loaded_data);

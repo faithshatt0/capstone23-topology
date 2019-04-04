@@ -204,12 +204,11 @@ public class Functions : MonoBehaviour
         }
 
         Debug.Log("--- Printing Mesh Links ---");
-
         int counter = 0;
         foreach (var link in mesh_links)
         {
             Debug.Log(
-                $"Client {counter + 1}\n" +
+                $"Link {counter + 1}\n" +
                 $"  hostname: {link.device_info.hostname}\n" +
                 $"IP_Address: {link.device_info.ip_addr}\n\n"
             );
@@ -229,11 +228,15 @@ public class Functions : MonoBehaviour
     //  - Print Devices connected to each Router/Extender
     public void PrintTopology(List<Topology> network_devices)
     {
+        int counter = 1;
         foreach (var dev in network_devices)
         {
-            Debug.Log($"Serial: {dev.serial}");
-            PrintEthClients(dev.get_eth_clients());
-            PrintMeshLinks(dev.get_mesh_links());
+            Debug.Log(
+                $"Router/Extender {counter}\n" + 
+                $"Serial: {dev.serial}"
+                );
+            //PrintEthClients(dev.get_eth_clients());
+            //PrintMeshLinks(dev.get_mesh_links());
         }
     }
 
