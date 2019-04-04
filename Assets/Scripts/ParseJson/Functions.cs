@@ -28,7 +28,7 @@ public class Functions : MonoBehaviour
         //  - Init. all serials (Router/Extenders)
         if (eth_clients != null) 
             {
-            for (int i = 0; i < eth_clients.Length; i++)
+            for (int i = 0; i < eth_clients.Length; ++i)
                 {
                 // eth_clients
                 //  - client ('temp')
@@ -82,7 +82,7 @@ public class Functions : MonoBehaviour
         //  - Check serials & organizes them
         if (mesh_links != null) 
             {
-            for (int i = 0; i < mesh_links.Length; i++)
+            for (int i = 0; i < mesh_links.Length; ++i)
                 {
                 // mesh_links
                 //  - connected_to
@@ -121,9 +121,6 @@ public class Functions : MonoBehaviour
                 }
             }
 
-        PrintTopology(network_devices);
-
-        /*
          // Sta Clients
          if (sta_clients != null) 
              {
@@ -140,33 +137,33 @@ public class Functions : MonoBehaviour
                  index = serials.BinarySearch(serial);
 
                  for (int t = 0; t < clients.Length; t++)
-                     {
-                     //  - clients
-                     //      : rssi
-                     //      : rxpr
-                     //      : target_mac
-                     //      : txpr
-                     StaClients temp;
-                     Sta curr_client;
+                    {
+                    //  - clients
+                    //      : rssi
+                    //      : rxpr
+                    //      : target_mac
+                    //      : txpr
+                    StaClients temp;
+                    Sta curr_client;
 
-                     // Initialize
-                     //  - Grab current client
-                     //  - Store 
-                     curr_client = clients[t];
-                     temp.rssi = curr_client.rssi;
-                     temp.rxpr = curr_client.rxpr;
-                     temp.target_mac = curr_client.target_mac;
-                     temp.txpr = curr_client.txpr;
+                    // Initialize
+                    //  - Grab current client
+                    //  - Store 
+                    temp = new StaClients();
+                    curr_client = clients[t];
+                    temp.rssi = curr_client.rssi;
+                    temp.rxpr = curr_client.rxpr;
+                    temp.target_mac = curr_client.target_mac;
+                    temp.txpr = curr_client.txpr;
 
-                     // Store
-                     network_devices[index].add_sta_clients(temp);
-                     }
+                    // Store
+                    network_devices[index].add_sta_clients(temp);
+                    }
 
-                     // Add Devices connected wirelessly
-                     num_devices += clients.Length;
+                    // Add Devices connected wirelessly
+                    num_devices += clients.Length;
                  }
              }
-              */
     }
 
     public void PrintEthClients(List<EthClients> eth_clients)
@@ -179,11 +176,11 @@ public class Functions : MonoBehaviour
 
         Debug.Log("--- Printing Eth Clients ---");
 
-        int counter = 0;
+        int counter = 1;
         foreach (var client in eth_clients)
         {
             Debug.Log(
-                $"Client {counter + 1}\n" +
+                $"Client {counter}\n" +
                 $"      idle: {client.idle}\n" +
                 $"target_mac: {client.target_mac}\n" +
                 $"  hostname: {client.device_info.hostname}\n" +
@@ -204,11 +201,11 @@ public class Functions : MonoBehaviour
         }
 
         Debug.Log("--- Printing Mesh Links ---");
-        int counter = 0;
+        int counter = 1;
         foreach (var link in mesh_links)
         {
             Debug.Log(
-                $"Link {counter + 1}\n" +
+                $"Link {counter}\n" +
                 $"  hostname: {link.device_info.hostname}\n" +
                 $"IP_Address: {link.device_info.ip_addr}\n\n"
             );
@@ -225,6 +222,32 @@ public class Functions : MonoBehaviour
         }
     }
 
+    public void PrintStaClients(List<StaClients> sta_clients)
+        {
+        if (sta_clients.Capacity < 1)
+        {
+            Debug.Log("Empty List: sta_clients");
+            return;
+        }
+
+        Debug.Log("--- Printing Sta Clients ---");
+        int counter = 1;
+        foreach (var client in sta_clients)
+        {
+            Debug.Log(
+                $"Client {counter}\n" +
+                $"      rssi: {client.rssi}\n" +
+                $"      rxpr: {client.rxpr}\n" +
+                $"target_mac: {client.target_mac}\n" +
+                $"      txpr: {client.txpr}\n" +
+                $"  hostname: {client.device_info.hostname}\n" +
+                $"IP_Address: {client.device_info.ip_addr}\n\n"
+            );
+
+            ++counter;
+        }
+    }
+
     //  - Print Devices connected to each Router/Extender
     public void PrintTopology(List<Topology> network_devices)
     {
@@ -235,8 +258,11 @@ public class Functions : MonoBehaviour
                 $"Router/Extender {counter}\n" + 
                 $"Serial: {dev.serial}"
                 );
-            //PrintEthClients(dev.get_eth_clients());
-            //PrintMeshLinks(dev.get_mesh_links());
+            PrintEthClients(dev.get_eth_clients());
+            PrintMeshLinks(dev.get_mesh_links());
+            PrintStaClients(dev.get_sta_clients());
+
+            ++counter;
         }
     }
 

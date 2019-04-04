@@ -78,9 +78,9 @@ public class spawner : MonoBehaviour
                 objPos.z = 10;
 
                 //Randomly spawns object behind router
-                for (int ii = 0; ii < network_devices[i].get_sta_clients().Count; ii++)
+                //Debug.Log(network_devices[i].serial + " | " + network_devices[i].get_sta_clients().Count);
+                for (int ii = 0; ii < network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count; ii++)
                     {
-                    Debug.Log(network_devices[i].get_sta_clients().Count);
                     objTrans.position = objPos;
                     rndNum = rnd.Next(1, 4);
                     switch (rndNum)

@@ -25,7 +25,7 @@ public class JsonMain : MonoBehaviour
         /* Capstone */
 
         // 1. Read JSON file
-        string file = Application.dataPath + "/JsonFiles/new_json.json";
+        string file = Application.dataPath + "/JsonFiles/json2.json";
         string json = File.ReadAllText(file);
         JsonParse loaded_data = JsonUtility.FromJson<JsonParse>(json);
 
@@ -36,7 +36,8 @@ public class JsonMain : MonoBehaviour
         StartParse(loaded_data);
         
         // 3. Test data
-        //Debug.Log("# of Devices: " + num_devices);
+        Debug.Log("# of Devices: " + GetNumDevices());
+        Debug.Log("# of Routers: " + GetNumRouters());
     }
 
     // References Functions in 'Functions.cs'
@@ -49,6 +50,11 @@ public class JsonMain : MonoBehaviour
         {
         Functions temp = new Functions();
         temp.PrintJsonParsing(loaded_data);
+        }
+    void PrintTopology()
+        {
+        Functions temp = new Functions();
+        temp.PrintTopology(network_devices);
         }
 
     // Allows public access to the network_devices and serial Lists
