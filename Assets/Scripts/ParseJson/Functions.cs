@@ -16,7 +16,35 @@ public class Functions : MonoBehaviour
         
         }
 
+    private void PrintEthClients(List<EthClients> eth_clients)
+        {
+        int counter = 0;
+        Debug.Log("Printing Eth Clients");
+        foreach (var client in eth_clients)
+        {
+            Debug.Log(
+                $"{counter} client\n" + 
+                $"{client.idle}\n" +
+                $"{client.target_mac}\n" +
+                $"{client.device_info.hostname}\n" +
+                $"{client.device_info.ip_addr}\n" +
+                $"{client.device_info.location}\n\n"
+            );
+        }
+    }
+
     // Functions
+    public void PrintTopology(List<Topology> network_devices)
+        {
+        foreach (var dev in network_devices)
+            {
+            Debug.Log($"Serial: {dev.serial}");
+            PrintEthClients(dev.get_eth_clients());
+            }
+        }
+
+    }
+
     public void OrganizeByRouter(JsonParse loaded_data, ref List<Topology> network_devices, ref List<string> serials, ref int num_devices)
         {
         // Topology Objects
@@ -53,6 +81,7 @@ public class Functions : MonoBehaviour
                 //      - target_mac
                 //      - hostname
                 //      - IP_Address
+                Debug.Log(clients.Length);
                 for (int j = 0; j < clients.Length; j++) //May have problems in the future bc if data in any but in order
                     {
                     EthClients temp = new EthClients();
@@ -76,9 +105,7 @@ public class Functions : MonoBehaviour
                 num_devices += clients.Length;
                 }
             }
-        for (int i = 0; i < network_devices.Count; ++i) {
-            Debug.Log(network_devices[i].get_eth_clients());
-        }
+
         /*
         // Mesh Links
         //  - Check serials & organizes them
@@ -168,7 +195,7 @@ public class Functions : MonoBehaviour
         }
 
     // Used to ensure Json Values are stored correctly into 'loaded_data' in JsonMain.cs
-    public void PrintTopology(JsonParse loaded_data)
+    public void PrintJsonParsing(JsonParse loaded_data)
         {
         Debug.Log("--- Printing out Topology values ---");
 

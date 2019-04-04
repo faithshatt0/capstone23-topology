@@ -25,16 +25,16 @@ public class JsonMain : MonoBehaviour
         /* Capstone */
 
         // 1. Read JSON file
-        string file = Application.dataPath + "/JsonFiles/new_json.js";
+        string file = Application.dataPath + "/JsonFiles/new_json.json";
         string json = File.ReadAllText(file);
         JsonParse loaded_data = JsonUtility.FromJson<JsonParse>(json);
 
         //  - Optional: Print JSON Files
-        PrintTopology(loaded_data);
+        //PrintJsonParsing(loaded_data);
 
         // 2. Store devices based on their respective Router/Extender
-        //StartParse(loaded_data);
-
+        StartParse(loaded_data);
+        
         // 3. Test data
         //Debug.Log("# of Devices: " + num_devices);
     }

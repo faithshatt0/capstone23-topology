@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class DeviceInfo
     {
@@ -10,8 +11,7 @@ public class DeviceInfo
 
 public class EthClients
     {
-    public DeviceInfo device_info;
-    public string serial = "";           // Router/Extender serial #
+    public DeviceInfo device_info = new DeviceInfo();
     public string idle = "";
     public string target_mac = "";
     }
@@ -24,7 +24,7 @@ public class MeshLinks
 
 public class StaClients
     {
-    public DeviceInfo device_info;
+    public DeviceInfo device_info = new DeviceInfo();
     public int rssi = 0;              // rssi - Signal strength for the device router or extender is connected to 
     public int rxpr = 0;              // rxpr - for connection 
     public string target_mac = "";    // tmac - target_mac for connection
@@ -39,13 +39,13 @@ public class Topology
     public bool isMaster;                           // Router?
     public string serial;                           // Router/Extender serial #
     //  - eth_clients
-    private List<EthClients> eth_clients;
+    private List<EthClients> eth_clients = new List<EthClients>();
 
     //  - mesh_links
-    private List<MeshLinks> mesh_links;
+    private List<MeshLinks> mesh_links = new List<MeshLinks>();
 
     //  - sta_clients
-    private List<StaClients> sta_clients;
+    private List<StaClients> sta_clients = new List<StaClients>();
 
     // ------------------------------ Constructor -------------------------
     public Topology(List<EthClients> temp)
@@ -59,7 +59,7 @@ public class Topology
         this.isMaster = isMaster;
         }
 
-    // ------------------------------ Add ------------------------------
+    // ------------------------------ Add ---------------------------------
     //  - Mesh Link
     public void add_mesh_links(MeshLinks temp) 
         {
@@ -87,4 +87,4 @@ public class Topology
         {
         return sta_clients;
         }
-    }
+}
