@@ -37,6 +37,8 @@ public class Topology
     //  - Router/Extender devices are connected to
     public bool isMaster;                           // Router?
     public string serial;                           // Router/Extender serial #
+    public Tuple<int, int, int> location = new Tuple<int, int, int>(0, 0, 0);
+
     //  - eth_clients
     private List<EthClients> eth_clients = new List<EthClients>();
 

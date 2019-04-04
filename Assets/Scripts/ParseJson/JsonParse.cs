@@ -75,3 +75,13 @@ public class Device
     public int rssi;
     public string serial;
     }
+
+// For: locations.json
+[System.Serializable]
+public class LocationsJsonParse
+{
+    public string serial;
+    public int x;
+    public int y;
+    public int z;
+}

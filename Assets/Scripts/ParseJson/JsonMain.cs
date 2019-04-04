@@ -34,7 +34,11 @@ public class JsonMain : MonoBehaviour
 
         // 2. Store devices based on their respective Router/Extender
         StartParse(loaded_data);
-        
+
+        file = Application.dataPath + "/JsonFiles/locations.json";
+        json = File.ReadAllText(file);
+        LocationsJsonParse location_data = JsonUtility.FromJson<LocationsJsonParse>(json);
+
         // 3. Test data
         Debug.Log("# of Devices: " + GetNumDevices());
         Debug.Log("# of Routers: " + GetNumRouters());
