@@ -26,8 +26,18 @@ public class A_DInfo : MonoBehaviour
                 {
                 if(target.gameObject.transform.Find("Informational Panel") != null && _isOpen == false)
                     {
-                    target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, -5);
-                    _isOpen = true;
+                    Debug.Log(target.tag);
+                    if(target.tag == "router")
+                        {
+                        target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, -5);
+                        _isOpen = true;
+                        }
+                    else
+                        {
+                        target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, 10);
+                        _isOpen = true;
+                    }
+                   
                     }
                 else if (target.gameObject.transform.Find("Informational Panel") != null && _isOpen == true)
                     {

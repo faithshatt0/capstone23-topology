@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 665214203781584776}
   m_Layer: 0
   m_Name: router
-  m_TagString: Untagged
+  m_TagString: router
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,6 +227,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833756304077057123, guid: 42a4f23c47d62ea46a10178957b4c1ef,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833756304077057123, guid: 42a4f23c47d62ea46a10178957b4c1ef,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833756304077057123, guid: 42a4f23c47d62ea46a10178957b4c1ef,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42a4f23c47d62ea46a10178957b4c1ef, type: 3}
