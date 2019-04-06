@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class addText : MonoBehaviour
+public class addName : MonoBehaviour
 {
     Text infoText;
 
     void Awake()
-        {
+    {
         infoText = GetComponent<Text>();
-        
-        }
-    void Update()
-        {
-        infoText.text = "Meep Morp \n Meep Morp \n Meep Morp \n Meep Morp";      
-        }
 
+    }
+    void Update()
+    {
+        infoText.text = "Router Meme";
+    }
 }

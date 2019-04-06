@@ -11,7 +11,7 @@ public class A_DInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
         {
-        _isOpen = false;
+        _isOpen = false; //flag to make only one info panel open
         }
 
     // Update is called once per frame
@@ -22,6 +22,8 @@ public class A_DInfo : MonoBehaviour
             {
             RaycastHit hitInfo;
             target = GetClickedObject(out hitInfo); //gets info from what object is clicked
+
+            //When you click and its not null itll spawn an info panel
             if (target != null)
                 {
                 if(target.gameObject.transform.Find("Informational Panel") != null && _isOpen == false)
@@ -29,7 +31,7 @@ public class A_DInfo : MonoBehaviour
                     Debug.Log(target.tag);
                     if(target.tag == "router")
                         {
-                        target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, -5);
+                        target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, 0);
                         _isOpen = true;
                         }
                     else
