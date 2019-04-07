@@ -24,13 +24,18 @@ public class addText : MonoBehaviour
 
         //gets each router or extender 
         for (int i = 0; i < network_devices.Count; i++)
-        {
-            if (infoText.gameObject.transform.parent.parent.parent.name == network_devices[i].get_serial())
             {
-                infoText.text = "IP Address: when get it" + "\n" +
-                    "Serial: " + network_devices[i].get_serial() + "\n" +
-                    "Is Master: " + network_devices[i].get_isMaster();
+            
+            for(int ii = 0; ii < network_devices[i].get_mesh_links().Count; ii++)
+                {
+                if (infoText.gameObject.transform.parent.parent.parent.name == network_devices[i].get_serial())
+                {
+                    infoText.text = "IP" + network_devices[i].get_mesh_links()[ii].device_info.ip_addr + "\n" +
+                        "Serial: " + network_devices[i].get_serial() + "\n" +
+                        "Is Master: " + network_devices[i].get_isMaster();
+                }
             }
+            
             //if there are no sta_clients it will skip and save time
             if (network_devices[i].get_sta_clients().Count != 0)
                 {
