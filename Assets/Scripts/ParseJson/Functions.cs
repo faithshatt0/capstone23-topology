@@ -166,7 +166,6 @@ public class Functions : MonoBehaviour
                     num_devices += clients.Length;
                  }
              }
-         PrintTopology(network_devices);
         }
 
     public void StoreRouterLocations(LocationsJsonParse location_data, ref List<Topology> network_devices, List<string> serials)
