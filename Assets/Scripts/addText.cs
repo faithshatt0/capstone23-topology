@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class addText : MonoBehaviour
 {
     Text infoText;
-    GameObject myParentObject;
+    
 
     void Awake()
     {
@@ -66,9 +66,9 @@ public class addText : MonoBehaviour
                         }
                     }
 
-            }
+                }
 
-        }
+            }
 
 
 
