@@ -14,6 +14,7 @@ public class spawner : MonoBehaviour
     public Vector3 screenSpace;
     public Vector3 offset;
     public Vector3 real_position;
+    public GameObject sta;
 
     // Start is called once at the beginning of the program
     void Start()
@@ -59,8 +60,9 @@ public class spawner : MonoBehaviour
             objTrans.position = new Vector3(xx_router, 1.5f, 0);
             
             //For some reason it spawns it backwards sometimes
-            Instantiate(router, objTrans.position, new Quaternion(0,0,0,0));
-            
+            GameObject routers = Instantiate(router, objTrans.position, new Quaternion(0,0,0,0));
+            var n = network_devices[i].get_serial();
+            routers.transform.name = n;
             //if there are no sta_clients it will skip and save time
             if (network_devices[i].get_sta_client_rssi().Count != 0)
                 {
@@ -83,14 +85,17 @@ public class spawner : MonoBehaviour
                     switch (rndNum)
                         {
                         case 1:
-                            Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
+                            sta = Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
+                            sta.transform.name = network_devices[i].get_sta_client_target_mac()[ii];
                             break;
                         case 2:
                             objTrans.rotation = Quaternion.Euler(objTrans.rotation.x, objTrans.rotation.y + 180, objTrans.rotation.z);
-                            Instantiate(laptop, objTrans.position, objTrans.rotation);
+                            sta = Instantiate(laptop, objTrans.position, objTrans.rotation);
+                            sta.transform.name = network_devices[i].get_sta_client_target_mac()[ii];
                             break;
                         case 3:
-                            Instantiate(assistant, assistant.transform.position + objPos, assistant.transform.rotation);
+                            sta = Instantiate(assistant, assistant.transform.position + objPos, assistant.transform.rotation);
+                            sta.transform.name = network_devices[i].get_sta_client_target_mac()[ii];
                             break;
                         default:
                             Debug.Log("error rendering object");
