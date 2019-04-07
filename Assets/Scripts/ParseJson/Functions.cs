@@ -155,6 +155,8 @@ public class Functions : MonoBehaviour
                     temp.rxpr = curr_client.rxpr;
                     temp.target_mac = curr_client.target_mac;
                     temp.txpr = curr_client.txpr;
+                    temp.device_info.hostname = curr_client.hostname;
+                    temp.device_info.ip_addr = curr_client.IP_Address;
 
                     // Store
                     network_devices[index].add_sta_clients(temp);
