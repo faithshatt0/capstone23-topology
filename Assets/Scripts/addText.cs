@@ -51,6 +51,21 @@ public class addText : MonoBehaviour
                         }
                     }
 
+                }
+            if (network_devices[i].get_eth_clients().Count != 0)
+                {
+                //Randomly spawns object behind router
+                for (int ii = 0; ii < network_devices[i].get_eth_clients().Count; ii++)
+                    {
+                    if (infoText.gameObject.transform.parent.parent.parent.name == network_devices[i].get_eth_clients()[ii].target_mac)
+                        {
+                        infoText.text = "IP" + network_devices[i].get_eth_clients()[ii].device_info.ip_addr + "\n"
+                            + network_devices[i].get_eth_clients()[ii].target_mac + "\n" +
+                            "idle: " + network_devices[i].get_eth_clients()[ii].idle + "\n";
+                            
+                        }
+                    }
+
             }
 
         }

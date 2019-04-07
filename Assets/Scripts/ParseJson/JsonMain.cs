@@ -51,8 +51,8 @@ public class JsonMain : MonoBehaviour
         SaveLocation(location_data, file_path, serial, 0, 1, 2);
 
         // 5. Test
-        Debug.Log("# of Devices: " + GetNumDevices());
-        Debug.Log("# of Routers: " + GetNumRouters());
+        //Debug.Log("# of Devices: " + GetNumDevices());
+        //Debug.Log("# of Routers: " + GetNumRouters());
     }
 
     // References Functions in 'Functions.cs'
