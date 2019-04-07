@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - floor
   - floor_plan
+  - infoPanel
+  - router
   layers:
   - Default
   - TransparentFX
