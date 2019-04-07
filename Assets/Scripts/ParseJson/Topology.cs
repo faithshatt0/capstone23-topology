@@ -81,9 +81,15 @@ public class Topology
     public void add_sta_clients(StaClients temp)
         {
         sta_clients.Add(temp);
-        }   
+        }
 
     // ------------------------------ Getters ------------------------------
+    public bool get_isMaster()
+        {
+        return isMaster;
+        }
+
+
     public List<EthClients> get_eth_clients() 
         {
         return eth_clients;

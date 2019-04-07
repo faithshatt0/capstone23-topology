@@ -83,8 +83,9 @@ public class spawner : MonoBehaviour
                 objPos.z = 10;
 
                 //Randomly spawns object behind router
-                //Debug.Log(network_devices[i].serial + " | " + network_devices[i].get_sta_clients().Count);
-                for (int ii = 0; ii < network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count; ii++)
+                //Debug.Log(network_devices[i].serial + " | " + network_devices[i].get_sta_clients().Count); + network_devices[i].get_eth_clients().Count 
+                Debug.Log(network_devices[1].get_eth_clients()[0].target_mac == null);
+                for (int ii = 0; ii < network_devices[i].get_sta_clients().Count; ii++)
                     {
                     objTrans.position = objPos;
                     rndNum = rnd.Next(1, 4);
@@ -92,16 +93,16 @@ public class spawner : MonoBehaviour
                         {
                         case 1:
                             sta = Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
-                            sta.transform.name = network_devices[i].get_sta_client_target_mac()[ii];
+                            sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
                             break;
                         case 2:
                             objTrans.rotation = Quaternion.Euler(objTrans.rotation.x, objTrans.rotation.y + 180, objTrans.rotation.z);
                             sta = Instantiate(laptop, objTrans.position, objTrans.rotation);
-                            sta.transform.name = network_devices[i].get_sta_client_target_mac()[ii];
+                            sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
                             break;
                         case 3:
                             sta = Instantiate(assistant, assistant.transform.position + objPos, assistant.transform.rotation);
-                            sta.transform.name = network_devices[i].get_sta_client_target_mac()[ii];
+                            sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
                             break;
                         default:
                             Debug.Log("error rendering object");
