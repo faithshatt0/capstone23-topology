@@ -10,6 +10,20 @@ public class connectionStatus : MonoBehaviour
     public Sprite medium;
     public Sprite bad;
 
+
+    public float min_rssi(List<Device> connected_to)
+        {
+        int min = 1000000000;
+        for(int i = 0; i < connected_to.Count; i++)
+            {
+            if(min < connected_to[i].rssi)
+                {
+                min = connected_to[i].rssi;
+                }
+            }
+        return min/10f;
+        }
+
     void Start()
     {
         //Excellent: >= -59; -68 <= Good <= -60; -78 <= Acceptable <= -69; Bad < -78
@@ -27,16 +41,18 @@ public class connectionStatus : MonoBehaviour
         //gets each router or extender 
         for (int i = 0; i < network_devices.Count; i++)
         {
-            /*
+            
             for (int ii = 0; ii < network_devices[i].get_mesh_links().Count; ii++)
             {
+                
                 if (m_Image.gameObject.transform.parent.parent.name == network_devices[i].get_serial())
                 {
-                    if (network_devices[i].get_mesh_links()[ii].connected_to[ii].rssi / 10f >= -68f)
+                    float min_Rssi = min_rssi(network_devices[i].get_mesh_links()[ii].connected_to);
+                    if (min_Rssi  >= -68f)
                     {
                         m_Image.sprite = good;
                     }
-                    else if (network_devices[i].get_sta_clients()[ii].rssi / 10f >= -78f && network_devices[i].get_sta_clients()[ii].rssi / 10f <= -69f)
+                    else if (min_Rssi / 10f <= -69f)
                     {
                         m_Image.sprite = medium;
                     }
@@ -46,7 +62,7 @@ public class connectionStatus : MonoBehaviour
                     }
                 }
             }
-            */
+            
 
             //if there are no sta_clients it will skip and save time
             if (network_devices[i].get_sta_clients().Count != 0)
