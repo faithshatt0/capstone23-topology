@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,7 +37,7 @@ public class spawner : MonoBehaviour
 
         // Render scene
         objTrans.position = new Vector3(0, -0.5f, 0);
-        Instantiate(platform, objTrans.position, objTrans.rotation);
+        //Instantiate(platform, objTrans.position, objTrans.rotation);
 
         List<int> nextCoordinate = new List<int> { 1, 1, 1, 1 };
         Vector3 objPos = new Vector3();
