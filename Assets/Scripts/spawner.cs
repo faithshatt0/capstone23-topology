@@ -89,71 +89,121 @@ public class spawner : MonoBehaviour
                 for (int ii = 0; ii < network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count; ii++)
                     {
                     objTrans.position = objPos;
-                    rndNum = rnd.Next(1, 4);
-
+                  
+                    //if there are eth clients it will put the eth clients after the sta_clients
                     if (counter > 0 && ii >= network_devices[i].get_sta_clients().Count)
                         {
-
-                        switch (rndNum)
+                        //Phone, Android
+                        if (network_devices[i].get_eth_clients()[iii].device_info.hostname.ToLower().Contains("phone") || network_devices[i].get_eth_clients()[iii].device_info.hostname.ToLower().Contains("android"))
                             {
-                            case 1:
-                                sta = Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
-                                sta.transform.name = network_devices[i].get_eth_clients()[iii].target_mac;
-                                counter--;
-                                iii++;
-                                break;
-                            case 2:
-                                objTrans.rotation = Quaternion.Euler(objTrans.rotation.x, objTrans.rotation.y + 180, objTrans.rotation.z);
-                                sta = Instantiate(laptop, objTrans.position, objTrans.rotation);
-                                sta.transform.name = network_devices[i].get_eth_clients()[iii].target_mac;
-                                counter--;
-                                iii++;
-                                break;
-                            case 3:
-                                sta = Instantiate(assistant, assistant.transform.position + objPos, assistant.transform.rotation);
-                                sta.transform.name = network_devices[i].get_eth_clients()[iii].target_mac;
-                                counter--;
-                                iii++;
-                                break;
-                            default:
-                                Debug.Log("error rendering object");
-                                break;
+                            sta = Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
+                            sta.transform.name = network_devices[i].get_eth_clients()[iii].target_mac;
+                            counter--;
+                            iii++;
+                            }
+                        //Laptop, Mac, Windows
+                        else if(network_devices[i].get_eth_clients()[iii].device_info.hostname.ToLower().Contains("laptop") || network_devices[i].get_eth_clients()[iii].device_info.hostname.ToLower().Contains("mac") || network_devices[i].get_eth_clients()[iii].device_info.hostname.ToLower().Contains("windows"))
+                            {
+                            objTrans.rotation = Quaternion.Euler(objTrans.rotation.x, objTrans.rotation.y + 180, objTrans.rotation.z);
+                            sta = Instantiate(laptop, objTrans.position, objTrans.rotation);
+                            sta.transform.name = network_devices[i].get_eth_clients()[iii].target_mac;
+                            counter--;
+                            iii++;
+                            }
+                        //Assistant, Alexa, Google
+                        else if(network_devices[i].get_eth_clients()[iii].device_info.hostname.ToLower().Contains("assistant") || network_devices[i].get_eth_clients()[iii].device_info.hostname.ToLower().Contains("alexa") || network_devices[i].get_eth_clients()[iii].device_info.hostname.ToLower().Contains("google"))
+                            {
+                            sta = Instantiate(assistant, assistant.transform.position + objPos, assistant.transform.rotation);
+                            sta.transform.name = network_devices[i].get_eth_clients()[iii].target_mac;
+                            counter--;
+                            iii++;
+                            }
+                        //If it isnt any of these names it will render a random object
+                        else
+                            {
+                            rndNum = rnd.Next(1, 4);
+                            switch (rndNum)
+                                {
+                                case 1:
+                                    sta = Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
+                                    sta.transform.name = network_devices[i].get_eth_clients()[iii].target_mac;
+                                    counter--;
+                                    iii++;
+                                    break;
+                                case 2:
+                                    objTrans.rotation = Quaternion.Euler(objTrans.rotation.x, objTrans.rotation.y + 180, objTrans.rotation.z);
+                                    sta = Instantiate(laptop, objTrans.position, objTrans.rotation);
+                                    sta.transform.name = network_devices[i].get_eth_clients()[iii].target_mac;
+                                    counter--;
+                                    iii++;
+                                    break;
+                                case 3:
+                                    sta = Instantiate(assistant, assistant.transform.position + objPos, assistant.transform.rotation);
+                                    sta.transform.name = network_devices[i].get_eth_clients()[iii].target_mac;
+                                    counter--;
+                                    iii++;
+                                    break;
+                                default:
+                                    Debug.Log("error rendering object");
+                                    break;
+                                }
                             }
                         }
                     else
                         {
-                        switch (rndNum)
-                        {
-                            case 1:
-                                sta = Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
-                                sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
-                                break;
-                            case 2:
-                                objTrans.rotation = Quaternion.Euler(objTrans.rotation.x, objTrans.rotation.y + 180, objTrans.rotation.z);
-                                sta = Instantiate(laptop, objTrans.position, objTrans.rotation);
-                                sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
-                                break;
-                            case 3:
-                                sta = Instantiate(assistant, assistant.transform.position + objPos, assistant.transform.rotation);
-                                sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
-                                break;
-                            default:
-                                Debug.Log("error rendering object");
-                                break;
+                        //Phone, Android
+                        if(network_devices[i].get_sta_clients()[ii].device_info.hostname.ToLower().Contains("phone") || network_devices[i].get_sta_clients()[ii].device_info.hostname.ToLower().Contains("android"))
+                            {
+                            sta = Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
+                            sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
+                            }
+                        //Laptop, Mac, Windows
+                        else if(network_devices[i].get_sta_clients()[ii].device_info.hostname.ToLower().Contains("laptop") || network_devices[i].get_sta_clients()[ii].device_info.hostname.ToLower().Contains("mac"))
+                            {
+                            objTrans.rotation = Quaternion.Euler(objTrans.rotation.x, objTrans.rotation.y + 180, objTrans.rotation.z);
+                            sta = Instantiate(laptop, objTrans.position, objTrans.rotation);
+                            sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
+                            }
+                        //Assistant, Alexa, Google
+                        else if (network_devices[i].get_sta_clients()[ii].device_info.hostname.ToLower().Contains("assistant") || network_devices[i].get_sta_clients()[ii].device_info.hostname.ToLower().Contains("home") || network_devices[i].get_sta_clients()[ii].device_info.hostname.ToLower().Contains("alexa"))
+                            {
+                            sta = Instantiate(assistant, assistant.transform.position + objPos, assistant.transform.rotation);
+                            sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
+                            }
+                        //if it isnt any of names it will render a random object
+                        else
+                            {
+                            rndNum = rnd.Next(1, 4);
+                            switch (rndNum)
+                                {
+                                case 1:
+                                    sta = Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
+                                    sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
+                                    break;
+                                case 2:
+                                    objTrans.rotation = Quaternion.Euler(objTrans.rotation.x, objTrans.rotation.y + 180, objTrans.rotation.z);
+                                    sta = Instantiate(laptop, objTrans.position, objTrans.rotation);
+                                    sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
+                                    break;
+                                case 3:
+                                    sta = Instantiate(assistant, assistant.transform.position + objPos, assistant.transform.rotation);
+                                    sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
+                                    break;
+                                default:
+                                    Debug.Log("error rendering object");
+                                    break;
+                                }
                         }
                     }
-                   
                     objPos.x += 9;
                     }
                 }
             xx_router += 33;
             }
-
         }
 
     void Update()
-        {
-        
+        { 
         if (Input.GetMouseButtonDown(0)) //left click
             {
             RaycastHit hitInfo;
@@ -175,7 +225,6 @@ public class spawner : MonoBehaviour
                 {
                 target.transform.position = real_position;
                 }
-           
             }
 
         if (_mouseState)
@@ -200,7 +249,6 @@ public class spawner : MonoBehaviour
                 {
                 target = hit.collider.gameObject;
                 }
-
             return target;
            }
         
