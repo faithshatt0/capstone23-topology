@@ -220,6 +220,7 @@ MonoBehaviour:
   screenSpace: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 0}
   real_position: {x: 0, y: 0, z: 0}
+  sta: {fileID: 0}
 --- !u!81 &911763609
 AudioListener:
   m_ObjectHideFlags: 0
