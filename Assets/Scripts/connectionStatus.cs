@@ -23,7 +23,6 @@ public class connectionStatus : MonoBehaviour
             {
             average += connected_to[i].rssi;
             }
-        Debug.Log(average / connected_to.Count);
         return average/connected_to.Count;
         }
 
