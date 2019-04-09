@@ -89,7 +89,7 @@ public class spawner : MonoBehaviour
                 for (int ii = 0; ii < network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count; ii++)
                     {
                     objTrans.position = objPos;
-                    
+                  
                     //if there are eth clients it will put the eth clients after the sta_clients
                     if (counter > 0 && ii >= network_devices[i].get_sta_clients().Count)
                         {
@@ -148,7 +148,6 @@ public class spawner : MonoBehaviour
                                     break;
                                 }
                             }
-                            
                         }
                     else
                         {
@@ -195,20 +194,16 @@ public class spawner : MonoBehaviour
                                     break;
                                 }
                         }
-                        
                     }
-                   
                     objPos.x += 9;
                     }
                 }
             xx_router += 33;
             }
-
         }
 
     void Update()
-        {
-        
+        { 
         if (Input.GetMouseButtonDown(0)) //left click
             {
             RaycastHit hitInfo;
@@ -230,7 +225,6 @@ public class spawner : MonoBehaviour
                 {
                 target.transform.position = real_position;
                 }
-           
             }
 
         if (_mouseState)
@@ -255,7 +249,6 @@ public class spawner : MonoBehaviour
                 {
                 target = hit.collider.gameObject;
                 }
-
             return target;
            }
         
