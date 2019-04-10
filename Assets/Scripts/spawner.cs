@@ -204,20 +204,20 @@ public class spawner : MonoBehaviour
 
     void Update()
         { 
-        if (Input.GetMouseButtonDown(0)) //left click
-            {
-            RaycastHit hitInfo;
-            target = GetClickedObject(out hitInfo); //gets info from what object is clicked
+        //if (Input.GetMouseButtonDown(0)) //left click
+            //{
+            //RaycastHit hitInfo;
+            //target = GetClickedObject(out hitInfo); //gets info from what object is clicked
             
-            //if you are actually clicking on an object it will allow you to drag it to a new location
-            if (target != null)
-                {
-                real_position = target.transform.position;
-                _mouseState = true;
-                screenSpace = Camera.main.WorldToScreenPoint(target.transform.position);
-                offset = target.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z));
-                }
-            }
+            ////if you are actually clicking on an object it will allow you to drag it to a new location
+            //if (target != null)
+            //    {
+            //    real_position = target.transform.position;
+            //    _mouseState = true;
+            //    screenSpace = Camera.main.WorldToScreenPoint(target.transform.position);
+            //    offset = target.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z));
+            //    }
+            //}
         if (Input.GetMouseButtonUp(0))
             {
             _mouseState = false;
@@ -240,8 +240,41 @@ public class spawner : MonoBehaviour
             }
         }
 
-        //Get information on gameobject by clicking on it
-        GameObject GetClickedObject(out RaycastHit hit)
+    public void ViewObject()
+    {
+        var scaleFactor = 1.5f;
+
+        if (Input.GetMouseButtonDown(0)) //left click
+        {
+            Debug.Log("Working almost");
+            Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                //Get name of object
+                var nameOfObj = GetClickedObject(out hit).name;
+                var enlargeObject = GameObject.Find(nameOfObj).transform;
+
+                //Move the objects position 
+                float xCord = 0;
+                float yCord = 10;
+                float zCord = -20;
+                enlargeObject.position = new Vector3(xCord, yCord, zCord);
+
+                //Makes the object bigger
+                float xScale = enlargeObject.localScale.x;
+                float yScale = enlargeObject.localScale.y;
+                float zScale = enlargeObject.localScale.z;
+
+                enlargeObject.localScale = new Vector3(xScale * 2, yScale * 2, zScale * 2);
+
+
+            }
+        }
+    }
+
+    //Get information on gameobject by clicking on it
+    GameObject GetClickedObject(out RaycastHit hit)
             {
             GameObject target = null;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
