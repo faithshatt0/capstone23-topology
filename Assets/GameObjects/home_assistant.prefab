@@ -927,7 +927,6 @@ GameObject:
   - component: {fileID: 7548656828574662806}
   - component: {fileID: 1310429701007126742}
   - component: {fileID: 5198579651810053220}
-  - component: {fileID: 393453680119284839}
   m_Layer: 5
   m_Name: View Assistant
   m_TagString: Untagged
@@ -1057,18 +1056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 523024758ccf6408195c0bd887243c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &393453680119284839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7649354018304191830}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 523024758ccf6408195c0bd887243c88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  butt: {fileID: 1310429701007126742}
+  text: {fileID: 3885420647618329448}
 --- !u!1 &9072518496359584272
 GameObject:
   m_ObjectHideFlags: 0
