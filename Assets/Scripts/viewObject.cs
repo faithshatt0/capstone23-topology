@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class viewObject : MonoBehaviour
 {
+
     public Button butt;
     bool clickedOnce = false;
     string prevName;
@@ -22,10 +24,14 @@ public class viewObject : MonoBehaviour
 
     public void ViewObject()
         {
-        if(clickedOnce == false)
+
+        Debug.Log("In VIEW OBJ CLASS");
+        if (clickedOnce == false)
             {
             //Get name of object
-            var nameOfObj = butt.gameObject.transform.parent.parent;             prevLocation = nameOfObj.transform.position;             //Move the objects position              float xCord = 0;             float yCord = 10;             float zCord = -20;             nameOfObj.transform.position = new Vector3(xCord, yCord, zCord);                             //Makes the object bigger             float xScale = nameOfObj.transform.localScale.x;             float yScale = nameOfObj.transform.localScale.y;             float zScale = nameOfObj.transform.localScale.z;             nameOfObj.localScale = new Vector3(xScale * 2, yScale * 2, zScale * 2);
+            var nameOfObj = butt.gameObject.transform.parent.parent;
+            Debug.Log(butt.gameObject.transform.parent.parent);             prevLocation = nameOfObj.transform.position;
+             //Move the objects position              float xCord = 0;             float yCord = 10;             float zCord = -20;             nameOfObj.transform.position = new Vector3(xCord, yCord, zCord);                             //Makes the object bigger             float xScale = nameOfObj.transform.localScale.x;             float yScale = nameOfObj.transform.localScale.y;             float zScale = nameOfObj.transform.localScale.z;             nameOfObj.localScale = new Vector3(xScale * 2, yScale * 2, zScale * 2);
             prevName = text.text;
             text.text = "Go Back";
             clickedOnce = true;
