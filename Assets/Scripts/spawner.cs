@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,12 @@ public class spawner : MonoBehaviour
     public Vector3 real_position;
     public GameObject sta;
 
+    // Save to locations.json
+    //  - Saving/Writing x, y, z to an object's coordinates
+    LocationsJsonParse location_data;
+    List<string> serials = new List<string>();
+    string locations_file_path;
+
     // Start is called once at the beginning of the program
     void Start()
         {
@@ -25,7 +32,9 @@ public class spawner : MonoBehaviour
 
         // Retrieve network_devices and serials from JsonMain
         List<Topology> network_devices = jsonMain.GetDevices();
-        List<string> serials = jsonMain.GetSerials();
+        serials = jsonMain.GetSerials();
+        location_data = jsonMain.GetLocationData();
+        locations_file_path = jsonMain.GetLocationsFilePath();
 
         // Template transform variable for GameObject positioning and rotation
         Transform objTrans = new GameObject().transform;
@@ -251,8 +260,19 @@ public class spawner : MonoBehaviour
                 }
             return target;
            }
-        
-       }
+
+        void SaveLocation(string file_path, string serial, double x, double y, double z)
+        {
+            int index = serials.BinarySearch(serial);
+            location_data.serials[index].x = x;
+            location_data.serials[index].y = y;
+            location_data.serials[index].z = z;
+
+            string json = JsonUtility.ToJson(location_data);
+            File.WriteAllText(file_path, json);
+        }
+
+}
     
 
 
