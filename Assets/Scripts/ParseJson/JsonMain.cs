@@ -47,8 +47,6 @@ public class JsonMain : MonoBehaviour
         StoreRouterLocations(location_data);
 
         //PrintStoredLocations();
-        string serial = "5054494e912ce94f";
-        SaveLocation(location_data, file_path, serial, 0, 1, 2);
 
         // 5. Test
         //Debug.Log("# of Devices: " + GetNumDevices());
@@ -67,17 +65,6 @@ public class JsonMain : MonoBehaviour
         Functions temp = new Functions();
         temp.StoreRouterLocations(location_data, ref network_devices, serials);
         }
-
-    void SaveLocation(LocationsJsonParse location_data, string file_path, string serial, double x, double y, double z)
-    {
-        int index = serials.BinarySearch(serial);
-        location_data.serials[index].x = x;
-        location_data.serials[index].y = y;
-        location_data.serials[index].z = z;
-
-        string json = JsonUtility.ToJson(location_data);
-        File.WriteAllText(file_path, json);
-    }
 
 
     // Print functions for Debugging Purposes
