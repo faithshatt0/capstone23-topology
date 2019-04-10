@@ -14,10 +14,8 @@ public class saveObjects : MonoBehaviour
         //z
         }
 
-    public void load()
-        {
-
-        }
+    //load will be on spawner and i will access the positions with the serials from the json file. then for this script i will make it where the dragging and dropping
+    //from spawner and actually move. Then raymond will save to json. Also move the info panel until you drop probably? 
 
 
     // Start is called before the first frame update
