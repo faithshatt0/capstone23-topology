@@ -17,9 +17,11 @@ public class spawner : MonoBehaviour
     public Vector3 real_position;
     public GameObject sta;
 
-    // Saving/Writing x, y, z to an object's coordinates in locations.json
+    // Save to locations.json
+    //  - Saving/Writing x, y, z to an object's coordinates
     LocationsJsonParse location_data;
     List<string> serials = new List<string>();
+    string locations_file_path;
 
     // Start is called once at the beginning of the program
     void Start()
@@ -32,6 +34,7 @@ public class spawner : MonoBehaviour
         List<Topology> network_devices = jsonMain.GetDevices();
         serials = jsonMain.GetSerials();
         location_data = jsonMain.GetLocationData();
+        locations_file_path = jsonMain.GetLocationsFilePath();
 
         // Template transform variable for GameObject positioning and rotation
         Transform objTrans = new GameObject().transform;

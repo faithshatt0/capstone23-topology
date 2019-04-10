@@ -14,6 +14,7 @@ public class JsonMain : MonoBehaviour
     List<string> serials = new List<string>();
     int num_devices = 0;
     LocationsJsonParse location_data;
+    string locations_file_path;
 
     // Start is called before the first frame update
     public void Start()
@@ -40,6 +41,7 @@ public class JsonMain : MonoBehaviour
         file_path = Application.dataPath + "/JsonFiles/locations.json";
         json = File.ReadAllText(file_path);
         location_data = JsonUtility.FromJson<LocationsJsonParse>(json);
+        locations_file_path = file_path;
 
         //PrintLocationsJsonParse(location_data);
 
@@ -115,6 +117,10 @@ public class JsonMain : MonoBehaviour
     public LocationsJsonParse GetLocationData()
         {
         return location_data;
+        }
+    public string GetLocationsFilePath()
+        {
+        return locations_file_path;
         }
 
     // Indicates # of devices in the Topology
