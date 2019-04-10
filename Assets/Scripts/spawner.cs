@@ -20,6 +20,7 @@ public class spawner : MonoBehaviour
     // Save to locations.json
     //  - Saving/Writing x, y, z to an object's coordinates
     LocationsJsonParse location_data;
+    
     List<string> serials = new List<string>();
     string locations_file_path;
 
@@ -29,6 +30,8 @@ public class spawner : MonoBehaviour
         // Initialize JsonMain script and start parsing Json
         JsonMain jsonMain = new JsonMain();
         jsonMain.Start();
+
+        
 
         // Retrieve network_devices and serials from JsonMain
         List<Topology> network_devices = jsonMain.GetDevices();
@@ -261,16 +264,7 @@ public class spawner : MonoBehaviour
             return target;
            }
 
-        void SaveLocation(string file_path, string serial, double x, double y, double z)
-        {
-            int index = serials.BinarySearch(serial);
-            location_data.serials[index].x = x;
-            location_data.serials[index].y = y;
-            location_data.serials[index].z = z;
-
-            string json = JsonUtility.ToJson(location_data);
-            File.WriteAllText(file_path, json);
-        }
+   
 
 }
     
