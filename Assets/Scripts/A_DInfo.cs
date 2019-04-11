@@ -13,6 +13,7 @@ public class A_DInfo : MonoBehaviour
     private bool _isOpen;
     public Canvas myChildObject;
     
+
     // Start is called before the first frame update
     void Start()
         {
@@ -36,12 +37,12 @@ public class A_DInfo : MonoBehaviour
                     {
                     if(target.tag == "router") //brings informational panel location to router
                         {
-                        target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, 0);
+                        target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, target.gameObject.transform.Find("Informational Panel").parent.position.z);
                         _isOpen = true;
                         }
                     else //brings the informational panel to the devices
                         {
-                        target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, 10);
+                        target.gameObject.transform.Find("Informational Panel").position = new Vector3(target.gameObject.transform.Find("Informational Panel").position.x, target.gameObject.transform.Find("Informational Panel").position.y, target.gameObject.transform.Find("Informational Panel").parent.position.z);
                         _isOpen = true;
                         }
                    
