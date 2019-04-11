@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.IO;
 
 /// moveRouter.cs
 /// This script is to move the routers because these objects will actually move.
@@ -24,6 +25,8 @@ public class moveRouter : MonoBehaviour
     List<string> serials = new List<string>();
     Vector3 worldPos; //helps move object
     public Toggle tog; //Toggle
+    LocationsJsonParse location_data;
+    string locations_file_path;
 
     // Start is called before the first frame update
     void Start()
@@ -61,10 +64,18 @@ public class moveRouter : MonoBehaviour
             }
         else
             {
+            location_data = jsonMain.GetLocationData();
+            locations_file_path = jsonMain.GetLocationsFilePath();
             transform.position = new Vector3(worldPos.x, 1.5f, worldPos.z);
             //save location here 
+            int index = serials.BinarySearch(transform.name);
+            location_data.serials[index].x = transform.position.x;
+            location_data.serials[index].y = transform.position.y;
+            location_data.serials[index].z = transform.position.z;
 
-            
+            string json = JsonUtility.ToJson(location_data);
+            File.WriteAllText(locations_file_path, json);
+
             List<Topology> network_devices = jsonMain.GetDevices();
             float xx_router = transform.position.x;
             float yy_router = transform.position.y;
@@ -87,20 +98,6 @@ public class moveRouter : MonoBehaviour
                 eth.transform.position = new Vector3(xx_router, yy_router, zz_router + 10); //this changes the location of the devices that the router is connected to --eth_clients
                 xx_router += 10;
                 }
-
         }
     }
-    
-    /*
-       void SaveLocation(string file_path, string serial, double x, double y, double z)
-       {
-           int index = serials.BinarySearch(serial);
-           location_data.serials[index].x = x;
-           location_data.serials[index].y = y;
-           location_data.serials[index].z = z;
-
-           string json = JsonUtility.ToJson(location_data);
-           File.WriteAllText(file_path, json);
-       }
-     */
 }
