@@ -37,7 +37,7 @@ public class Topology
     //  - Router/Extender devices are connected to
     private bool isMaster;                           // Router?
     private string serial;                           // Router/Extender serial #
-    private Tuple<double, double, double> location = new Tuple<double, double, double>(0, 0, 0);
+    private Tuple<float, float, float> location = new Tuple<float, float, float>(0, 0, 0);
 
     //  - eth_clients
     private List<EthClients> eth_clients = new List<EthClients>();
@@ -65,7 +65,7 @@ public class Topology
         this.serial = serial;
         }
 
-    public void set_location(double x, double y, double z)
+    public void set_location(float x, float y, float z)
         {
         location = Tuple.Create(x, y, z);
         }
@@ -110,7 +110,7 @@ public class Topology
         return serial;
         }
 
-    public Tuple<double, double, double> get_location()
+    public Tuple<float, float, float> get_location()
         {
         return location;
         }

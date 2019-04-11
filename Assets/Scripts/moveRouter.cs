@@ -71,21 +71,22 @@ public class moveRouter : MonoBehaviour
             float yy_router = transform.position.y;
             float zz_router = transform.position.z;
 
+            if (network_devices[serials.IndexOf(transform.name)].get_sta_clients().Count + network_devices[serials.IndexOf(transform.name)].get_eth_clients().Count > 1)
+                {
+                xx_router = xx_router - (5 * network_devices[serials.IndexOf(transform.name)].get_sta_clients().Count + network_devices[serials.IndexOf(transform.name)].get_eth_clients().Count);
+                }             
             
             for(int ii = 0; ii < network_devices[serials.IndexOf(transform.name)].get_sta_clients().Count; ii++)
                 {
-                //Debug.Log(network_devices[serials.IndexOf(transform.name)].get_sta_clients()[ii].target_mac);
                 GameObject sta = GameObject.Find(network_devices[serials.IndexOf(transform.name)].get_sta_clients()[ii].target_mac);
-                sta.transform.position = new Vector3(xx_router, yy_router, zz_router - 3); //this changes the location of the devices that the router is connected to --sta_clients    
+                sta.transform.position = new Vector3(xx_router, yy_router, zz_router + 10); //this changes the location of the devices that the router is connected to --sta_clients   
+                xx_router += 10;
                 }
             for (int ii = 0; ii < network_devices[serials.IndexOf(transform.name)].get_eth_clients().Count; ii++)
                 {
-                //Debug.Log(network_devices[serials.IndexOf(transform.name)].get_sta_clients()[ii].target_mac);
-              
                 GameObject eth = GameObject.Find(network_devices[serials.IndexOf(transform.name)].get_eth_clients()[ii].target_mac);
-                eth.transform.position = new Vector3(xx_router, yy_router, zz_router - 3); //this changes the location of the devices that the router is connected to --eth_clients
-                    
-                    
+                eth.transform.position = new Vector3(xx_router, yy_router, zz_router + 10); //this changes the location of the devices that the router is connected to --eth_clients
+                xx_router += 10;
                 }
 
         }

@@ -48,44 +48,38 @@ public class spawner : MonoBehaviour
 
         // Render random device types initialization
         System.Random rnd = new System.Random();
-        int rndNum = 0;
-        int xx_router;
-
-        //For scaling on where the routers will start
-        if (network_devices.Count != 1)
-            {
-            xx_router = (-9 * network_devices.Count);
-            }
-        else
-            {
-            xx_router = 0; 
-            }
+        var rndNum = 0;
+        
         
         //gets each router or extender 
         for (int i = 0; i < network_devices.Count; i++)
             {
-
             //Routers or extenders (not sure if extenders look different physically)
-            objTrans.position = new Vector3(xx_router, 1.5f, 0);
-            
+            //To get location 
+            //location_data.serials[i].x;
+            //location_data.serials[i].y;
+            //location_data.serials[i].z;
+            //just plug it into objTrans. you don't have to equal bc it will be in the same order and same size
+            objTrans.position = new Vector3(location_data.serials[i].x, location_data.serials[i].y, location_data.serials[i].z);
+            float xx_router = location_data.serials[i].x;
             //For some reason it spawns it backwards sometimes
             GameObject routers = Instantiate(router, objTrans.position, new Quaternion(0,0,0,0));
             var n = network_devices[i].get_serial();
             routers.transform.name = n;
-
+           
             //if there are no sta_clients it will skip and save time
             if (network_devices[i].get_sta_clients().Count != 0)
                 {
                 //will help scale how many sta_clients are connected to show they start out connected to eachother.
-                if (network_devices[i].get_sta_clients().Count > 1)
+                if (network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count > 1)
                     {
-                    objPos.x = xx_router - (network_devices[i].get_sta_clients().Count * 3);
+                    objPos.x = xx_router - (network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count * 7);
                     }
                 else
                     {
                     objPos.x = xx_router;
                     }
-                objPos.z = 10;
+                objPos.z = location_data.serials[i].z + 10;
 
                 
                 int counter = network_devices[i].get_eth_clients().Count; //gets the count of eth_clients
@@ -205,7 +199,6 @@ public class spawner : MonoBehaviour
                     objPos.x += 9;
                     }
                 }
-            xx_router += 33;
             }
         }
     }
