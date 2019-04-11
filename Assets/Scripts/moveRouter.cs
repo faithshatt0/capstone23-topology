@@ -64,8 +64,7 @@ public class moveRouter : MonoBehaviour
             transform.position = new Vector3(worldPos.x, 1.5f, worldPos.z);
             //save location here 
 
-            //////////////////////////////
-            /// Under here is where we will move the sta_clients and eth clients connected to the router to make it move with the router
+            
             List<Topology> network_devices = jsonMain.GetDevices();
             float xx_router = transform.position.x;
             float yy_router = transform.position.y;
