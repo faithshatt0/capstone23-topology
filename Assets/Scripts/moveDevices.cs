@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// moveDevices.cs
+/// This script moves the devices that are not routers because it doesn't need a toggle button 
+/// 
+
 public class moveDevices : MonoBehaviour
     {
     Vector3 dist; //Distance
@@ -21,6 +25,7 @@ public class moveDevices : MonoBehaviour
         posY = Input.mousePosition.y - dist.y;
         posZ = Input.mousePosition.z - dist.z;
         }
+
     //if mouse is dragging on device
     void OnMouseDrag()
         {

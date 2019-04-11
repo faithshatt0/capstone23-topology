@@ -3,8 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// Spawner.cs
+/// This script spawns the objects on the board. It uses the data from the parsing json files to spawn the number of objects for it 
+/// 
+
 public class spawner : MonoBehaviour
-{
+    {
     private bool _mouseState;
     public GameObject platform;
     public GameObject router;
@@ -16,9 +20,6 @@ public class spawner : MonoBehaviour
     public Vector3 offset;
     public Vector3 real_position;
     public GameObject sta;
-
-    // Save to locations.json
-    //  - Saving/Writing x, y, z to an object's coordinates
     LocationsJsonParse location_data;
     
     List<string> serials = new List<string>();
@@ -31,8 +32,6 @@ public class spawner : MonoBehaviour
         JsonMain jsonMain = new JsonMain();
         jsonMain.Start();
 
-        
-
         // Retrieve network_devices and serials from JsonMain
         List<Topology> network_devices = jsonMain.GetDevices();
         serials = jsonMain.GetSerials();
@@ -42,16 +41,9 @@ public class spawner : MonoBehaviour
         // Template transform variable for GameObject positioning and rotation
         Transform objTrans = new GameObject().transform;
 
-        //y iS ALWAys gonna be 1.5f
-        // xx_router will be from json file now
-        // zz_router will also be from json file
-
-
         // Render scene
         objTrans.position = new Vector3(0, -0.5f, 0);
         Instantiate(platform, objTrans.position, objTrans.rotation);
-
-        List<int> nextCoordinate = new List<int> { 1, 1, 1, 1 };
         Vector3 objPos = new Vector3();
 
         // Render random device types initialization
@@ -96,8 +88,10 @@ public class spawner : MonoBehaviour
                 objPos.z = 10;
 
                 
-                int counter = network_devices[i].get_eth_clients().Count;
-                int iii = 0;
+                int counter = network_devices[i].get_eth_clients().Count; //gets the count of eth_clients
+                int iii = 0; //remembers the index for the eth_clients
+
+                //Spawning eth_clients and sta_clients --- sta_clients are first
                 for (int ii = 0; ii < network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count; ii++)
                     {
                     objTrans.position = objPos;
@@ -161,6 +155,7 @@ public class spawner : MonoBehaviour
                                 }
                             }
                         }
+                    //if it is a sta_client
                     else
                         {
                         //Phone, Android
@@ -205,22 +200,15 @@ public class spawner : MonoBehaviour
                                     Debug.Log("error rendering object");
                                     break;
                                 }
+                            }
                         }
-                    }
                     objPos.x += 9;
                     }
                 }
             xx_router += 33;
             }
         }
-
-    void Update()
-    {
     }
-
-   
-
-}
     
 
 

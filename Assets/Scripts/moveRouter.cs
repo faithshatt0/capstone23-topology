@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
+/// moveRouter.cs
+/// This script is to move the routers because these objects will actually move.
+/// 
 public class moveRouter : MonoBehaviour
     {
     Vector3 dist; //Distance
@@ -15,9 +18,7 @@ public class moveRouter : MonoBehaviour
     float pX;
     float pY;
     float pZ;
-    /// </summary>
     Vector3 prevLocation; //location so object doesn't move unless toggled to where it will
-    
     // Initialize JsonMain script and start parsing Json
     JsonMain jsonMain = new JsonMain();
     List<string> serials = new List<string>();
