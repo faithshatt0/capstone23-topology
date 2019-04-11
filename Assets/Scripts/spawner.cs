@@ -80,6 +80,7 @@ public class spawner : MonoBehaviour
             GameObject routers = Instantiate(router, objTrans.position, new Quaternion(0,0,0,0));
             var n = network_devices[i].get_serial();
             routers.transform.name = n;
+
             //if there are no sta_clients it will skip and save time
             if (network_devices[i].get_sta_clients().Count != 0)
                 {
@@ -94,8 +95,7 @@ public class spawner : MonoBehaviour
                     }
                 objPos.z = 10;
 
-                //Randomly spawns object behind router
-                //Debug.Log(network_devices[i].serial + " | " + network_devices[i].get_sta_clients().Count); + network_devices[i].get_eth_clients().Count 
+                
                 int counter = network_devices[i].get_eth_clients().Count;
                 int iii = 0;
                 for (int ii = 0; ii < network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count; ii++)

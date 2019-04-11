@@ -913,7 +913,6 @@ GameObject:
   - component: {fileID: 3997193563109814364}
   - component: {fileID: 5692730270622076215}
   - component: {fileID: 9083959094908361380}
-  - component: {fileID: 3772795943609444642}
   m_Layer: 5
   m_Name: View Score
   m_TagString: Untagged
@@ -1049,21 +1048,6 @@ MonoBehaviour:
   empty: {fileID: 21300000, guid: b1e08492365043c4a9922368aa1fbd69, type: 3}
   ethernet: {fileID: 21300000, guid: bb793e407ef71704bb3208105ad63a93, type: 3}
   score: {fileID: 527515039986478484}
---- !u!114 &3772795943609444642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7899026898433705439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6445b95c02342424eba4bb68586624f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  empty: {fileID: 21300000, guid: b1e08492365043c4a9922368aa1fbd69, type: 3}
-  score: {fileID: 527515039986478484}
-  isShowing: 0
 --- !u!1 &8059748181427066574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,6 +1136,7 @@ GameObject:
   - component: {fileID: 8195300179339899730}
   - component: {fileID: 325361299618779074}
   - component: {fileID: 8286592285154630898}
+  - component: {fileID: 7318068973148548875}
   m_Layer: 0
   m_Name: laptop
   m_TagString: Untagged
@@ -1203,3 +1188,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myChildObject: {fileID: 1671855677297048266}
+--- !u!114 &7318068973148548875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9080408684677524988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324e3e04434d88c49ae44da80a0ca3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
