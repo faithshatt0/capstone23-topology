@@ -98,14 +98,6 @@ public class moveRouter : MonoBehaviour
                 eth.transform.position = new Vector3(xx_router, yy_router, zz_router + 10); //this changes the location of the devices that the router is connected to --eth_clients
                 xx_router += 10;
                 }
-
         }
     }
-    
-    /*
-       void SaveLocation(string file_path, string serial, double x, double y, double z)
-       {
-           
-       }
-     */
 }
