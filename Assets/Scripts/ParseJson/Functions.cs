@@ -170,7 +170,7 @@ public class Functions
 
     public void StoreRouterLocations(LocationsJsonParse location_data, ref List<Topology> network_devices, List<string> serials)
     {
-        double default_y = 1.5;
+        float default_y = 1.5f;
         foreach (var data in location_data.serials)
         {
             int index = serials.BinarySearch(data.serial);
