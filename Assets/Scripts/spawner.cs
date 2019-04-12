@@ -37,7 +37,8 @@ public class spawner : MonoBehaviour
 
         // Render scene
         objTrans.position = new Vector3(0, -0.5f, 0);
-        //Instantiate(platform, objTrans.position, objTrans.rotation);
+        objTrans.rotation = Quaternion.Euler(0, 180, 0);
+        Instantiate(platform, objTrans.position, objTrans.rotation);
 
         List<int> nextCoordinate = new List<int> { 1, 1, 1, 1 };
         Vector3 objPos = new Vector3();
@@ -54,16 +55,16 @@ public class spawner : MonoBehaviour
             }
         else
             {
-            xx_router = 0; 
+            xx_router = 0;
             }
-        
-        //gets each router or extender 
+
+        //gets each router or extender
         for (int i = 0; i < network_devices.Count; i++)
             {
 
             //Routers or extenders (not sure if extenders look different physically)
             objTrans.position = new Vector3(xx_router, 1.5f, 0);
-            
+
             //For some reason it spawns it backwards sometimes
             GameObject routers = Instantiate(router, objTrans.position, new Quaternion(0,0,0,0));
             var n = network_devices[i].get_serial();
@@ -83,7 +84,7 @@ public class spawner : MonoBehaviour
                 objPos.z = 10;
 
                 //Randomly spawns object behind router
-                //Debug.Log(network_devices[i].serial + " | " + network_devices[i].get_sta_clients().Count); + network_devices[i].get_eth_clients().Count 
+                //Debug.Log(network_devices[i].serial + " | " + network_devices[i].get_sta_clients().Count); + network_devices[i].get_eth_clients().Count
                 int counter = network_devices[i].get_eth_clients().Count;
                 int iii = 0;
                 for (int ii = 0; ii < network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count; ii++)
@@ -142,7 +143,7 @@ public class spawner : MonoBehaviour
                                 break;
                         }
                     }
-                   
+
                     objPos.x += 9;
                     }
                 }
@@ -153,12 +154,12 @@ public class spawner : MonoBehaviour
 
     void Update()
         {
-        
+
         if (Input.GetMouseButtonDown(0)) //left click
             {
             RaycastHit hitInfo;
             target = GetClickedObject(out hitInfo); //gets info from what object is clicked
-            
+
             //if you are actually clicking on an object it will allow you to drag it to a new location
             if (target != null)
                 {
@@ -175,7 +176,7 @@ public class spawner : MonoBehaviour
                 {
                 target.transform.position = real_position;
                 }
-           
+
             }
 
         if (_mouseState)
@@ -203,8 +204,5 @@ public class spawner : MonoBehaviour
 
             return target;
            }
-        
+
        }
-    
-
-
