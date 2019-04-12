@@ -1,11 +1,11 @@
-﻿using System.IO;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// Spawner.cs
-/// This script spawns the objects on the board. It uses the data from the parsing json files to spawn the number of objects for it 
-/// 
+/// This script spawns the objects on the board. It uses the data from the parsing json files to spawn the number of objects for it
+///
 
 public class spawner : MonoBehaviour
     {
@@ -21,7 +21,7 @@ public class spawner : MonoBehaviour
     public Vector3 real_position;
     public GameObject sta;
     LocationsJsonParse location_data;
-    
+
     List<string> serials = new List<string>();
     string locations_file_path;
 
@@ -43,19 +43,20 @@ public class spawner : MonoBehaviour
 
         // Render scene
         objTrans.position = new Vector3(0, -0.5f, 0);
+        objTrans.rotation = Quaternion.Euler(0, 180, 0);
         Instantiate(platform, objTrans.position, objTrans.rotation);
         Vector3 objPos = new Vector3();
 
         // Render random device types initialization
         System.Random rnd = new System.Random();
         var rndNum = 0;
-        
-        
-        //gets each router or extender 
+
+
+        //gets each router or extender
         for (int i = 0; i < network_devices.Count; i++)
             {
             //Routers or extenders (not sure if extenders look different physically)
-            //To get location 
+            //To get location
             //location_data.serials[i].x;
             //location_data.serials[i].y;
             //location_data.serials[i].z;
@@ -66,7 +67,7 @@ public class spawner : MonoBehaviour
             GameObject routers = Instantiate(router, objTrans.position, new Quaternion(0,0,0,0));
             var n = network_devices[i].get_serial();
             routers.transform.name = n;
-           
+
             //if there are no sta_clients it will skip and save time
             if (network_devices[i].get_sta_clients().Count != 0)
                 {
@@ -81,7 +82,7 @@ public class spawner : MonoBehaviour
                     }
                 objPos.z = location_data.serials[i].z + 10;
 
-                
+
                 int counter = network_devices[i].get_eth_clients().Count; //gets the count of eth_clients
                 int iii = 0; //remembers the index for the eth_clients
 
@@ -89,7 +90,7 @@ public class spawner : MonoBehaviour
                 for (int ii = 0; ii < network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count; ii++)
                     {
                     objTrans.position = objPos;
-                  
+
                     //if there are eth clients it will put the eth clients after the sta_clients
                     if (counter > 0 && ii >= network_devices[i].get_sta_clients().Count)
                         {
@@ -202,6 +203,3 @@ public class spawner : MonoBehaviour
             }
         }
     }
-    
-
-
