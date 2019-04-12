@@ -15,10 +15,7 @@ public class moveRouter : MonoBehaviour
     float posY; //y
     float posZ; //z
 
-    /// MoveObj positions
-    float pX;
-    float pY;
-    float pZ;
+    
     Vector3 prevLocation; //location so object doesn't move unless toggled to where it will
     // Initialize JsonMain script and start parsing Json
     JsonMain jsonMain = new JsonMain();
@@ -27,13 +24,13 @@ public class moveRouter : MonoBehaviour
     public Toggle tog; //Toggle
     LocationsJsonParse location_data;
     string locations_file_path;
-
+    
     // Start is called before the first frame update
     void Start()
         {
         jsonMain.Start();
         // Retrieve network_devices and serials from JsonMain
-        serials = jsonMain.GetSerials(); 
+        serials = jsonMain.GetSerials();
         }
 
     //if mouse clicked on device
@@ -64,19 +61,23 @@ public class moveRouter : MonoBehaviour
             }
         else
             {
+            List<Topology> network_devices = jsonMain.GetDevices();
             location_data = jsonMain.GetLocationData();
             locations_file_path = jsonMain.GetLocationsFilePath();
             transform.position = new Vector3(worldPos.x, 1.5f, worldPos.z);
             //save location here 
-            int index = serials.BinarySearch(transform.name);
-            location_data.serials[index].x = transform.position.x;
-            location_data.serials[index].y = transform.position.y;
-            location_data.serials[index].z = transform.position.z;
+            //loop through and get all the locations and then push into json.
+            for(int ii = 0; ii < network_devices.Count; ii++)
+                {
+                location_data.serials[ii].x = GameObject.Find(location_data.serials[ii].serial).transform.position.x;
+                location_data.serials[ii].y = GameObject.Find(location_data.serials[ii].serial).transform.position.y;
+                location_data.serials[ii].z = GameObject.Find(location_data.serials[ii].serial).transform.position.z;
+                }
 
             string json = JsonUtility.ToJson(location_data);
             File.WriteAllText(locations_file_path, json);
 
-            List<Topology> network_devices = jsonMain.GetDevices();
+            //gets the locations of the object you touched so you can move the devices its connected to with it
             float xx_router = transform.position.x;
             float yy_router = transform.position.y;
             float zz_router = transform.position.z;

@@ -64,6 +64,12 @@ public class spawner : MonoBehaviour
             objTrans.position = new Vector3(location_data.serials[i].x, location_data.serials[i].y, location_data.serials[i].z);
             float xx_router = location_data.serials[i].x;
             //For some reason it spawns it backwards sometimes
+            ///
+            ///This is where you will have to have an if statement from reading the json on what type of router to spawn!
+            ///To do that you will have to create a copy of the GameObject Router in Unity itself and attach a different skin to it
+            ///This will give that GameObject the same heirarchy and scripts so it can essentially do the same thing as each router
+            ///
+
             GameObject routers = Instantiate(router, objTrans.position, new Quaternion(0,0,0,0));
             var n = network_devices[i].get_serial();
             routers.transform.name = n;

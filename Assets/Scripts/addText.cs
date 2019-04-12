@@ -13,6 +13,7 @@ public class addText : MonoBehaviour
         {
         infoText = GetComponent<Text>();
         }   
+
     private void Start()
         {
         // Initialize JsonMain script and start parsing Json
