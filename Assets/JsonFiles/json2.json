@@ -5,7 +5,7 @@
         {
           "idle": "9.10",
           "target_mac": "00:40:ad:91:be:a0",
-          "hostname": "Eth1 Laptop",
+          "hostname": "Eth1 Mac",
           "IP_Address": "192.822.3.4"
         }
       ],
@@ -36,7 +36,7 @@
 
       "isMaster": "True",
       "serial": "5054494e912ce94f",
-      "hostname": "Mesh1 iPhone",
+      "hostname": "Home Router",
       "IP_Address": "192.223.3.4"
     },
     {
@@ -53,7 +53,7 @@
 
       "isMaster": "False",
       "serial": "aw2311813001257",
-      "hostname": "Mesh2 iPhone",
+      "hostname": "Mesh2 Extender",
       "IP_Address": "192.224.3.4"
     },
     {
@@ -70,7 +70,7 @@
 
       "isMaster": "False",
       "serial": "aw2311813005151",
-      "hostname": "Mesh3 iPhone",
+      "hostname": "Mesh3 Extender",
       "IP_Address": "192.225.3.4"
     }
   ],
@@ -91,7 +91,7 @@
           "rxpr": 144,
           "target_mac": "b0:05:94:40:23:47",
           "txpr": 144,
-          "hostname": "Sta2 iPhone",
+          "hostname": "Sta2 Laptop",
           "IP_Address": "192.222.3.4"
         },
         {
@@ -99,7 +99,7 @@
           "rxpr": 866,
           "target_mac": "38:89:2c:1e:40:ff",
           "txpr": 866,
-          "hostname": "Sta3 iPhone",
+          "hostname": "Sta3 Alexa",
           "IP_Address": "192.222.3.4"
         }
       ],
@@ -113,7 +113,7 @@
           "rxpr": 65,
           "target_mac": "6c:c2:17:4f:c1:81",
           "txpr": 1,
-          "hostname": "Sta4 iPhone",
+          "hostname": "Sta4 Lair",
           "IP_Address": "192.222.3.4"
         }
       ],
@@ -127,7 +127,7 @@
           "rxpr": 11,
           "target_mac": "50:a6:7f:d9:10:5a",
           "txpr": 1,
-          "hostname": "Sta5 iPhone",
+          "hostname": "Sta5 Google Home",
           "IP_Address": "192.222.3.4"
         },
 
@@ -136,7 +136,7 @@
           "rxpr": 130,
           "target_mac": "08:05:81:7e:e9:03",
           "txpr": 144,
-          "hostname": "Sta6 iPhone",
+          "hostname": "Sta6 Laptop",
           "IP_Address": "192.222.3.4"
         }
       ],

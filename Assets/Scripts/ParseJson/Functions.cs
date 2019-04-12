@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Functions : MonoBehaviour
+public class Functions
     {
     // Start is called before the first frame update
     void Start()
@@ -170,7 +170,7 @@ public class Functions : MonoBehaviour
 
     public void StoreRouterLocations(LocationsJsonParse location_data, ref List<Topology> network_devices, List<string> serials)
     {
-        double default_y = 1.5;
+        float default_y = 1.5f;
         foreach (var data in location_data.serials)
         {
             int index = serials.BinarySearch(data.serial);
