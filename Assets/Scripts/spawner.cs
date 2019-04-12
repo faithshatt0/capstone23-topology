@@ -20,6 +20,8 @@ public class spawner : MonoBehaviour
     public Vector3 offset;
     public Vector3 real_position;
     public GameObject sta;
+    public LineRenderer line;
+    private int currentVertice = 0;
     LocationsJsonParse location_data;
 
     List<string> serials = new List<string>();
@@ -38,6 +40,8 @@ public class spawner : MonoBehaviour
         location_data = jsonMain.GetLocationData();
         locations_file_path = jsonMain.GetLocationsFilePath();
 
+        line = gameObject.GetComponent<LineRenderer>();
+
         // Template transform variable for GameObject positioning and rotation
         Transform objTrans = new GameObject().transform;
 
@@ -51,7 +55,7 @@ public class spawner : MonoBehaviour
         System.Random rnd = new System.Random();
         var rndNum = 0;
 
-
+        line.positionCount = network_devices.Count;
         //gets each router or extender
         for (int i = 0; i < network_devices.Count; i++)
             {
@@ -67,6 +71,10 @@ public class spawner : MonoBehaviour
             GameObject routers = Instantiate(router, objTrans.position, new Quaternion(0,0,0,0));
             var n = network_devices[i].get_serial();
             routers.transform.name = n;
+
+            line.positionCount += network_devices[i].get_sta_clients().Count;
+            line.positionCount += network_devices[i].get_eth_clients().Count;
+            line.positionCount *= 2;
 
             //if there are no sta_clients it will skip and save time
             if (network_devices[i].get_sta_clients().Count != 0)
@@ -158,6 +166,10 @@ public class spawner : MonoBehaviour
                             {
                             sta = Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
                             sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
+                            line.SetPosition (currentVertice, routers.transform.position);
+                            currentVertice++;
+                            line.SetPosition (currentVertice, sta.transform.position);
+                            currentVertice++;
                             }
                         //Laptop, Mac, Windows
                         else if(network_devices[i].get_sta_clients()[ii].device_info.hostname.ToLower().Contains("laptop") || network_devices[i].get_sta_clients()[ii].device_info.hostname.ToLower().Contains("mac"))
@@ -165,12 +177,20 @@ public class spawner : MonoBehaviour
                             objTrans.rotation = Quaternion.Euler(objTrans.rotation.x, objTrans.rotation.y + 180, objTrans.rotation.z);
                             sta = Instantiate(laptop, objTrans.position, objTrans.rotation);
                             sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
+                            line.SetPosition (currentVertice, routers.transform.position);
+                            currentVertice++;
+                            line.SetPosition (currentVertice, sta.transform.position);
+                            currentVertice++;
                             }
                         //Assistant, Alexa, Google
                         else if (network_devices[i].get_sta_clients()[ii].device_info.hostname.ToLower().Contains("assistant") || network_devices[i].get_sta_clients()[ii].device_info.hostname.ToLower().Contains("home") || network_devices[i].get_sta_clients()[ii].device_info.hostname.ToLower().Contains("alexa"))
                             {
                             sta = Instantiate(assistant, assistant.transform.position + objPos, assistant.transform.rotation);
                             sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
+                            line.SetPosition (currentVertice, routers.transform.position);
+                            currentVertice++;
+                            line.SetPosition (currentVertice, sta.transform.position);
+                            currentVertice++;
                             }
                         //if it isnt any of names it will render a random object
                         else
@@ -181,15 +201,27 @@ public class spawner : MonoBehaviour
                                 case 1:
                                     sta = Instantiate(phone, phone.transform.position + objPos, phone.transform.rotation);
                                     sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
+                                    line.SetPosition (currentVertice, routers.transform.position);
+                                    currentVertice++;
+                                    line.SetPosition (currentVertice, sta.transform.position);
+                                    currentVertice++;
                                     break;
                                 case 2:
                                     objTrans.rotation = Quaternion.Euler(objTrans.rotation.x, objTrans.rotation.y + 180, objTrans.rotation.z);
                                     sta = Instantiate(laptop, objTrans.position, objTrans.rotation);
                                     sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
+                                    line.SetPosition (currentVertice, routers.transform.position);
+                                    currentVertice++;
+                                    line.SetPosition (currentVertice, sta.transform.position);
+                                    currentVertice++;
                                     break;
                                 case 3:
                                     sta = Instantiate(assistant, assistant.transform.position + objPos, assistant.transform.rotation);
                                     sta.transform.name = network_devices[i].get_sta_clients()[ii].target_mac;
+                                    line.SetPosition (currentVertice, routers.transform.position);
+                                    currentVertice++;
+                                    line.SetPosition (currentVertice, sta.transform.position);
+                                    currentVertice++;
                                     break;
                                 default:
                                     Debug.Log("error rendering object");
@@ -201,5 +233,11 @@ public class spawner : MonoBehaviour
                     }
                 }
             }
+        }
+
+        void drawLine(Vector3 objPosition1, Vector3 objPosition2) {
+          line.SetPosition (currentVertice, objPosition1);
+          currentVertice++;
+          line.SetPosition (currentVertice, objPosition2);
         }
     }
