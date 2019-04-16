@@ -44,8 +44,7 @@ public class viewObject : MonoBehaviour
             clickedOnce = false;
             }
            
-        }
-    }
+        }}
 
 
     

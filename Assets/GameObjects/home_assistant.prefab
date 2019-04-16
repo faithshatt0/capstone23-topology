@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 7548656828574662806}
   - component: {fileID: 1310429701007126742}
   - component: {fileID: 551825301045973417}
-  - component: {fileID: 1353448201513000848}
+  - component: {fileID: 7508119234076292400}
   m_Layer: 5
   m_Name: View Assistant
   m_TagString: Untagged
@@ -1043,8 +1043,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1353448201513000848}
-        m_MethodName: ViewObject
+      - m_Target: {fileID: 551825301045973417}
+        m_MethodName: buttonWasClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1069,8 +1069,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 0
-  button: {fileID: 0}
---- !u!114 &1353448201513000848
+  button: {fileID: 1310429701007126742}
+  test: {fileID: 0}
+  m_Scene: viewObject_scene
+  m_MyGameObject: {fileID: 6305877045556163205}
+  UIRootObject: {fileID: 0}
+  text: {fileID: 3885420647618329448}
+--- !u!114 &7508119234076292400
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1082,8 +1087,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 523024758ccf6408195c0bd887243c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  butt: {fileID: 1310429701007126742}
-  text: {fileID: 3885420647618329448}
+  butt: {fileID: 0}
+  text: {fileID: 0}
 --- !u!1 &9072518496359584272
 GameObject:
   m_ObjectHideFlags: 0
