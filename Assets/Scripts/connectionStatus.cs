@@ -21,6 +21,9 @@ public class connectionStatus : MonoBehaviour
     public Text score;
     Sprite prevSprite;
     float RSSI;
+    //Add it where if there is any issue it will show it here instead of showing the rssi first!!!!
+
+
 
     //For routers there are multiple rssi's so we just find the average
     public float average(List<Device> connected_to)

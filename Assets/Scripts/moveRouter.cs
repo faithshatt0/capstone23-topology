@@ -31,6 +31,20 @@ public class moveRouter : MonoBehaviour
         jsonMain.Start();
         // Retrieve network_devices and serials from JsonMain
         serials = jsonMain.GetSerials();
+        List<Topology> network_devices = jsonMain.GetDevices();
+
+        //If it is a master router it will toggled on automatically -- Rajesh wanted extenders to fixed default to where they can't move in the beginning
+        for(int ii = 0; ii < network_devices.Count; ii++)
+            {
+            if(tog.gameObject.transform.parent.parent.name == serials[ii])
+                {
+                if(network_devices[ii].get_isMaster() == true)
+                    {
+                    tog.isOn = true;
+                    }
+                }
+            }
+            
         }
 
     //if mouse clicked on device
