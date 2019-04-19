@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JsonMain : MonoBehaviour
+public class JsonMain
     {
 
     // Main Objects
@@ -87,7 +87,7 @@ public class JsonMain : MonoBehaviour
         for (int i = 0; i < location_data.serials.Length; ++i)
             {
             Debug.Log(
-                $"Count: {i + 1}\n" +
+                $"Count: {i}\n" +
                 $"Serial: {location_data.serials[i].serial}\n" +
                 $"Location: ({location_data.serials[i].x}, {location_data.serials[i].y}, {location_data.serials[i].z})\n"
             );

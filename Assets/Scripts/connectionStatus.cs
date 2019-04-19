@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+/// connectionStatus.cs
+/// This script will change the button above the devices to show their connection status. If the button is clicked it will then show the number.
+/// The connection will show again if clicked again.
+/// 
+
 public class connectionStatus : MonoBehaviour
-{
+    {
     Image m_Image;
     //Set this in the Inspector
     public Sprite good;
@@ -15,7 +21,11 @@ public class connectionStatus : MonoBehaviour
     public Text score;
     Sprite prevSprite;
     float RSSI;
+    //Add it where if there is any issue it will show it here instead of showing the rssi first!!!!
 
+
+
+    //For routers there are multiple rssi's so we just find the average
     public float average(List<Device> connected_to)
         {
         float average = 0;
@@ -28,8 +38,8 @@ public class connectionStatus : MonoBehaviour
 
     void Start()
         {
-        isShowing = false;
-        //Excellent: >= -59; -68 <= Good <= -60; -78 <= Acceptable <= -69; Bad < -78
+        isShowing = false; //is the text showing 
+
         //Fetch the Image from the GameObject
         m_Image = GetComponent<Image>();
 
@@ -43,11 +53,10 @@ public class connectionStatus : MonoBehaviour
 
         //gets each router or extender 
         for (int i = 0; i < network_devices.Count; i++)
-        {
-            
-
+            {
             for(int ii = 0; ii < network_devices[i].get_eth_clients().Count; ii++)
                 {
+                //Finds the same target_macs and shows the ethernet image
                 if(m_Image.gameObject.transform.parent.parent.name == network_devices[i].get_eth_clients()[ii].target_mac)
                     {
                     m_Image.sprite = ethernet;
@@ -55,71 +64,72 @@ public class connectionStatus : MonoBehaviour
                     }
                 }
 
-
+            //For mesh_links
             for (int ii = 0; ii < network_devices[i].get_mesh_links().Count; ii++)
-            {
-                
-                if (m_Image.gameObject.transform.parent.parent.name == network_devices[i].get_serial())
                 {
-                    float min_Rssi = average(network_devices[i].get_mesh_links()[ii].connected_to)/10f;
+                //connects mesh_clients and if the RSSI is within the right range:
+                    //Excellent: >= -59; -68 <= Good <= -60; -78 <= Acceptable <= -69; Bad < -78
+                if (m_Image.gameObject.transform.parent.parent.name == network_devices[i].get_serial())
+                    {
+                    float min_Rssi = average(network_devices[i].get_mesh_links()[ii].connected_to)/10f; //finds average RSSI
                     RSSI = min_Rssi;
-                    
+                    //Excellent and Good
                     if (min_Rssi  >= -68f)
                         {
                         m_Image.sprite = good;
                         prevSprite = good;
-
                         }
+                    //Acceptable
                     else if (min_Rssi / 10f <= -69f)
                         {
                         m_Image.sprite = medium;
                         prevSprite = medium;
                         }
+                    //Bad
                     else
                         {
                         m_Image.sprite = bad;
                         prevSprite = bad;
                         }
+                    }
                 }
-            }
             
-
             //if there are no sta_clients it will skip and save time
             if (network_devices[i].get_sta_clients().Count != 0)
-            {
-                //Randomly spawns object behind router
+                {
+                //Sta_clients
                 //Excellent: >= -59; -68 <= Good <= -60; -78 <= Acceptable <= -69; Bad < -78
                 for (int ii = 0; ii < network_devices[i].get_sta_clients().Count; ii++)
-                {
-                    if (m_Image.gameObject.transform.parent.parent.name == network_devices[i].get_sta_clients()[ii].target_mac)
                     {
+                    //Connects sta_clients to devices
+                    if (m_Image.gameObject.transform.parent.parent.name == network_devices[i].get_sta_clients()[ii].target_mac)
+                        {
+                        //Excellent and Good
                         if(network_devices[i].get_sta_clients()[ii].rssi/10f  >= -68f)
                             {
                             m_Image.sprite = good;
                             prevSprite = good;
                             RSSI = network_devices[i].get_sta_clients()[ii].rssi / 10f;
                             }   
+                        //Acceptable
                         else if(network_devices[i].get_sta_clients()[ii].rssi / 10f >= -78f && network_devices[i].get_sta_clients()[ii].rssi / 10f <= -69f)
                             {
                             m_Image.sprite = medium;
                             prevSprite = medium;
                             RSSI = network_devices[i].get_sta_clients()[ii].rssi / 10f;
                             }
+                        //Bad
                         else
                             {
                             m_Image.sprite = bad;
                             prevSprite = bad;
                             RSSI = network_devices[i].get_sta_clients()[ii].rssi / 10f;
                             }     
+                        }
                     }
                 }
-
             }
-            
-
         }
-
-    }
 
     //Once the button is chosen it will change what the Sprite is showing
     public void ButtonInteract()

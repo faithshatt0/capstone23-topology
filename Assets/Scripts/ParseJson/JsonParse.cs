@@ -87,7 +87,7 @@ public class LocationsJsonParse
 public class Serial
 {
     public string serial;
-    public double x;
-    public double y;
-    public double z;
+    public float x;
+    public float y;
+    public float z;
 }

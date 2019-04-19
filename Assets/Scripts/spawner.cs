@@ -1,10 +1,14 @@
-﻿using System.IO;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// Spawner.cs
+/// This script spawns the objects on the board. It uses the data from the parsing json files to spawn the number of objects for it
+///
+
 public class spawner : MonoBehaviour
-{
+    {
     private bool _mouseState;
     public GameObject platform;
     public GameObject router;
@@ -16,10 +20,8 @@ public class spawner : MonoBehaviour
     public Vector3 offset;
     public Vector3 real_position;
     public GameObject sta;
-
-    // Save to locations.json
-    //  - Saving/Writing x, y, z to an object's coordinates
     LocationsJsonParse location_data;
+
     List<string> serials = new List<string>();
     string locations_file_path;
 
@@ -39,66 +41,62 @@ public class spawner : MonoBehaviour
         // Template transform variable for GameObject positioning and rotation
         Transform objTrans = new GameObject().transform;
 
-        //y iS ALWAys gonna be 1.5f
-        // xx_router will be from json file now
-        // zz_router will also be from json file
-
-
         // Render scene
         objTrans.position = new Vector3(0, -0.5f, 0);
+        objTrans.rotation = Quaternion.Euler(0, 180, 0);
         Instantiate(platform, objTrans.position, objTrans.rotation);
-
-        List<int> nextCoordinate = new List<int> { 1, 1, 1, 1 };
         Vector3 objPos = new Vector3();
 
         // Render random device types initialization
         System.Random rnd = new System.Random();
-        int rndNum = 0;
-        int xx_router;
+        var rndNum = 0;
 
-        //For scaling on where the routers will start
-        if (network_devices.Count != 1)
-            {
-            xx_router = (-9 * network_devices.Count);
-            }
-        else
-            {
-            xx_router = 0; 
-            }
-        
-        //gets each router or extender 
+
+        //gets each router or extender
         for (int i = 0; i < network_devices.Count; i++)
             {
-
             //Routers or extenders (not sure if extenders look different physically)
-            objTrans.position = new Vector3(xx_router, 1.5f, 0);
-            
+            //To get location
+            //location_data.serials[i].x;
+            //location_data.serials[i].y;
+            //location_data.serials[i].z;
+            //just plug it into objTrans. you don't have to equal bc it will be in the same order and same size
+            objTrans.position = new Vector3(location_data.serials[i].x, location_data.serials[i].y, location_data.serials[i].z);
+            float xx_router = location_data.serials[i].x;
             //For some reason it spawns it backwards sometimes
+            ///
+            ///This is where you will have to have an if statement from reading the json on what type of router to spawn!
+            ///To do that you will have to create a copy of the GameObject Router in Unity itself and attach a different skin to it
+            ///This will give that GameObject the same heirarchy and scripts so it can essentially do the same thing as each router
+            ///
+
             GameObject routers = Instantiate(router, objTrans.position, new Quaternion(0,0,0,0));
             var n = network_devices[i].get_serial();
             routers.transform.name = n;
+
             //if there are no sta_clients it will skip and save time
             if (network_devices[i].get_sta_clients().Count != 0)
                 {
                 //will help scale how many sta_clients are connected to show they start out connected to eachother.
-                if (network_devices[i].get_sta_clients().Count > 1)
+                if (network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count > 1)
                     {
-                    objPos.x = xx_router - (network_devices[i].get_sta_clients().Count * 3);
+                    objPos.x = xx_router - (network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count * 7);
                     }
                 else
                     {
                     objPos.x = xx_router;
                     }
-                objPos.z = 10;
+                objPos.z = location_data.serials[i].z + 10;
 
-                //Randomly spawns object behind router
-                //Debug.Log(network_devices[i].serial + " | " + network_devices[i].get_sta_clients().Count); + network_devices[i].get_eth_clients().Count 
-                int counter = network_devices[i].get_eth_clients().Count;
-                int iii = 0;
+
+                int counter = network_devices[i].get_eth_clients().Count; //gets the count of eth_clients
+                int iii = 0; //remembers the index for the eth_clients
+
+                //Spawning eth_clients and sta_clients --- sta_clients are first
                 for (int ii = 0; ii < network_devices[i].get_sta_clients().Count + network_devices[i].get_eth_clients().Count; ii++)
                     {
                     objTrans.position = objPos;
-                  
+
                     //if there are eth clients it will put the eth clients after the sta_clients
                     if (counter > 0 && ii >= network_devices[i].get_sta_clients().Count)
                         {
@@ -158,6 +156,7 @@ public class spawner : MonoBehaviour
                                 }
                             }
                         }
+                    //if it is a sta_client
                     else
                         {
                         //Phone, Android
@@ -202,85 +201,13 @@ public class spawner : MonoBehaviour
                                     Debug.Log("error rendering object");
                                     break;
                                 }
+                            }
                         }
-                    }
                     objPos.x += 9;
                     }
                 }
-            xx_router += 33;
             }
         }
-
-    void Update()
-        { 
-        if (Input.GetMouseButtonDown(0)) //left click
-            {
-            RaycastHit hitInfo;
-            target = GetClickedObject(out hitInfo); //gets info from what object is clicked
-            
-            //if you are actually clicking on an object it will allow you to drag it to a new location
-            if (target != null)
-                {
-                real_position = target.transform.position;
-                _mouseState = true;
-                screenSpace = Camera.main.WorldToScreenPoint(target.transform.position);
-                offset = target.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z));
-                }
-            }
-        if (Input.GetMouseButtonUp(0))
-            {
-            _mouseState = false;
-            if(target != null)
-                {
-                target.transform.position = real_position;
-                }
-            }
-
-        if (_mouseState)
-            {
-            //keep track of the mouse position
-            var curScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
-
-            //convert the screen mouse position to world point and adjust with offset
-            var curPosition = Camera.main.ScreenToWorldPoint(curScreenSpace) + offset;
-
-            //update the position of the object in the world
-            target.transform.position = curPosition;
-            }
-        }
-
-    //public void ViewObject()
-    //{
-    //    var scaleFactor = 1.5f;
-
-    //    if (Input.GetMouseButtonDown(0)) //left click
-    //    {
-    //        Debug.Log("Working almost");
-    //        Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-    //        RaycastHit hit;
-    //        if (Physics.Raycast(ray, out hit))
-    //        {
-    //            //Get name of object
-    //            var nameOfObj = GetClickedObject(out hit).name;
-    //            var enlargeObject = GameObject.Find(nameOfObj).transform;
-
-    //            //Move the objects position 
-    //            float xCord = 0;
-    //            float yCord = 10;
-    //            float zCord = -20;
-    //            enlargeObject.position = new Vector3(xCord, yCord, zCord);
-
-    //            //Makes the object bigger
-    //            float xScale = enlargeObject.localScale.x;
-    //            float yScale = enlargeObject.localScale.y;
-    //            float zScale = enlargeObject.localScale.z;
-
-    //            enlargeObject.localScale = new Vector3(xScale * 2, yScale * 2, zScale * 2);
-
-
-    //        }
-    //    }
-    //}
 
     //Get information on gameobject by clicking on it
     GameObject GetClickedObject(out RaycastHit hit)
@@ -306,6 +233,3 @@ public class spawner : MonoBehaviour
         }
 
 }
-    
-
-

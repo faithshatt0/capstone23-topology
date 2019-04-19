@@ -206,7 +206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 7.83, y: 6.09}
+  m_AnchoredPosition: {x: 8.89, y: 6.09}
   m_SizeDelta: {x: 30, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8767600630118912530
@@ -465,6 +465,7 @@ GameObject:
   - component: {fileID: 3463239637282198608}
   - component: {fileID: 3351004518092303875}
   - component: {fileID: 8760343801841549423}
+  - component: {fileID: 7082745337369395699}
   m_Layer: 0
   m_Name: home_assistant
   m_TagString: Untagged
@@ -571,7 +572,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d4e62fda49c9f41954c0c2db6b794b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myChildObject: {fileID: 0}
+  myChildObject: {fileID: 8767600630118912530}
+  butt: {fileID: 2458642877605765248}
+--- !u!114 &7082745337369395699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6305877045556163205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324e3e04434d88c49ae44da80a0ca3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6370530675980487285
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +777,6 @@ GameObject:
   - component: {fileID: 1088838285769352696}
   - component: {fileID: 2458642877605765248}
   - component: {fileID: 4776917484347795051}
-  - component: {fileID: 5268615174004598061}
   m_Layer: 5
   m_Name: View Score
   m_TagString: Untagged
@@ -879,6 +892,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8760343801841549423}
+        m_MethodName: ButtonInteract
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &4776917484347795051
@@ -899,21 +923,6 @@ MonoBehaviour:
   empty: {fileID: 21300000, guid: b1e08492365043c4a9922368aa1fbd69, type: 3}
   ethernet: {fileID: 21300000, guid: bb793e407ef71704bb3208105ad63a93, type: 3}
   score: {fileID: 404360688598763986}
---- !u!114 &5268615174004598061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7267048382567514977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6445b95c02342424eba4bb68586624f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  empty: {fileID: 21300000, guid: b1e08492365043c4a9922368aa1fbd69, type: 3}
-  score: {fileID: 404360688598763986}
-  isShowing: 0
 --- !u!1 &7649354018304191830
 GameObject:
   m_ObjectHideFlags: 0
