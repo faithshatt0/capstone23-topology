@@ -6,6 +6,9 @@ public class DeviceInfo
     {
     public string hostname = "";
     public string ip_addr = "";
+    public int image_type = 0;
+    public int code = 0;
+    public string notes = "";
     }
 
 public class EthClients
