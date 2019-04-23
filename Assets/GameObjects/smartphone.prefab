@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 3444702451819755810}
   - component: {fileID: 4926590613510815443}
   - component: {fileID: 5751507335166439043}
+  - component: {fileID: 5775162552462899067}
   m_Layer: 5
   m_Name: View Phone
   m_TagString: Untagged
@@ -190,9 +191,37 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4926590613510815443}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5775162552462899067}
+        m_MethodName: ChangeToObjScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &5775162552462899067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053502625201154050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0238e1e1f90a4df2b8843754cb7f76b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  num: 0
+  button: {fileID: 5751507335166439043}
+  m_Scene: viewObject_scene
+  m_MyGameObject: {fileID: 7464038335503800715}
+  text: {fileID: 9113597437072183527}
 --- !u!1 &1261868860097977929
 GameObject:
   m_ObjectHideFlags: 0
