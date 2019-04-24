@@ -39,6 +39,9 @@ public class Eth
     public string target_mac;
     public string hostname;
     public string IP_Address;
+    public int ImageType;
+    public int Code;
+    public string notes;
     }
 
 [System.Serializable]
@@ -49,7 +52,10 @@ public class MeshLink
     public string serial;
     public string hostname;
     public string IP_Address;
-    }
+    public int ImageType;
+    public int Code;
+    public string notes;
+}
 
 [System.Serializable]
 public class Sta
@@ -67,7 +73,10 @@ public class Sta
     public int txpr;
     public string hostname;
     public string IP_Address;
-    }
+    public int ImageType;
+    public int Code;
+    public string notes;
+}
 
 [System.Serializable]
 public class Device

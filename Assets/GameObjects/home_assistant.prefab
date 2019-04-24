@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 4309407595718378483}
   - component: {fileID: 1088838285769352696}
   - component: {fileID: 2458642877605765248}
-  - component: {fileID: 4776917484347795051}
+  - component: {fileID: 244066713842162661}
   m_Layer: 5
   m_Name: View Score
   m_TagString: Untagged
@@ -881,7 +881,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4776917484347795051}
+      - m_Target: {fileID: 244066713842162661}
         m_MethodName: ButtonInteract
         m_Mode: 1
         m_Arguments:
@@ -905,7 +905,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &4776917484347795051
+--- !u!114 &244066713842162661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -921,7 +921,11 @@ MonoBehaviour:
   medium: {fileID: 21300000, guid: 0ccad6b89ba9072478ef4e701c919069, type: 3}
   bad: {fileID: 21300000, guid: d27abb26d3e78ca468ddd8c47a723a35, type: 3}
   empty: {fileID: 21300000, guid: b1e08492365043c4a9922368aa1fbd69, type: 3}
+  red: {fileID: 21300000, guid: 5b81b8d072f7f2248b84d5f331d41b78, type: 3}
+  orange: {fileID: 21300000, guid: 09b3dfa3e84440041aee9e6c8835a599, type: 3}
+  green: {fileID: 21300000, guid: a3f74734ecfd2bf4fa9c5595bd1f3557, type: 3}
   ethernet: {fileID: 21300000, guid: bb793e407ef71704bb3208105ad63a93, type: 3}
+  batteryLow: {fileID: 21300000, guid: 115ac95e58ca4574c9ac70b33a56a049, type: 3}
   score: {fileID: 404360688598763986}
 --- !u!1 &7649354018304191830
 GameObject:
