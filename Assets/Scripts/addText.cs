@@ -34,7 +34,7 @@ public class addText : MonoBehaviour
                     {
                     infoText.text = "IP" + network_devices[i].get_mesh_links()[ii].device_info.ip_addr + "\n" +
                         "Serial: " + network_devices[i].get_serial() + "\n" +
-                        "Is Master: " + network_devices[i].get_isMaster();
+                        "Is Master: " + network_devices[i].get_isMaster() + "\n";
                     }
                 }
             

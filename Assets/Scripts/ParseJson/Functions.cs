@@ -60,6 +60,9 @@ public class Functions
                     temp.target_mac = clients[j].target_mac;
                     temp.device_info.hostname = clients[j].hostname;
                     temp.device_info.ip_addr = clients[j].IP_Address;
+                    temp.device_info.image_type = clients[j].ImageType;
+                    temp.device_info.code = clients[j].Code;
+                    temp.device_info.notes = clients[j].notes;
                     
                     //  - Store current eth_client
                     store_temp.Add(temp);
@@ -106,6 +109,9 @@ public class Functions
                 temp.connected_to.AddRange(mesh_links[i].connected_to);
                 temp.device_info.hostname = mesh_links[i].hostname;
                 temp.device_info.ip_addr = mesh_links[i].IP_Address;
+                temp.device_info.image_type = mesh_links[i].ImageType;
+                temp.device_info.code = mesh_links[i].Code;
+                temp.device_info.notes = mesh_links[i].notes;
                 main_serial = mesh_links[i].serial;
                 index = serials.BinarySearch(main_serial);
 
@@ -157,6 +163,9 @@ public class Functions
                     temp.txpr = curr_client.txpr;
                     temp.device_info.hostname = curr_client.hostname;
                     temp.device_info.ip_addr = curr_client.IP_Address;
+                    temp.device_info.image_type = curr_client.ImageType;
+                    temp.device_info.code = curr_client.Code;
+                    temp.device_info.notes = curr_client.notes;
 
                     // Store
                     network_devices[index].add_sta_clients(temp);
