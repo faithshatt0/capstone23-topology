@@ -22,7 +22,7 @@ public class ViewObjectInfo : MonoBehaviour
         //When the View assistant button is clicked in test_scenee it will load the new scene
 
 
-        header.text = ChangeScene.ret;
+        
 
         //gets each router or extender 
         for (int i = 0; i < network_devices.Count; i++)
@@ -32,6 +32,7 @@ public class ViewObjectInfo : MonoBehaviour
             {
                 if (ChangeScene.ret == network_devices[i].get_serial())
                 {
+                    header.text = network_devices[i].get_mesh_links()[ii].device_info.hostname;
                     infoText.text = "IP: " + network_devices[i].get_mesh_links()[ii].device_info.ip_addr + "\n" +
                         "Serial: " + network_devices[i].get_serial() + "\n" +
                         "Is Master: " + network_devices[i].get_isMaster() + "\n" +
@@ -48,6 +49,7 @@ public class ViewObjectInfo : MonoBehaviour
                 {
                     if (ChangeScene.ret == network_devices[i].get_sta_clients()[ii].target_mac)
                     {
+                        header.text = network_devices[i].get_sta_clients()[ii].device_info.hostname;
                         infoText.text = "IP" + network_devices[i].get_sta_clients()[ii].device_info.ip_addr + "\n"
                             + network_devices[i].get_sta_clients()[ii].target_mac + "\n" +
                             "RXPR: " + network_devices[i].get_sta_clients()[ii].rxpr + "\n" +
@@ -65,6 +67,7 @@ public class ViewObjectInfo : MonoBehaviour
                 {
                     if (ChangeScene.ret == network_devices[i].get_eth_clients()[ii].target_mac)
                     {
+                        header.text = network_devices[i].get_eth_clients()[ii].device_info.hostname;
                         infoText.text = "IP" + network_devices[i].get_eth_clients()[ii].device_info.ip_addr + "\n"
                             + network_devices[i].get_eth_clients()[ii].target_mac + "\n" +
                             "idle: " + network_devices[i].get_eth_clients()[ii].idle + "\n" +
