@@ -604,7 +604,7 @@ GameObject:
   - component: {fileID: 8367346364147363984}
   - component: {fileID: 3939742525782216440}
   m_Layer: 5
-  m_Name: View Assistant
+  m_Name: View Laptop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -736,7 +736,8 @@ MonoBehaviour:
   button: {fileID: 8367346364147363984}
   m_Scene: viewObject_scene
   m_MyGameObject: {fileID: 9080408684677524988}
-  text: {fileID: 5848940852311698220}
+  infoText: {fileID: 7428338632169026352}
+  header: {fileID: 3853759928724599056}
 --- !u!1 &7099493170832997959
 GameObject:
   m_ObjectHideFlags: 0

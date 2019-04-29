@@ -10,51 +10,25 @@ public class ChangeScene : MonoBehaviour
     public Button button;
     public string m_Scene = "viewObject_scene";
     public GameObject m_MyGameObject;
-    public Text text;
-
-    private Button real;
-
-    private void Start()
-    {
-        //Adds a listener to the to the Go Back button
-        real = GetComponent<Button>();
-        real.onClick.AddListener(buttonWasClicked);
-
-    }
-
-    //If Go Back button in viewObject_Scene was clicked then destroy game object and reload test_scene
-    void buttonWasClicked()
-    {
-
-        if (SceneManager.GetSceneAt(0).name.Equals("viewObject_scene"))
-        {
-            Object.Destroy(m_MyGameObject);
-
-            SceneManager.LoadScene("test_scene");
-        }
-    }
-
+    public static string ret;
 
     public void ChangeToObjScene()
-    {
+        {
 
-        //When the View assistant button is clicked in test_scenee it will load the new scene
+
         SceneManager.LoadScene("viewObject_scene");
-
-        var nameOfObj = button.gameObject.transform.parent.parent.name;
-
-        //Change the name of the button
-        text.text = "Go Back";
-
         //Creating a clone of the game object to be used in the new scene
         DontDestroyOnLoad(m_MyGameObject);
-
+        ret = m_MyGameObject.name;
         //Locatin for the game object
-        float xCord = 0;
-        float yCord = 0;
+        float xCord = -5;
+        float yCord = 10;
         float zCord = 15;
         m_MyGameObject.transform.position = new Vector3(xCord, yCord, zCord);
-
-    }
+        m_MyGameObject.transform.Find("Informational Panel").transform.position = new Vector3(0, -10000, 0);
+        m_MyGameObject.transform.Find("RSSI Info").transform.position = new Vector3(0, -10000, 0);
+        }
+    
+   
 
 }

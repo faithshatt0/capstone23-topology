@@ -9,13 +9,11 @@ using UnityEngine;
 
 public class spawner : MonoBehaviour
     {
-    private bool _mouseState;
     public GameObject platform;
     public GameObject router;
     public GameObject phone;
     public GameObject laptop;
     public GameObject assistant;
-    private GameObject target;
     public Vector3 screenSpace;
     public Vector3 offset;
     public Vector3 real_position;

@@ -3,7 +3,15 @@ guid: a0238e1e1f90a4df2b8843754cb7f76b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - button: {instanceID: 0}
+  - m_MyGameObject: {instanceID: 0}
+  - text: {instanceID: 0}
+  - platform: {instanceID: 0}
+  - router: {instanceID: 0}
+  - phone: {instanceID: 0}
+  - laptop: {instanceID: 0}
+  - assistant: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

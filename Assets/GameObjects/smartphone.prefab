@@ -221,7 +221,8 @@ MonoBehaviour:
   button: {fileID: 5751507335166439043}
   m_Scene: viewObject_scene
   m_MyGameObject: {fileID: 7464038335503800715}
-  text: {fileID: 9113597437072183527}
+  infoText: {fileID: 2397498846674778567}
+  header: {fileID: 8303047078084122792}
 --- !u!1 &1261868860097977929
 GameObject:
   m_ObjectHideFlags: 0
