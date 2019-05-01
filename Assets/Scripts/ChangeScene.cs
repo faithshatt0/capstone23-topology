@@ -25,6 +25,7 @@ public class ChangeScene : MonoBehaviour
         float yCord = 10;
         float zCord = 15;
         m_MyGameObject.transform.position = new Vector3(xCord, yCord, zCord);
+        m_MyGameObject.transform.localScale += new Vector3(2, 2, 2);
         m_MyGameObject.transform.Find("Informational Panel").transform.position = new Vector3(0, -10000, 0);
         m_MyGameObject.transform.Find("RSSI Info").transform.position = new Vector3(0, -10000, 0);
         }
