@@ -36,8 +36,8 @@ public class ViewObjectInfo : MonoBehaviour
                     infoText.text = "IP: " + network_devices[i].get_mesh_links()[ii].device_info.ip_addr + "\n" +
                         "Serial: " + network_devices[i].get_serial() + "\n" +
                         "Is Master: " + network_devices[i].get_isMaster() + "\n" +
-                        "Notes: " + network_devices[i].get_mesh_links()[ii].device_info.notes;
-                    Debug.Log(network_devices[i].get_mesh_links()[ii].device_info.notes);
+                        "Notes: \n" + network_devices[i].get_mesh_links()[ii].device_info.notes;
+                   
                 }
             }
 
