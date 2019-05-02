@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 393546469}
   - component: {fileID: 393546468}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Informational Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 786820721}
   - component: {fileID: 786820720}
   m_Layer: 5
-  m_Name: Text
+  m_Name: line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -790,8 +790,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 326}
-  m_SizeDelta: {x: 299, y: 60}
+  m_AnchoredPosition: {x: 20, y: 316}
+  m_SizeDelta: {x: 300, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1745692043
 MonoBehaviour:
@@ -815,7 +815,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1005,7 +1005,7 @@ GameObject:
   - component: {fileID: 2095734510}
   - component: {fileID: 2095734509}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
