@@ -33,10 +33,17 @@ public class ViewObjectInfo : MonoBehaviour
                 if (ChangeScene.ret == network_devices[i].get_serial())
                 {
                     header.text = network_devices[i].get_mesh_links()[ii].device_info.hostname;
-                    infoText.text = "IP: " + network_devices[i].get_mesh_links()[ii].device_info.ip_addr + "\n" +
-                        "Serial: " + network_devices[i].get_serial() + "\n" +
-                        "Is Master: " + network_devices[i].get_isMaster() + "\n" +
-                        "Notes: \n" + network_devices[i].get_mesh_links()[ii].device_info.notes;
+                    infoText.text = "- IP: " + network_devices[i].get_mesh_links()[ii].device_info.ip_addr + "\n" +
+                        "- Serial: " + network_devices[i].get_serial() + "\n" +
+                        "- Is Master: " + network_devices[i].get_isMaster() + "\n" +
+                        "- RSSI's Relative to this Device \n" +
+                        "                 ----------\n"; 
+                        for(int x = 0; x < network_devices[i].get_mesh_links()[ii].connected_to.Count; x++)
+                            {
+                            infoText.text += network_devices[i].get_mesh_links()[ii].connected_to[x].serial + "'s RSSI: " + network_devices[i].get_mesh_links()[ii].connected_to[x].rssi/10 + "\n";
+                            }
+                    infoText.text += "                 ----------\n";
+                        infoText.text += "- Notes: \n" + network_devices[i].get_mesh_links()[ii].device_info.notes;
                    
                 }
             }
@@ -50,11 +57,12 @@ public class ViewObjectInfo : MonoBehaviour
                     if (ChangeScene.ret == network_devices[i].get_sta_clients()[ii].target_mac)
                     {
                         header.text = network_devices[i].get_sta_clients()[ii].device_info.hostname;
-                        infoText.text = "IP: " + network_devices[i].get_sta_clients()[ii].device_info.ip_addr + "\n"
-                            + "Target Mac: " + network_devices[i].get_sta_clients()[ii].target_mac + "\n" +
-                            "RXPR: " + network_devices[i].get_sta_clients()[ii].rxpr + "\n" +
-                            "TXPR: " + network_devices[i].get_sta_clients()[ii].txpr + "\n" +
-                            "Notes: \n" + network_devices[i].get_sta_clients()[ii].device_info.notes;
+                        infoText.text = "- IP: " + network_devices[i].get_sta_clients()[ii].device_info.ip_addr + "\n"
+                            + "- Target Mac: " + network_devices[i].get_sta_clients()[ii].target_mac + "\n" +
+                            "- RSSI: " + network_devices[i].get_sta_clients()[ii].rssi/10 + "\n" + 
+                            "- RXPR: " + network_devices[i].get_sta_clients()[ii].rxpr + "\n" +
+                            "- TXPR: " + network_devices[i].get_sta_clients()[ii].txpr + "\n" +
+                            "- Notes: \n" + network_devices[i].get_sta_clients()[ii].device_info.notes;
                     }
                 }
 
@@ -68,10 +76,10 @@ public class ViewObjectInfo : MonoBehaviour
                     if (ChangeScene.ret == network_devices[i].get_eth_clients()[ii].target_mac)
                     {
                         header.text = network_devices[i].get_eth_clients()[ii].device_info.hostname;
-                        infoText.text = "IP: " + network_devices[i].get_eth_clients()[ii].device_info.ip_addr + "\n"
-                            + "Target Mac: " + network_devices[i].get_eth_clients()[ii].target_mac + "\n" +
-                            "idle: " + network_devices[i].get_eth_clients()[ii].idle + "\n" +
-                            "Notes: \n" + network_devices[i].get_eth_clients()[ii].device_info.notes; ;
+                        infoText.text = "- IP: " + network_devices[i].get_eth_clients()[ii].device_info.ip_addr + "\n"
+                            + "- Target Mac: " + network_devices[i].get_eth_clients()[ii].target_mac + "\n" +
+                            "- idle: " + network_devices[i].get_eth_clients()[ii].idle + "\n" +
+                            "- Notes: \n" + network_devices[i].get_eth_clients()[ii].device_info.notes; ;
                     }
                 }
 
