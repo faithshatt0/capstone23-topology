@@ -16,13 +16,9 @@ public class addText : MonoBehaviour
 
     private void Start()
         {
-        // Initialize JsonMain script and start parsing Json
-        JsonMain jsonMain = new JsonMain();
-        jsonMain.Start();
-
-        // Retrieve network_devices and serials from JsonMain
-        List<Topology> network_devices = jsonMain.GetDevices();
-        List<string> serials = jsonMain.GetSerials();
+        // Retrieve network_devices and serials from spawner.cs
+        List<Topology> network_devices = spawner.network_devices;
+        List<string> serials = spawner.serials;
 
         //gets each router or extender 
         for (int i = 0; i < network_devices.Count; i++)

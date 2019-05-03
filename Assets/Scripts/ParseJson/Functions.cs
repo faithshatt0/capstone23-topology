@@ -17,7 +17,7 @@ public class Functions
         }
 
     // Functions
-    public void OrganizeByRouter(JsonParse loaded_data, ref List<Topology> network_devices, ref List<string> serials, ref int num_devices)
+    public static void OrganizeByRouter(JsonParse loaded_data, ref List<Topology> network_devices, ref List<string> serials, ref int num_devices)
         {
         // Topology Objects
         EthConnection[] eth_clients = loaded_data.eth_clients;
@@ -177,7 +177,7 @@ public class Functions
              }
         }
 
-    public void StoreRouterLocations(LocationsJsonParse location_data, ref List<Topology> network_devices, List<string> serials)
+    public static void StoreRouterLocations(LocationsJsonParse location_data, ref List<Topology> network_devices, List<string> serials)
     {
         float default_y = 1.5f;
         foreach (var data in location_data.serials)
@@ -187,7 +187,7 @@ public class Functions
         }
     }
 
-    public void PrintEthClients(List<EthClients> eth_clients)
+    public static void PrintEthClients(List<EthClients> eth_clients)
         {
         if (eth_clients.Capacity < 1)
             {
@@ -212,7 +212,7 @@ public class Functions
             }
         }
 
-    public void PrintMeshLinks(List<MeshLinks> mesh_links)
+    public static void PrintMeshLinks(List<MeshLinks> mesh_links)
     {
         if (mesh_links.Capacity < 1)
         {
@@ -242,7 +242,7 @@ public class Functions
         }
     }
 
-    public void PrintStaClients(List<StaClients> sta_clients)
+    public static void PrintStaClients(List<StaClients> sta_clients)
         {
         if (sta_clients.Capacity < 1)
         {
@@ -269,7 +269,7 @@ public class Functions
     }
 
     //  - Print Devices connected to each Router/Extender
-    public void PrintTopology(List<Topology> network_devices)
+    public static void PrintTopology(List<Topology> network_devices)
     {
         int counter = 1;
         foreach (var dev in network_devices)
@@ -287,7 +287,7 @@ public class Functions
     }
 
     // Used to ensure Json Values are stored correctly into 'loaded_data' in JsonMain.cs
-    public void PrintJsonParsing(JsonParse loaded_data)
+    public static void PrintJsonParsing(JsonParse loaded_data)
         {
         Debug.Log("--- Printing out Topology values ---");
 

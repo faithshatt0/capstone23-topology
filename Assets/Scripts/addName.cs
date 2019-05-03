@@ -16,13 +16,9 @@ public class addName : MonoBehaviour
         }
     void Start()
         {
-        // Initialize JsonMain script and start parsing Json
-        JsonMain jsonMain = new JsonMain();
-        jsonMain.Start();
-
         // Retrieve network_devices and serials from JsonMain
-        List<Topology> network_devices = jsonMain.GetDevices();
-        List<string> serials = jsonMain.GetSerials();
+        List<Topology> network_devices = spawner.network_devices;
+        List<string> serials = spawner.serials;
 
         
         //gets each router or extender 
