@@ -186,7 +186,6 @@ public class moveRouter : MonoBehaviour
 
     
     // Firebase Requests
-    //    - Note: MUST separate requests. Cannot have .Delete() w/ .Post() under the same function.
     private void DeleteToDatabase()
     {
         Debug.Log("Deleted");
