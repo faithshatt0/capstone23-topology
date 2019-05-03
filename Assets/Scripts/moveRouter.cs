@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using System.IO;
 using UnityEngine.SceneManagement;
+using Proyecto26;
 
 /// moveRouter.cs
 /// This script is to move the routers because these objects will actually move.
@@ -143,7 +144,6 @@ public class moveRouter : MonoBehaviour
                     }
 
                 string json = JsonUtility.ToJson(location_data);
-                File.WriteAllText(locations_file_path, json);
 
                 //gets the locations of the object you touched so you can move the devices its connected to with it
                 float xx_router = transform.position.x;
@@ -167,6 +167,11 @@ public class moveRouter : MonoBehaviour
                     eth.transform.position = new Vector3(xx_router, yy_router, zz_router + 10); //this changes the location of the devices that the router is connected to --eth_clients
                     xx_router += 10;
                     }
+
+                // Database Post Request
+                //  - Saves Locations to Firebase
+                DeleteToDatabase();
+                PostToDatabase(location_data);
                 }
         }
         else
@@ -174,5 +179,15 @@ public class moveRouter : MonoBehaviour
             //rotating here
             }
            
+    }
+
+    private void DeleteToDatabase()
+    {
+        RestClient.Delete("https://capstone-topology.firebaseio.com/locations.json");
+    }
+    
+    private void PostToDatabase(LocationsJsonParse router_locations)
+    {
+        RestClient.Post("https://capstone-topology.firebaseio.com/locations.json", router_locations);
     }
 }
