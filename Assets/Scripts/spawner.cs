@@ -29,13 +29,18 @@ public class spawner : MonoBehaviour
     public static int num_devices = 0;
     public static LocationsJsonParse location_data;
 
+    private string topology_json = "";
+    private string locations_json = "";
+    
     // Start is called once at the beginning of the program
     void Start()
         {
         // 1. Read Topology Data
         //    - Then, Locations Data
-        //FirebaseGetTopology();
+        //FirebaseTesting();
+        FirebaseGetData();
 
+        /*
         string file_path = Application.dataPath + "/JsonFiles/json2.json";
         string json = File.ReadAllText(file_path);
         JsonParse topology_data = JsonUtility.FromJson<JsonParse>(json);
@@ -55,28 +60,73 @@ public class spawner : MonoBehaviour
         StoreRouterLocations(location_data);
         
         SpawnObjects();
+        */
         }
     
+    
+    void FirebaseTesting()
+    {
+        string folder = "topology";
+
+        Debug.Log("Testing");
+        
+        RestClient.Get<CapstoneTopology>("https://capstone-topology.firebaseio.com/.json").Then(response =>
+        {
+            Debug.Log(response);
+            topology_json = JsonUtility.ToJson(response.topology);
+            locations_json = JsonUtility.ToJson(response.locations);
+            Debug.Log(topology_json);
+            Debug.Log(locations_json);
+        });
+    }
+
     // Firebase Request
     //    - GET
+    void FirebaseGetData()
+    {
+        RestClient.Get<CapstoneTopology>("https://capstone-topology.firebaseio.com/.json").Then(response =>
+        {
+            Debug.Log("Got Response");
+            // 1. Store JSON values into variables
+            //    - Format is in JsonParse found in ParseJson/JsonParse.cs
+            string topology_json = JsonUtility.ToJson(response.topology);
+            string locations_json = JsonUtility.ToJson(response.locations);
+
+            string file_path = Application.dataPath + "/JsonFiles/json2.json";
+            string json = File.ReadAllText(file_path);
+            Debug.Log("OG: " + json + "\n\nDB: " + topology_json + "\n\n");
+
+            JsonParse topology_data = JsonUtility.FromJson<JsonParse>(json);
+
+            // 3. Store devices based on their respective Router/Extender
+            OrganizeByRouter(topology_data);
+            
+            // 4. Store JSON values into variables
+            //    - Format is in LocationsJsonParse found in ParseJson/JsonParse.cs
+            file_path = Application.dataPath + "/JsonFiles/locations.json";
+            json = File.ReadAllText(file_path);
+            Debug.Log("OG: " + json + "\n\nDB: " + locations_json + "\n\n");
+            LocationsJsonParse locations_data = JsonUtility.FromJson<LocationsJsonParse>(json);
+
+            // 5. Store device locations by serial #
+            StoreRouterLocations(locations_data);
+        
+            Debug.Log(network_devices.Count);
+        
+            // 6.
+            SpawnObjects();
+        });
+    }
+    
     void FirebaseGetTopology()
     {
         string folder = "topology";
 
-        RestClient.Get<JsonParse>("https://capstone-topology.firebaseio.com/" + folder + ".json").Then(response =>
+        RestClient.Get<JsonParse>("https://capstone-topology.firebaseio.com/.json").Then(response =>
         {
             // 1. Store JSON values into variables
             //    - Format is in JsonParse found in ParseJson/JsonParse.cs
-            string json = JsonUtility.ToJson(response);
-            JsonParse loaded_data = JsonUtility.FromJson<JsonParse>(json);
-
-            Debug.Log(json);
-
-            // 2. Store devices based on their respective Router/Extender
-            OrganizeByRouter(loaded_data);
-            
-            // 3. Read in Locations of Router/Extenders
-            //    - Note: Getting the locations is dependent on getting the topology first.
+            topology_json = JsonUtility.ToJson(response);
             FirebaseGetLocations();
         });
     }
@@ -85,20 +135,39 @@ public class spawner : MonoBehaviour
     {
         string folder = "locations";
 
-        RestClient.Get<LocationsJsonParse>("https://capstone-topology.firebaseio.com/" + folder + ".json").Then(response =>
+        RestClient.Get<FirebaseLocations>("https://capstone-topology.firebaseio.com/" + folder + ".json").Then(response =>
         {
-            // 4. Store JSON values into variables
-            //    - Format is in LocationsJsonParse found in ParseJson/JsonParse.cs
-            string json = JsonUtility.ToJson(response);
-            location_data = response;
-            Debug.Log(json);
-
-            // 5. Store device locations by serial #
-            StoreRouterLocations(response);
+            // 2. Read in Locations of Router/Extenders
+            //    - Note: Getting the locations is dependent on getting the topology first.
+            locations_json = JsonUtility.ToJson(response);
+            location_data = response.locations;
             
-            // 6.
-            SpawnObjects();
+            Debug.Log(locations_json);
+            
+            StoreData();
         });
+    }
+
+    void StoreData()
+    {
+        Debug.Log(topology_json);
+        Debug.Log(locations_json);
+        JsonParse topology_data = JsonUtility.FromJson<JsonParse>(topology_json);
+
+        // 3. Store devices based on their respective Router/Extender
+        OrganizeByRouter(topology_data);
+            
+        // 4. Store JSON values into variables
+        //    - Format is in LocationsJsonParse found in ParseJson/JsonParse.cs
+        LocationsJsonParse locations_data = JsonUtility.FromJson<LocationsJsonParse>(locations_json);
+
+        // 5. Store device locations by serial #
+        StoreRouterLocations(locations_data);
+        
+        Debug.Log(network_devices.Count);
+        
+        // 6.
+        SpawnObjects();
     }
     
     // References Functions in 'Functions.cs'
@@ -114,6 +183,7 @@ public class spawner : MonoBehaviour
 
     void SpawnObjects()
     {
+        Debug.Log("Spawning Objects!");
         // Template transform variable for GameObject positioning and rotation
         Transform objTrans = new GameObject().transform;
 
@@ -127,10 +197,12 @@ public class spawner : MonoBehaviour
         System.Random rnd = new System.Random();
         var rndNum = 0;
 
+        Debug.Log("Network Devices Size: " + network_devices.Count);
 
         //gets each router or extender
         for (int i = 0; i < network_devices.Count; i++)
             {
+                Debug.Log("Sta Client Size " + i + ": " + network_devices[i].get_sta_clients().Count);
             //Routers or extenders (not sure if extenders look different physically)
             //To get location
             //location_data.serials[i].x;

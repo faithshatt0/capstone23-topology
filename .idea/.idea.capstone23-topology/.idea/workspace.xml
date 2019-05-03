@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c575d19-92a0-483e-9381-3e4de0dd5baf" name="Default Changelist" comment="" />
+    <list default="true" id="6c575d19-92a0-483e-9381-3e4de0dd5baf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.capstone23-topology/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.capstone23-topology/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ParseJson/JsonParse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ParseJson/JsonParse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/moveRouter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/moveRouter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/spawner.cs" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,43 +18,43 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/moveRouter.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="172" column="21" lean-forward="true" selection-start-line="172" selection-start-column="21" selection-end-line="172" selection-end-column="21" />
+            <state relative-caret-position="364">
+              <caret line="195" column="95" lean-forward="true" selection-start-line="195" selection-start-column="95" selection-end-line="195" selection-end-column="95" />
               <folding>
-                <marker date="1556873369953" expanded="true" signature="6:184" ph="..." />
-                <marker date="1556873369953" expanded="true" signature="186:289" ph="/// moveRouter.cs ... " />
-                <marker date="1556873369953" expanded="true" signature="329:7428" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="527:621" ph="/* Initialize JsonMain script and start parsing Json ... */" />
-                <marker date="1556873369953" expanded="true" signature="1055:1831" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="1131:1825" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="1182:1682" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="1265:1668" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="1725:1814" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="1902:2579" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="2273:2556" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="2362:2542" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="2443:2524" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="2636:3359" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="2715:3268" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="3036:3164" ph="/* Database Overwrite: Locations ... */" />
-                <marker date="1556873369953" expanded="true" signature="3190:3254" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="3281:3341" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="3420:3848" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="3500:3766" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="3779:3838" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="3914:7013" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="3994:6926" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="4080:4167" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="4184:6916" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="4350:4453" ph="/* save location here ... */" />
-                <marker date="1556873369953" expanded="true" signature="4520:4930" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="5455:5698" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="5817:6223" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="6341:6744" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="6762:6851" ph="/* Database Overwrite: Locations ... */" />
-                <marker date="1556873369953" expanded="true" signature="6939:6995" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="7080:7209" ph="{...}" />
-                <marker date="1556873369953" expanded="true" signature="7283:7426" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="6:184" ph="..." />
+                <marker date="1556876933077" expanded="true" signature="186:289" ph="/// moveRouter.cs ... " />
+                <marker date="1556876933077" expanded="true" signature="329:7367" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="527:621" ph="/* Initialize JsonMain script and start parsing Json ... */" />
+                <marker date="1556876933077" expanded="true" signature="1055:1831" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="1131:1825" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="1182:1682" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="1265:1668" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="1725:1814" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="1902:2579" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="2273:2556" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="2362:2542" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="2443:2524" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="2636:3359" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="2715:3268" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="3036:3164" ph="/* Database Overwrite: Locations ... */" />
+                <marker date="1556876933077" expanded="true" signature="3190:3254" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="3281:3341" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="3420:3848" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="3500:3766" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="3779:3838" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="3914:7013" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="3994:6926" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="4080:4167" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="4184:6916" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="4350:4453" ph="/* save location here ... */" />
+                <marker date="1556876933077" expanded="true" signature="4520:4930" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="5455:5698" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="5817:6223" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="6341:6744" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="6762:6851" ph="/* Database Overwrite: Locations ... */" />
+                <marker date="1556876933077" expanded="true" signature="6939:6995" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="7080:7178" ph="{...}" />
+                <marker date="1556876933077" expanded="true" signature="7252:7365" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -58,45 +63,87 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/spawner.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="25" column="62" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
+            <state relative-caret-position="274">
+              <caret line="107" column="76" selection-start-line="107" selection-start-column="76" selection-end-line="107" selection-end-column="76" />
               <folding>
-                <marker date="1556871401529" expanded="true" signature="6:113" ph="..." />
-                <marker date="1556871401529" expanded="true" signature="115:265" ph="/// Spawner.cs ... " />
-                <marker date="1556871401529" expanded="true" signature="303:14741" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="589:792" ph="/* Main Objects ... */" />
-                <marker date="1556871401529" expanded="true" signature="1095:1917" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="1114:1208" ph="/* 1. Read Topology Data ... */" />
-                <marker date="1556871401529" expanded="true" signature="1927:1962" ph="/* Firebase Request ... */" />
-                <marker date="1556871401529" expanded="true" signature="1993:2781" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="2160:2773" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="2174:2287" ph="/* 1. Store JSON values into variables ... */" />
-                <marker date="1556871401529" expanded="true" signature="2592:2727" ph="/* 3. Read in Locations of Router/Extenders ... */" />
-                <marker date="1556871401529" expanded="true" signature="2814:3425" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="2991:3417" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="3005:3127" ph="/* 4. Store JSON values into variables ... */" />
-                <marker date="1556871401529" expanded="true" signature="3525:3637" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="3702:3799" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="3824:14739" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="4435:14733" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="4462:4802" ph="/* Routers or extenders (not sure if extenders look different physically) ... */" />
-                <marker date="1556871401529" expanded="true" signature="5002:5470" ph="/* For some reason it spawns it backwards sometimes ... */" />
-                <marker date="1556871401529" expanded="true" signature="5797:14719" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="6044:6226" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="6247:6333" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="6787:14701" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="7044:11114" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="7327:7679" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="8039:8504" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="8872:9236" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="9352:11088" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="9479:11058" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="11183:14644" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="11463:11740" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="12002:12392" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="12756:13045" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="13155:14618" ph="{...}" />
-                <marker date="1556871401529" expanded="true" signature="13282:14588" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="6:113" ph="..." />
+                <marker date="1556879411176" expanded="true" signature="115:265" ph="/// Spawner.cs ... " />
+                <marker date="1556879411176" expanded="true" signature="303:17402" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="589:792" ph="/* Main Objects ... */" />
+                <marker date="1556879411176" expanded="true" signature="1179:2046" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="1198:1288" ph="/* 1. Read Topology Data ... */" />
+                <marker date="1556879411176" expanded="true" signature="1325:2036" ph="/* string file_path = Application.dataPath + &quot;/JsonFiles/json2.json&quot;; ... */" />
+                <marker date="1556879411176" expanded="true" signature="2083:2547" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="2282:2539" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="2553:2588" ph="/* Firebase Request ... */" />
+                <marker date="1556879411176" expanded="true" signature="2615:4140" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="2738:4132" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="2791:2904" ph="/* 1. Store JSON values into variables ... */" />
+                <marker date="1556879411176" expanded="true" signature="3489:3611" ph="/* 4. Store JSON values into variables ... */" />
+                <marker date="1556879411176" expanded="true" signature="4176:4568" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="4329:4560" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="4343:4456" ph="/* 1. Store JSON values into variables ... */" />
+                <marker date="1556879411176" expanded="true" signature="4601:5141" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="4777:5133" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="4791:4926" ph="/* 2. Read in Locations of Router/Extenders ... */" />
+                <marker date="1556879411176" expanded="true" signature="5163:5874" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="5454:5572" ph="/* 4. Store JSON values into variables ... */" />
+                <marker date="1556879411176" expanded="true" signature="5974:6086" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="6151:6248" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="6273:17400" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="6993:17394" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="7123:7463" ph="/* Routers or extenders (not sure if extenders look different physically) ... */" />
+                <marker date="1556879411176" expanded="true" signature="7663:8131" ph="/* For some reason it spawns it backwards sometimes ... */" />
+                <marker date="1556879411176" expanded="true" signature="8458:17380" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="8705:8887" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="8908:8994" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="9448:17362" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="9705:13775" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="9988:10340" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="10700:11165" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="11533:11897" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="12013:13749" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="12140:13719" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="13844:17305" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="14124:14401" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="14663:15053" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="15417:15706" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="15816:17279" ph="{...}" />
+                <marker date="1556879411176" expanded="true" signature="15943:17249" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/JsonFiles/locations.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="27" lean-forward="true" selection-end-column="231" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/ParseJson/JsonParse.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="422">
+              <caret line="123" column="1" selection-start-line="123" selection-start-column="1" selection-end-line="123" selection-end-column="1" />
+              <folding>
+                <marker date="1556877434067" expanded="true" signature="0:116" ph="/* File used when calling ... */" />
+                <marker date="1556877434067" expanded="true" signature="162:348" ph="{...}" />
+                <marker date="1556877434067" expanded="true" signature="562:624" ph="{...}" />
+                <marker date="1556877434067" expanded="true" signature="698:1099" ph="{...}" />
+                <marker date="1556877434067" expanded="true" signature="709:811" ph="/* Example Values ... */" />
+                <marker date="1556877434067" expanded="true" signature="1144:1368" ph="{...}" />
+                <marker date="1556877434067" expanded="true" signature="1408:1780" ph="{...}" />
+                <marker date="1556877434067" expanded="true" signature="1419:1555" ph="/* ` ... */" />
+                <marker date="1556877434067" expanded="true" signature="1823:1882" ph="{...}" />
+                <marker date="1556877434067" expanded="true" signature="1960:1993" ph="{...}" />
+                <marker date="1556877434067" expanded="true" signature="2036:2126" ph="{...}" />
+                <marker date="1556877434067" expanded="true" signature="2175:2203" ph="{...}" />
+                <marker date="1556877434067" expanded="true" signature="2286:2362" ph="{...}" />
+                <marker date="1556877434067" expanded="true" signature="2445:2490" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -110,6 +157,7 @@
       <find>locations_file</find>
       <find>9.1</find>
       <find>network_devices</find>
+      <find>getlocations</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,13 +178,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/ParseJson/JsonMain.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/spawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/connectionStatus.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/addText.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/addName.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ViewObjectInfo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ParseJson/Functions.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/moveRouter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ParseJson/JsonParse.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/spawner.cs" />
       </list>
     </option>
   </component>
@@ -158,6 +207,11 @@
             <path>
               <item name="" type="e068e287:UnityExplorerRootNode" />
               <item name="Assets" type="8711f2a6:AssetsRoot" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="JsonFiles" type="1045f7f1:UnityExplorerNode" />
             </path>
             <path>
               <item name="" type="e068e287:UnityExplorerRootNode" />
@@ -229,12 +283,12 @@
       <updated>1556864359707</updated>
       <workItem from="1556864362033" duration="101000" />
       <workItem from="1556864566379" duration="1206000" />
-      <workItem from="1556866031061" duration="6956000" />
+      <workItem from="1556866031061" duration="12529000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8263000" />
+    <option name="totallyTimeSpent" value="13836000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -312,33 +366,6 @@
             <marker date="1556838418448" expanded="true" signature="2740:2815" ph="{...}" />
             <marker date="1556838418448" expanded="true" signature="2828:2888" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/ParseJson/JsonParse.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <marker date="1556134969731" expanded="true" signature="0:116" ph="/* File used when calling ... */" />
-            <marker date="1556134969731" expanded="true" signature="162:348" ph="{...}" />
-            <marker date="1556134969731" expanded="true" signature="562:624" ph="{...}" />
-            <marker date="1556134969731" expanded="true" signature="698:1099" ph="{...}" />
-            <marker date="1556134969731" expanded="true" signature="709:811" ph="/* Example Values ... */" />
-            <marker date="1556134969731" expanded="true" signature="1144:1368" ph="{...}" />
-            <marker date="1556134969731" expanded="true" signature="1408:1780" ph="{...}" />
-            <marker date="1556134969731" expanded="true" signature="1419:1555" ph="/* ` ... */" />
-            <marker date="1556134969731" expanded="true" signature="1823:1882" ph="{...}" />
-            <marker date="1556134969731" expanded="true" signature="1960:1993" ph="{...}" />
-            <marker date="1556134969731" expanded="true" signature="2036:2126" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/JsonFiles/locations.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" lean-forward="true" selection-end-column="231" />
         </state>
       </provider>
     </entry>
@@ -541,88 +568,126 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/moveRouter.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="172" column="21" lean-forward="true" selection-start-line="172" selection-start-column="21" selection-end-line="172" selection-end-column="21" />
+        <state relative-caret-position="364">
+          <caret line="195" column="95" lean-forward="true" selection-start-line="195" selection-start-column="95" selection-end-line="195" selection-end-column="95" />
           <folding>
-            <marker date="1556873369953" expanded="true" signature="6:184" ph="..." />
-            <marker date="1556873369953" expanded="true" signature="186:289" ph="/// moveRouter.cs ... " />
-            <marker date="1556873369953" expanded="true" signature="329:7428" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="527:621" ph="/* Initialize JsonMain script and start parsing Json ... */" />
-            <marker date="1556873369953" expanded="true" signature="1055:1831" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="1131:1825" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="1182:1682" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="1265:1668" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="1725:1814" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="1902:2579" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="2273:2556" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="2362:2542" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="2443:2524" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="2636:3359" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="2715:3268" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="3036:3164" ph="/* Database Overwrite: Locations ... */" />
-            <marker date="1556873369953" expanded="true" signature="3190:3254" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="3281:3341" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="3420:3848" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="3500:3766" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="3779:3838" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="3914:7013" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="3994:6926" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="4080:4167" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="4184:6916" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="4350:4453" ph="/* save location here ... */" />
-            <marker date="1556873369953" expanded="true" signature="4520:4930" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="5455:5698" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="5817:6223" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="6341:6744" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="6762:6851" ph="/* Database Overwrite: Locations ... */" />
-            <marker date="1556873369953" expanded="true" signature="6939:6995" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="7080:7209" ph="{...}" />
-            <marker date="1556873369953" expanded="true" signature="7283:7426" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="6:184" ph="..." />
+            <marker date="1556876933077" expanded="true" signature="186:289" ph="/// moveRouter.cs ... " />
+            <marker date="1556876933077" expanded="true" signature="329:7367" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="527:621" ph="/* Initialize JsonMain script and start parsing Json ... */" />
+            <marker date="1556876933077" expanded="true" signature="1055:1831" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="1131:1825" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="1182:1682" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="1265:1668" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="1725:1814" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="1902:2579" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="2273:2556" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="2362:2542" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="2443:2524" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="2636:3359" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="2715:3268" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="3036:3164" ph="/* Database Overwrite: Locations ... */" />
+            <marker date="1556876933077" expanded="true" signature="3190:3254" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="3281:3341" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="3420:3848" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="3500:3766" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="3779:3838" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="3914:7013" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="3994:6926" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="4080:4167" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="4184:6916" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="4350:4453" ph="/* save location here ... */" />
+            <marker date="1556876933077" expanded="true" signature="4520:4930" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="5455:5698" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="5817:6223" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="6341:6744" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="6762:6851" ph="/* Database Overwrite: Locations ... */" />
+            <marker date="1556876933077" expanded="true" signature="6939:6995" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="7080:7178" ph="{...}" />
+            <marker date="1556876933077" expanded="true" signature="7252:7365" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/ParseJson/JsonParse.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="123" column="1" selection-start-line="123" selection-start-column="1" selection-end-line="123" selection-end-column="1" />
+          <folding>
+            <marker date="1556877434067" expanded="true" signature="0:116" ph="/* File used when calling ... */" />
+            <marker date="1556877434067" expanded="true" signature="162:348" ph="{...}" />
+            <marker date="1556877434067" expanded="true" signature="562:624" ph="{...}" />
+            <marker date="1556877434067" expanded="true" signature="698:1099" ph="{...}" />
+            <marker date="1556877434067" expanded="true" signature="709:811" ph="/* Example Values ... */" />
+            <marker date="1556877434067" expanded="true" signature="1144:1368" ph="{...}" />
+            <marker date="1556877434067" expanded="true" signature="1408:1780" ph="{...}" />
+            <marker date="1556877434067" expanded="true" signature="1419:1555" ph="/* ` ... */" />
+            <marker date="1556877434067" expanded="true" signature="1823:1882" ph="{...}" />
+            <marker date="1556877434067" expanded="true" signature="1960:1993" ph="{...}" />
+            <marker date="1556877434067" expanded="true" signature="2036:2126" ph="{...}" />
+            <marker date="1556877434067" expanded="true" signature="2175:2203" ph="{...}" />
+            <marker date="1556877434067" expanded="true" signature="2286:2362" ph="{...}" />
+            <marker date="1556877434067" expanded="true" signature="2445:2490" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/JsonFiles/locations.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="27" lean-forward="true" selection-end-column="231" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/spawner.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="25" column="62" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
+        <state relative-caret-position="274">
+          <caret line="107" column="76" selection-start-line="107" selection-start-column="76" selection-end-line="107" selection-end-column="76" />
           <folding>
-            <marker date="1556871401529" expanded="true" signature="6:113" ph="..." />
-            <marker date="1556871401529" expanded="true" signature="115:265" ph="/// Spawner.cs ... " />
-            <marker date="1556871401529" expanded="true" signature="303:14741" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="589:792" ph="/* Main Objects ... */" />
-            <marker date="1556871401529" expanded="true" signature="1095:1917" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="1114:1208" ph="/* 1. Read Topology Data ... */" />
-            <marker date="1556871401529" expanded="true" signature="1927:1962" ph="/* Firebase Request ... */" />
-            <marker date="1556871401529" expanded="true" signature="1993:2781" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="2160:2773" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="2174:2287" ph="/* 1. Store JSON values into variables ... */" />
-            <marker date="1556871401529" expanded="true" signature="2592:2727" ph="/* 3. Read in Locations of Router/Extenders ... */" />
-            <marker date="1556871401529" expanded="true" signature="2814:3425" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="2991:3417" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="3005:3127" ph="/* 4. Store JSON values into variables ... */" />
-            <marker date="1556871401529" expanded="true" signature="3525:3637" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="3702:3799" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="3824:14739" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="4435:14733" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="4462:4802" ph="/* Routers or extenders (not sure if extenders look different physically) ... */" />
-            <marker date="1556871401529" expanded="true" signature="5002:5470" ph="/* For some reason it spawns it backwards sometimes ... */" />
-            <marker date="1556871401529" expanded="true" signature="5797:14719" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="6044:6226" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="6247:6333" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="6787:14701" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="7044:11114" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="7327:7679" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="8039:8504" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="8872:9236" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="9352:11088" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="9479:11058" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="11183:14644" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="11463:11740" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="12002:12392" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="12756:13045" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="13155:14618" ph="{...}" />
-            <marker date="1556871401529" expanded="true" signature="13282:14588" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="6:113" ph="..." />
+            <marker date="1556879411176" expanded="true" signature="115:265" ph="/// Spawner.cs ... " />
+            <marker date="1556879411176" expanded="true" signature="303:17402" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="589:792" ph="/* Main Objects ... */" />
+            <marker date="1556879411176" expanded="true" signature="1179:2046" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="1198:1288" ph="/* 1. Read Topology Data ... */" />
+            <marker date="1556879411176" expanded="true" signature="1325:2036" ph="/* string file_path = Application.dataPath + &quot;/JsonFiles/json2.json&quot;; ... */" />
+            <marker date="1556879411176" expanded="true" signature="2083:2547" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="2282:2539" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="2553:2588" ph="/* Firebase Request ... */" />
+            <marker date="1556879411176" expanded="true" signature="2615:4140" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="2738:4132" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="2791:2904" ph="/* 1. Store JSON values into variables ... */" />
+            <marker date="1556879411176" expanded="true" signature="3489:3611" ph="/* 4. Store JSON values into variables ... */" />
+            <marker date="1556879411176" expanded="true" signature="4176:4568" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="4329:4560" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="4343:4456" ph="/* 1. Store JSON values into variables ... */" />
+            <marker date="1556879411176" expanded="true" signature="4601:5141" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="4777:5133" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="4791:4926" ph="/* 2. Read in Locations of Router/Extenders ... */" />
+            <marker date="1556879411176" expanded="true" signature="5163:5874" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="5454:5572" ph="/* 4. Store JSON values into variables ... */" />
+            <marker date="1556879411176" expanded="true" signature="5974:6086" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="6151:6248" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="6273:17400" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="6993:17394" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="7123:7463" ph="/* Routers or extenders (not sure if extenders look different physically) ... */" />
+            <marker date="1556879411176" expanded="true" signature="7663:8131" ph="/* For some reason it spawns it backwards sometimes ... */" />
+            <marker date="1556879411176" expanded="true" signature="8458:17380" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="8705:8887" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="8908:8994" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="9448:17362" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="9705:13775" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="9988:10340" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="10700:11165" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="11533:11897" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="12013:13749" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="12140:13719" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="13844:17305" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="14124:14401" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="14663:15053" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="15417:15706" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="15816:17279" ph="{...}" />
+            <marker date="1556879411176" expanded="true" signature="15943:17249" ph="{...}" />
           </folding>
         </state>
       </provider>

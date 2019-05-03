@@ -100,3 +100,25 @@ public class Serial
     public float y;
     public float z;
 }
+
+[System.Serializable]
+public class GetLocations
+{
+    public string test;
+}
+
+
+// Used for Firebase Parsing
+[System.Serializable]
+public class CapstoneTopology
+{
+    public LocationsJsonParse locations;
+    public JsonParse topology;
+}
+
+// Used for Firebase Parsing
+[System.Serializable]
+public class FirebaseLocations
+{
+    public LocationsJsonParse locations;
+}
