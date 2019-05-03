@@ -188,13 +188,11 @@ public class moveRouter : MonoBehaviour
     // Firebase Requests
     private void DeleteToDatabase()
     {
-        Debug.Log("Deleted");
         RestClient.Delete("https://capstone-topology.firebaseio.com/locations.json/");
     }
     
     private void PostToDatabase(LocationsJsonParse router_locations)
     {
-        Debug.Log("Posted");
         RestClient.Post("https://capstone-topology.firebaseio.com/locations.json", router_locations);
     }
 }
