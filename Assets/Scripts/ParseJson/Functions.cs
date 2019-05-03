@@ -17,7 +17,7 @@ public class Functions
         }
 
     // Functions
-    public void OrganizeByRouter(JsonParse loaded_data, ref List<Topology> network_devices, ref List<string> serials, ref int num_devices)
+    public static void OrganizeByRouter(JsonParse loaded_data, ref List<Topology> network_devices, ref List<string> serials, ref int num_devices)
         {
         // Topology Objects
         EthConnection[] eth_clients = loaded_data.eth_clients;
@@ -177,7 +177,7 @@ public class Functions
              }
         }
 
-    public void StoreRouterLocations(LocationsJsonParse location_data, ref List<Topology> network_devices, List<string> serials)
+    public static void StoreRouterLocations(LocationsJsonParse location_data, ref List<Topology> network_devices, List<string> serials)
     {
         float default_y = 1.5f;
         foreach (var data in location_data.serials)

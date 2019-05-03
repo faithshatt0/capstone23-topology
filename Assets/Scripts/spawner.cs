@@ -2,6 +2,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Proyecto26;
 
 /// Spawner.cs
 /// This script spawns the objects on the board. It uses the data from the parsing json files to spawn the number of objects for it
@@ -18,24 +19,101 @@ public class spawner : MonoBehaviour
     public Vector3 offset;
     public Vector3 real_position;
     public GameObject sta;
-    LocationsJsonParse location_data;
 
-    List<string> serials = new List<string>();
-    string locations_file_path;
+    // Main Objects
+    //  - network_devices   = Devices connected to the Router/Extender
+    //  - serials           = Router references
+    //  - num_devices       = clients[] in eth_clients & sta_clients
+    public static List<Topology> network_devices = new List<Topology>();
+    public static List<string> serials = new List<string>();
+    public static int num_devices = 0;
+    public static LocationsJsonParse location_data;
 
     // Start is called once at the beginning of the program
     void Start()
         {
-        // Initialize JsonMain script and start parsing Json
-        JsonMain jsonMain = new JsonMain();
-        jsonMain.Start();
+        // 1. Read Topology Data
+        //    - Then, Locations Data
+        //FirebaseGetTopology();
 
-        // Retrieve network_devices and serials from JsonMain
-        List<Topology> network_devices = jsonMain.GetDevices();
-        serials = jsonMain.GetSerials();
-        location_data = jsonMain.GetLocationData();
-        locations_file_path = jsonMain.GetLocationsFilePath();
+        string file_path = Application.dataPath + "/JsonFiles/json2.json";
+        string json = File.ReadAllText(file_path);
+        JsonParse topology_data = JsonUtility.FromJson<JsonParse>(json);
+        
+        Debug.Log(json);
+        
+        OrganizeByRouter(topology_data);
+        
+        // 3. Read Router/Extenders locations JSON file
+        file_path = Application.dataPath + "/JsonFiles/locations.json";
+        json = File.ReadAllText(file_path);
+        location_data = JsonUtility.FromJson<LocationsJsonParse>(json);
 
+        Debug.Log(json);
+        
+        // 4. Store device locations by serial #
+        StoreRouterLocations(location_data);
+        
+        SpawnObjects();
+        }
+    
+    // Firebase Request
+    //    - GET
+    void FirebaseGetTopology()
+    {
+        string folder = "topology";
+
+        RestClient.Get<JsonParse>("https://capstone-topology.firebaseio.com/" + folder + ".json").Then(response =>
+        {
+            // 1. Store JSON values into variables
+            //    - Format is in JsonParse found in ParseJson/JsonParse.cs
+            string json = JsonUtility.ToJson(response);
+            JsonParse loaded_data = JsonUtility.FromJson<JsonParse>(json);
+
+            Debug.Log(json);
+
+            // 2. Store devices based on their respective Router/Extender
+            OrganizeByRouter(loaded_data);
+            
+            // 3. Read in Locations of Router/Extenders
+            //    - Note: Getting the locations is dependent on getting the topology first.
+            FirebaseGetLocations();
+        });
+    }
+
+    void FirebaseGetLocations()
+    {
+        string folder = "locations";
+
+        RestClient.Get<LocationsJsonParse>("https://capstone-topology.firebaseio.com/" + folder + ".json").Then(response =>
+        {
+            // 4. Store JSON values into variables
+            //    - Format is in LocationsJsonParse found in ParseJson/JsonParse.cs
+            string json = JsonUtility.ToJson(response);
+            location_data = response;
+            Debug.Log(json);
+
+            // 5. Store device locations by serial #
+            StoreRouterLocations(response);
+            
+            // 6.
+            SpawnObjects();
+        });
+    }
+    
+    // References Functions in 'Functions.cs'
+    void OrganizeByRouter(JsonParse loaded_data)
+    {
+        Functions.OrganizeByRouter(loaded_data, ref network_devices, ref serials, ref num_devices);
+    }
+
+    void StoreRouterLocations(LocationsJsonParse location_data)
+    {
+        Functions.StoreRouterLocations(location_data, ref network_devices, serials);
+    }
+
+    void SpawnObjects()
+    {
         // Template transform variable for GameObject positioning and rotation
         Transform objTrans = new GameObject().transform;
 
@@ -205,5 +283,5 @@ public class spawner : MonoBehaviour
                     }
                 }
             }
-        }
     }
+}

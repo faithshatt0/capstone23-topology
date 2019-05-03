@@ -20,12 +20,12 @@ public class moveRouter : MonoBehaviour
     
     Vector3 prevLocation; //location so object doesn't move unless toggled to where it will
     // Initialize JsonMain script and start parsing Json
-    JsonMain jsonMain = new JsonMain();
+    //JsonMain jsonMain = new JsonMain();
+    List<Topology> network_devices = new List<Topology>();
     List<string> serials = new List<string>();
     Vector3 worldPos; //helps move object
     public Toggle tog; //Toggle
     LocationsJsonParse location_data;
-    string locations_file_path;
 
     private float _sensitivity = 0.01f;
     private Vector3 _mouseReference;
@@ -66,10 +66,9 @@ public class moveRouter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
         {
-        jsonMain.Start();
         // Retrieve network_devices and serials from JsonMain
-        serials = jsonMain.GetSerials();
-        List<Topology> network_devices = jsonMain.GetDevices();
+        serials = spawner.serials;
+        network_devices = spawner.network_devices;
 
         //If it is a master router it will toggled on automatically -- Rajesh wanted extenders to fixed default to where they can't move in the beginning
         for(int ii = 0; ii < network_devices.Count; ii++)
@@ -129,10 +128,8 @@ public class moveRouter : MonoBehaviour
                 transform.position = prevLocation;
                 }
             else
-                {
-                List<Topology> network_devices = jsonMain.GetDevices();
-                location_data = jsonMain.GetLocationData();
-                locations_file_path = jsonMain.GetLocationsFilePath();
+            {
+                location_data = spawner.location_data;
                 transform.position = new Vector3(worldPos.x, 1.5f, worldPos.z);
                 //save location here 
                 //loop through and get all the locations and then push into json.
@@ -168,8 +165,10 @@ public class moveRouter : MonoBehaviour
                     xx_router += 10;
                     }
 
-                // Database Post Request
-                //  - Saves Locations to Firebase
+                // Database Overwrite: Locations
+                //    1. Delete stored location values
+                //    2. Saves new locations on Firebase
+                Debug.Log(json);
                 DeleteToDatabase();
                 PostToDatabase(location_data);
                 }
@@ -181,6 +180,9 @@ public class moveRouter : MonoBehaviour
            
     }
 
+    
+    // Firebase Requests
+    //    - Note: MUST separate requests. Cannot have .Delete() w/ .Post() under the same function.
     private void DeleteToDatabase()
     {
         RestClient.Delete("https://capstone-topology.firebaseio.com/locations.json");
