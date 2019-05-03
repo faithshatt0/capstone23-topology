@@ -94,6 +94,13 @@ public class moveRouter : MonoBehaviour
             posX = Input.mousePosition.x - dist.x;
             posY = Input.mousePosition.y - dist.y;
             posZ = Input.mousePosition.z - dist.z;
+
+            // Database Overwrite: Locations
+            //    1. Delete stored location values ONLY if we're sure the Object's toggle is on
+            if (tog.isOn)
+            {
+                DeleteToDatabase();
+            }
             }
         else
             {
@@ -166,10 +173,7 @@ public class moveRouter : MonoBehaviour
                     }
 
                 // Database Overwrite: Locations
-                //    1. Delete stored location values
                 //    2. Saves new locations on Firebase
-                Debug.Log(json);
-                DeleteToDatabase();
                 PostToDatabase(location_data);
                 }
         }
@@ -185,11 +189,13 @@ public class moveRouter : MonoBehaviour
     //    - Note: MUST separate requests. Cannot have .Delete() w/ .Post() under the same function.
     private void DeleteToDatabase()
     {
-        RestClient.Delete("https://capstone-topology.firebaseio.com/locations.json");
+        Debug.Log("Deleted");
+        RestClient.Delete("https://capstone-topology.firebaseio.com/locations.json/");
     }
     
     private void PostToDatabase(LocationsJsonParse router_locations)
     {
+        Debug.Log("Posted");
         RestClient.Post("https://capstone-topology.firebaseio.com/locations.json", router_locations);
     }
 }
