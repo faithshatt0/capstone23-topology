@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-/// moveDevices.cs
-/// This script moves the devices that are not routers because it doesn't need a toggle button 
-/// 
 
+/// moveDevices.cs
+/// This script moves the devices that are not routers because it doesn't need a toggle button. When the objects are in the viewObject_scene it 
+/// will allow them to rotate in a circle so you can get a full view
+/// 
 public class moveDevices : MonoBehaviour
     {
     Vector3 dist; //Distance
@@ -24,33 +25,31 @@ public class moveDevices : MonoBehaviour
 
 
     private void Update()
-    {
-        if (SceneManager.GetActiveScene().name == "viewObject_scene")
         {
-            if (Input.GetMouseButton(1))
+        //If its in viewObject_scene we will allow it to rotate
+        if (SceneManager.GetActiveScene().name == "viewObject_scene")
             {
+            if (Input.GetMouseButton(1))
+                {
                 _isRotating = true;
                 if (_isRotating)
-                {
+                    {
                     // get mouse offset
                     _mouseOffset = (Input.mousePosition - _mouseReference);
                     // apply rotation
-
                     _rotation.y = -(_mouseOffset.z + _mouseOffset.x) * _sensitivity; // rotate
                     gameObject.transform.Rotate(_rotation); // store new mouse position
-
                     return;
+                    }
                 }
-            }
-
+            //Right button clicked
             if (!Input.GetMouseButton(1))
-            {
+                {
                 _isRotating = false;
                 return;
+                }
             }
-
         }
-    }
 
     //if mouse clicked on device
     void OnMouseDown()
@@ -62,11 +61,7 @@ public class moveDevices : MonoBehaviour
             posX = Input.mousePosition.x - dist.x;
             posY = Input.mousePosition.y - dist.y;
             posZ = Input.mousePosition.z - dist.z;
-            }
-        else
-            {
-            //put rotation here
-            }    
+            }   
         }
 
     //if mouse is dragging on device
@@ -78,10 +73,6 @@ public class moveDevices : MonoBehaviour
             worldPos = Camera.main.ScreenToWorldPoint(curPos);
             transform.position = worldPos;
             }
-        else
-            {
-            //put rotation here
-            }
         }
 
     //Once you let go of the mouse click object will go right back to original place
@@ -91,10 +82,5 @@ public class moveDevices : MonoBehaviour
             {
             transform.position = prevLocation;
             }
-        else
-            {
-            //put rotation here
-            }
-            
         }
     }

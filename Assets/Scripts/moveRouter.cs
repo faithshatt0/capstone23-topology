@@ -7,7 +7,7 @@ using System.IO;
 using UnityEngine.SceneManagement;
 
 /// moveRouter.cs
-/// This script is to move the routers because these objects will actually move.
+/// This script is to move the routers because these objects will actually move. If the router is in the viewObject Scene it will rotate.
 /// 
 public class moveRouter : MonoBehaviour
     {
@@ -15,7 +15,6 @@ public class moveRouter : MonoBehaviour
     float posX; //x
     float posY; //y
     float posZ; //z
-
     
     Vector3 prevLocation; //location so object doesn't move unless toggled to where it will
     // Initialize JsonMain script and start parsing Json
@@ -34,33 +33,31 @@ public class moveRouter : MonoBehaviour
 
 
     private void Update()
-    {
-        if (SceneManager.GetActiveScene().name == "viewObject_scene")
         {
-            if (Input.GetMouseButton(1))
+        //If the scene is viewObject the router can rotate
+        if (SceneManager.GetActiveScene().name == "viewObject_scene")
             {
+            if (Input.GetMouseButton(1))
+                {
                 _isRotating = true;
                 if (_isRotating)
-                {
+                    {
                     // get mouse offset
                     _mouseOffset = (Input.mousePosition - _mouseReference);
                     // apply rotation
-
                     _rotation.y = -(_mouseOffset.z + _mouseOffset.x) * _sensitivity; // rotate
                     gameObject.transform.Rotate(_rotation); // store new mouse position
-
                     return;
+                    }
                 }
-            }
-
+            //Right button clikced
             if (!Input.GetMouseButton(1))
-            {
+                {
                 _isRotating = false;
                 return;
+                }
             }
-
         }
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -95,11 +92,6 @@ public class moveRouter : MonoBehaviour
             posY = Input.mousePosition.y - dist.y;
             posZ = Input.mousePosition.z - dist.z;
             }
-        else
-            {
-            //do rotating here 
-            }
-       
         }
 
     //if mouse is dragging on device
@@ -110,10 +102,6 @@ public class moveRouter : MonoBehaviour
             Vector3 curPos = new Vector3(Input.mousePosition.x - posX, Input.mousePosition.y - posY, Input.mousePosition.z - posZ);
             worldPos = Camera.main.ScreenToWorldPoint(curPos);
             transform.position = worldPos;
-            }
-        else
-            {
-            //Do Rotating here
             }
         }   
 
@@ -168,11 +156,6 @@ public class moveRouter : MonoBehaviour
                     xx_router += 10;
                     }
                 }
+            }  
         }
-        else
-            {
-            //rotating here
-            }
-           
     }
-}
