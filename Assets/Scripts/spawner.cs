@@ -2,7 +2,6 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Proyecto26;
 
 /// Spawner.cs
 /// This script spawns the objects on the board. It uses the data from the parsing json files to spawn the number of objects for it
@@ -19,69 +18,24 @@ public class spawner : MonoBehaviour
     public Vector3 offset;
     public Vector3 real_position;
     public GameObject sta;
+    LocationsJsonParse location_data;
 
-    // Main Objects
-    //  - network_devices   = Devices connected to the Router/Extender
-    //  - serials           = Router references
-    //  - num_devices       = clients[] in eth_clients & sta_clients
-    public static List<Topology> network_devices = new List<Topology>();
-    public static List<string> serials = new List<string>();
-    public static int num_devices = 0;
-    public static LocationsJsonParse location_data;
-/*
-    private string topology_json = "";
-    private string locations_json = "";
-    */
-    
+    List<string> serials = new List<string>();
+    string locations_file_path;
+
     // Start is called once at the beginning of the program
     void Start()
         {
-        // 1. Read Topology Data
-        //    - Then, Locations Data
-        FirebaseGetData();
-        }
+        // Initialize JsonMain script and start parsing Json
+        JsonMain jsonMain = new JsonMain();
+        jsonMain.Start();
 
-    // Firebase Request
-    //    - GET
-    void FirebaseGetData()
-    {
-        RestClient.Get<CapstoneTopology>("https://capstone-topology.firebaseio.com/.json").Then(response =>
-        {
-            // 1. Store JSON values into variables
-            //    - Format is in JsonParse found in ParseJson/JsonParse.cs
-            string topology_json = JsonUtility.ToJson(response.topology);
-            string locations_json = JsonUtility.ToJson(response.locations);
+        // Retrieve network_devices and serials from JsonMain
+        List<Topology> network_devices = jsonMain.GetDevices();
+        serials = jsonMain.GetSerials();
+        location_data = jsonMain.GetLocationData();
+        locations_file_path = jsonMain.GetLocationsFilePath();
 
-            JsonParse topology_data = JsonUtility.FromJson<JsonParse>(topology_json);
-            
-            // 3. Store devices based on their respective Router/Extender
-            OrganizeByRouter(topology_data);
-            
-            // 4. Store JSON values into variables
-            //    - Format is in LocationsJsonParse found in ParseJson/JsonParse.cs
-            location_data = JsonUtility.FromJson<LocationsJsonParse>(locations_json);
-
-            // 5. Store device locations by serial #
-            StoreRouterLocations(location_data);
-
-            // 6.
-            SpawnObjects();
-        });
-    }
-    
-    // References Functions in 'Functions.cs'
-    void OrganizeByRouter(JsonParse loaded_data)
-    {
-        Functions.OrganizeByRouter(loaded_data, ref network_devices, ref serials, ref num_devices);
-    }
-
-    void StoreRouterLocations(LocationsJsonParse location_data)
-    {
-        Functions.StoreRouterLocations(location_data, ref network_devices, serials);
-    }
-
-    void SpawnObjects()
-    {
         // Template transform variable for GameObject positioning and rotation
         Transform objTrans = new GameObject().transform;
 
@@ -94,11 +48,12 @@ public class spawner : MonoBehaviour
         // Render random device types initialization
         System.Random rnd = new System.Random();
         var rndNum = 0;
-        
+
+
         //gets each router or extender
         for (int i = 0; i < network_devices.Count; i++)
             {
-                //Routers or extenders (not sure if extenders look different physically)
+            //Routers or extenders (not sure if extenders look different physically)
             //To get location
             //location_data.serials[i].x;
             //location_data.serials[i].y;
@@ -112,11 +67,11 @@ public class spawner : MonoBehaviour
             ///To do that you will have to create a copy of the GameObject Router in Unity itself and attach a different skin to it
             ///This will give that GameObject the same heirarchy and scripts so it can essentially do the same thing as each router
             ///
-            
+
             GameObject routers = Instantiate(router, objTrans.position, new Quaternion(0,0,0,0));
             var n = network_devices[i].get_serial();
             routers.transform.name = n;
-            Debug.Log("Created2 Routers");
+
             //if there are no sta_clients it will skip and save time
             if (network_devices[i].get_sta_clients().Count != 0)
                 {
@@ -250,5 +205,5 @@ public class spawner : MonoBehaviour
                     }
                 }
             }
+        }
     }
-}
