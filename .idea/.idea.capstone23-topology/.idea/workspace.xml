@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b2b1530-baf9-4df5-9d4f-d90446cfdc41" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ParseJson/Functions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ParseJson/Functions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ParseJson/JsonMain.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ParseJson/JsonMain.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ParseJson/JsonParse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ParseJson/JsonParse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ViewObjectInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ViewObjectInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/addName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/addName.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/addText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/addText.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/connectionStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/connectionStatus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/moveRouter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/moveRouter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/spawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,83 +12,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/addText.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="73" selection-start-line="73" selection-end-line="73" />
-              <folding>
-                <marker date="1557296703017" expanded="false" signature="6:100" ph="..." />
-                <marker date="1557296703017" expanded="true" signature="102:249" ph="/// addText.cs ... " />
-                <marker date="1557296703017" expanded="true" signature="286:3142" ph="{...}" />
-                <marker date="1557296703017" expanded="true" signature="328:389" ph="{...}" />
-                <marker date="1557296703017" expanded="true" signature="418:3136" ph="{...}" />
-                <marker date="1557296703017" expanded="true" signature="703:3126" ph="{...}" />
-                <marker date="1557296703017" expanded="true" signature="887:1351" ph="{...}" />
-                <marker date="1557296703017" expanded="true" signature="1017:1333" ph="{...}" />
-                <marker date="1557296703017" expanded="true" signature="1498:2291" ph="{...}" />
-                <marker date="1557296703017" expanded="true" signature="1654:2272" ph="{...}" />
-                <marker date="1557296703017" expanded="true" signature="1812:2250" ph="{...}" />
-                <marker date="1557296703017" expanded="true" signature="2405:3111" ph="{...}" />
-                <marker date="1557296703017" expanded="true" signature="2558:3092" ph="{...}" />
-                <marker date="1557296703017" expanded="true" signature="2716:3070" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/addName.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#100#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/spawner.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+            <state relative-caret-position="377">
+              <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
               <folding>
-                <marker date="1557296924141" expanded="true" signature="6:113" ph="..." />
-                <marker date="1557296924141" expanded="true" signature="115:265" ph="/// Spawner.cs ... " />
-                <marker date="1557296924141" expanded="true" signature="303:14012" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="589:792" ph="/* Main Objects ... */" />
-                <marker date="1557296924141" expanded="true" signature="1018:1106" ph="/* private string topology_json = &quot;&quot;; ... */" />
-                <marker date="1557296924141" expanded="true" signature="1188:1305" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="1207:1268" ph="/* 1. Read Topology Data ... */" />
-                <marker date="1557296924141" expanded="true" signature="1311:1346" ph="/* Firebase Request ... */" />
-                <marker date="1557296924141" expanded="true" signature="1373:2631" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="1496:2623" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="1510:1623" ph="/* 1. Store JSON values into variables ... */" />
-                <marker date="1557296924141" expanded="true" signature="2255:2377" ph="/* 4. Store JSON values into variables ... */" />
-                <marker date="1557296924141" expanded="true" signature="2731:2843" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="2908:3005" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="3030:14010" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="3648:14004" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="3679:4019" ph="/* Routers or extenders (not sure if extenders look different physically) ... */" />
-                <marker date="1557296924141" expanded="true" signature="4219:4687" ph="/* For some reason it spawns it backwards sometimes ... */" />
-                <marker date="1557296924141" expanded="true" signature="5068:13990" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="5315:5497" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="5518:5604" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="6058:13972" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="6315:10385" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="6598:6950" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="7310:7775" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="8143:8507" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="8623:10359" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="8750:10329" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="10454:13915" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="10734:11011" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="11273:11663" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="12027:12316" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="12426:13889" ph="{...}" />
-                <marker date="1557296924141" expanded="true" signature="12553:13859" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="6:113" ph="..." />
+                <marker date="1557297293972" expanded="true" signature="115:265" ph="/// Spawner.cs ... " />
+                <marker date="1557297293972" expanded="true" signature="303:13775" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="589:792" ph="/* Main Objects ... */" />
+                <marker date="1557297293972" expanded="true" signature="1018:1106" ph="/* private string topology_json = &quot;&quot;; ... */" />
+                <marker date="1557297293972" expanded="true" signature="1188:1305" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="1207:1268" ph="/* 1. Read Topology Data ... */" />
+                <marker date="1557297293972" expanded="true" signature="1311:1346" ph="/* Firebase Request ... */" />
+                <marker date="1557297293972" expanded="true" signature="1373:2394" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="1496:2386" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="1510:1623" ph="/* 1. Store JSON values into variables ... */" />
+                <marker date="1557297293972" expanded="true" signature="2018:2140" ph="/* 4. Store JSON values into variables ... */" />
+                <marker date="1557297293972" expanded="true" signature="2494:2606" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="2671:2768" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="2793:13773" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="3411:13767" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="3442:3782" ph="/* Routers or extenders (not sure if extenders look different physically) ... */" />
+                <marker date="1557297293972" expanded="true" signature="3982:4450" ph="/* For some reason it spawns it backwards sometimes ... */" />
+                <marker date="1557297293972" expanded="true" signature="4831:13753" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="5078:5260" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="5281:5367" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="5821:13735" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="6078:10148" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="6361:6713" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="7073:7538" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="7906:8270" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="8386:10122" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="8513:10092" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="10217:13678" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="10497:10774" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="11036:11426" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="11790:12079" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="12189:13652" ph="{...}" />
+                <marker date="1557297293972" expanded="true" signature="12316:13622" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -232,12 +185,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557296441462</updated>
-      <workItem from="1557296445267" duration="473000" />
+      <workItem from="1557296445267" duration="764000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="473000" />
+    <option name="totallyTimeSpent" value="764000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -495,6 +448,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/JsonFiles/locations.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="52" selection-end-column="231" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/JsonFiles/json2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/addName.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+          <folding>
+            <marker date="1557296721890" expanded="true" signature="6:100" ph="..." />
+            <marker date="1557296721890" expanded="true" signature="102:371" ph="/// addName.cs ... " />
+            <marker date="1557296721890" expanded="true" signature="408:2700" ph="{...}" />
+            <marker date="1557296721890" expanded="true" signature="487:585" ph="{...}" />
+            <marker date="1557296721890" expanded="true" signature="602:2694" ph="{...}" />
+            <marker date="1557296721890" expanded="true" signature="894:2684" ph="{...}" />
+            <marker date="1557296721890" expanded="true" signature="1052:1383" ph="{...}" />
+            <marker date="1557296721890" expanded="true" signature="1223:1365" ph="{...}" />
+            <marker date="1557296721890" expanded="true" signature="1518:2035" ph="{...}" />
+            <marker date="1557296721890" expanded="true" signature="1688:2016" ph="{...}" />
+            <marker date="1557296721890" expanded="true" signature="1839:1994" ph="{...}" />
+            <marker date="1557296721890" expanded="true" signature="2165:2669" ph="{...}" />
+            <marker date="1557296721890" expanded="true" signature="2322:2650" ph="{...}" />
+            <marker date="1557296721890" expanded="true" signature="2473:2628" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/addText.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1050">
@@ -518,65 +508,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/addName.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#100#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/JsonFiles/json2.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/JsonFiles/locations.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="52" selection-end-column="231" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/spawner.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+        <state relative-caret-position="377">
+          <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
           <folding>
-            <marker date="1557296924141" expanded="true" signature="6:113" ph="..." />
-            <marker date="1557296924141" expanded="true" signature="115:265" ph="/// Spawner.cs ... " />
-            <marker date="1557296924141" expanded="true" signature="303:14012" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="589:792" ph="/* Main Objects ... */" />
-            <marker date="1557296924141" expanded="true" signature="1018:1106" ph="/* private string topology_json = &quot;&quot;; ... */" />
-            <marker date="1557296924141" expanded="true" signature="1188:1305" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="1207:1268" ph="/* 1. Read Topology Data ... */" />
-            <marker date="1557296924141" expanded="true" signature="1311:1346" ph="/* Firebase Request ... */" />
-            <marker date="1557296924141" expanded="true" signature="1373:2631" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="1496:2623" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="1510:1623" ph="/* 1. Store JSON values into variables ... */" />
-            <marker date="1557296924141" expanded="true" signature="2255:2377" ph="/* 4. Store JSON values into variables ... */" />
-            <marker date="1557296924141" expanded="true" signature="2731:2843" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="2908:3005" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="3030:14010" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="3648:14004" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="3679:4019" ph="/* Routers or extenders (not sure if extenders look different physically) ... */" />
-            <marker date="1557296924141" expanded="true" signature="4219:4687" ph="/* For some reason it spawns it backwards sometimes ... */" />
-            <marker date="1557296924141" expanded="true" signature="5068:13990" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="5315:5497" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="5518:5604" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="6058:13972" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="6315:10385" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="6598:6950" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="7310:7775" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="8143:8507" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="8623:10359" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="8750:10329" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="10454:13915" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="10734:11011" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="11273:11663" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="12027:12316" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="12426:13889" ph="{...}" />
-            <marker date="1557296924141" expanded="true" signature="12553:13859" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="6:113" ph="..." />
+            <marker date="1557297293972" expanded="true" signature="115:265" ph="/// Spawner.cs ... " />
+            <marker date="1557297293972" expanded="true" signature="303:13775" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="589:792" ph="/* Main Objects ... */" />
+            <marker date="1557297293972" expanded="true" signature="1018:1106" ph="/* private string topology_json = &quot;&quot;; ... */" />
+            <marker date="1557297293972" expanded="true" signature="1188:1305" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="1207:1268" ph="/* 1. Read Topology Data ... */" />
+            <marker date="1557297293972" expanded="true" signature="1311:1346" ph="/* Firebase Request ... */" />
+            <marker date="1557297293972" expanded="true" signature="1373:2394" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="1496:2386" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="1510:1623" ph="/* 1. Store JSON values into variables ... */" />
+            <marker date="1557297293972" expanded="true" signature="2018:2140" ph="/* 4. Store JSON values into variables ... */" />
+            <marker date="1557297293972" expanded="true" signature="2494:2606" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="2671:2768" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="2793:13773" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="3411:13767" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="3442:3782" ph="/* Routers or extenders (not sure if extenders look different physically) ... */" />
+            <marker date="1557297293972" expanded="true" signature="3982:4450" ph="/* For some reason it spawns it backwards sometimes ... */" />
+            <marker date="1557297293972" expanded="true" signature="4831:13753" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="5078:5260" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="5281:5367" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="5821:13735" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="6078:10148" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="6361:6713" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="7073:7538" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="7906:8270" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="8386:10122" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="8513:10092" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="10217:13678" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="10497:10774" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="11036:11426" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="11790:12079" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="12189:13652" ph="{...}" />
+            <marker date="1557297293972" expanded="true" signature="12316:13622" ph="{...}" />
           </folding>
         </state>
       </provider>

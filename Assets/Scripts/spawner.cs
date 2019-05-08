@@ -53,8 +53,6 @@ public class spawner : MonoBehaviour
             string locations_json = JsonUtility.ToJson(response.locations);
 
             JsonParse topology_data = JsonUtility.FromJson<JsonParse>(topology_json);
-
-            Debug.Log(locations_json);
             
             // 3. Store devices based on their respective Router/Extender
             OrganizeByRouter(topology_data);
