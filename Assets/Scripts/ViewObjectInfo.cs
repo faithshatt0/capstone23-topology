@@ -16,10 +16,7 @@ public class ViewObjectInfo : MonoBehaviour
 
     void Start()
         {
-        // Initialize JsonMain script and start parsing Json
-        JsonMain jsonMain = new JsonMain();
-        jsonMain.Start();
-        List<Topology> network_devices = jsonMain.GetDevices();
+        List<Topology> network_devices = spawner.network_devices;
         //When the View assistant button is clicked in test_scenee it will load the new scene
         //gets each router or extender 
         for (int i = 0; i < network_devices.Count; i++)
